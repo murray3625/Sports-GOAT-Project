@@ -1,0 +1,242 @@
+---
+title: "Dataset Creation"
+author: "Matthew Murray"
+date: "`r Sys.Date()`"
+output:
+  pdf_document: default
+  html_document:
+    df_print: paged
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+
+# libraries
+
+library(janitor)
+library(dplyr)
+library(tidyverse)
+
+```
+
+# Soccer 
+
+```{r soccer}
+
+# taken from Sports Illustrated 
+# https://www.si.com/soccer/2019/05/21/50-greatest-footballers-all-time
+
+Players <- c("Diego Maradona", "Pele", "Lionel Messi", "Franz Beckenbauer",
+             "Johan Cruyff", "Zinedine Zidane", "Ronaldo (Brazil)", "Michel Platini",
+             "Roberto Baggio", "Alfredo di Stefano", "Mane Garrincha", "Gerd Muller",
+             "Paolo Maldini", "Ferenc Puskas", "Cristiano Ronaldo", "Franco Baresi",
+             "Zico", "George Best", "Marco van Basten", "Eusebio", 
+             "Romario", "Raymond Kopa", "Giuseppe Meazza", "Bobby Charlton",
+             "Ruud Gullit", "Ronaldinho", "Lothar Matthaus", "Sandor Kocsis", 
+             "Socrates", "Bobby Moore", "Rivelino", "Andres Iniesta", 
+             "Karl-Heinz Rummenigge", "Luis Suarez Miramontes", "Xavi Hernandez", "Johan Neeskens",
+             "Gianluigi Buffon", "Hristo Stoichkov", "Kevin Keegan", "Gunnar Nordahl",
+             "Lev Yashin", "Kakka", "George Weah", "Paul Breitner", 
+             "Paolo Rossi", "Omar Sivori", "Jairzinho", "Hugo Sanchez",
+             "John Charles", "Luka Modric")
+
+Peak <- c("1985-1990", "1958-1964", "2009-2012", "1966-1976",
+          "1971-1975", "1997-2002", "1995-1998", "1982-1985", 
+          "1990-1994", "1956-1962", "1958-1962", "1970-1974",
+          "1994-2003", "1950-1954", "2012-2016", "1987-1994",
+          "1979-1982", "1966-1971", "1988-1992", "1962-1968",
+          "1990-1994", "1956-1959", "1934-1938", "1963-1967",
+          "1986-1990", "2004-2006", "1988-1992", "1950-1955",
+          "1976-1984", "1964-1970", "1968-1974", "2008-2012",
+          "1979-1984", "1960-1965", "2008-2012", "1971-1978",
+          "2002-2006", "1990-1994", "1977-1979", "1950-1955",
+          "1956-1964", "2005-2009", "1993-1996", "1974-1981",
+          "1982", "1958-1961", "1970", "1986-1990",
+          "1957-1960", "2014-2018")
+
+rk <- seq(1, 50)
+
+
+soccer <- data.frame(Players, Peak, rk)
+colnames(soccer) = c("Player", "Peak", "Rank")
+
+```
+
+# Cricket 
+
+```{r cricket}
+
+# taken from BBC
+# https://www.bbc.co.uk/programmes/articles/2V6BjFgdJ5KcfVHhR3bwBLz/the-greatest-cricketer-of-all-time-your-votes-revealed
+
+Players <- c("Sir Donald Bradman", "Sachin Tendulkar", "Sir Garfield Sobers", "Imran Khan",
+             "Sir Ian Botham", "Shane Warne", "Sir Viv Richards", "Brian Lara",
+             "Jaques Kallis", "MS Dhoni", "Wasim Akram", "Virat Kohli",
+             "James Anderson", "Sir Alastair Cook", "Muttiah Muralitharan", "Kumar Sangakkara",
+             "Kapil Dev", "Sir Richard Hadlee", "Adam Gilchrist", "Chris Gayle",
+             "Glenn McGrath", "Ricky Ponting", "Steve Waugh", "Rahul Dravid",
+             "Sunil Gavaskar", "Shoaib Akhtar", "Sir Curtly Ambrose", "Mahela Jayawardene",
+             "Dale Steyn", "Allan Donald")
+
+Years.Active <- c("1927-1949", "1988-2013", "1952-1974", "1971-1992",
+                  "1973-1993", "1991-2007", "1974-1991", "1987-2007",
+                  "1996-2014", "1999-2000", "1985-2003", "2006-present",
+                  "2003-present", "2006-2018", "1992-2011", "2000-2015",
+                  "1978-1994", "1971-1990", "1991-2008", "1998-2021",
+                  "1992-2007", "1992-2012", "1985-2004", "1996-2011",
+                  "1971-1987", "1997-2011", "1988-2000", "1997-2015",
+                  "2004-2020", "1991-2003")
+
+rk <- seq(1, 30)
+
+cricket <- data.frame(Players, Years.Active, rk)
+colnames(cricket) <- c("Player", "Years Active", "Rank")
+
+```
+
+# Tennis 
+
+```{r tennis}
+
+# taken from Stadium Talk
+# https://www.stadiumtalk.com/s/greatest-mens-tennis-players-1e13282683434178
+
+Players <- c("Roger Federer", "Rafael Nadal", "Novak Djokovic", "Pete Sampras",
+             "Rod Laver", "Bjorn Borg", "John McEnroe", "Ivan Lendl", 
+             "Andre Agassi", "Jimmy Connors", "Don Budge", "Doris Becker",
+             "Andy Murray", "Bill Tilden", "Roy Emerson", "Ken Rosewall",
+             "Fred Perry", "Guillermo Vilas", "Jim Courier", "Ilie Nastase",
+             "John Newcombe", "Arthur Ashe", "Rene Lacoste", "Mats Wilander",
+             "Stefan Edberg", "Gustavo Kuerten", "Lleyton Hewitt", "Marat Safin",
+             "Patrick Rafter", "Andy Roddick")
+
+Years.Active <- c("1998-2022", "2001-present", "2003-present", "1988-2002",
+                  "1956-1979", "1973-1983", "1978-1994", "1978-1994",
+                  "1986-2006", "1972-1996", "1932-1955", "1984-1999",
+                  "2005-?", "1912-1946", "1953-1983", "1956-1980",
+                  "1929-1956", "1969-1992", "1988-2000", "1966-1985",
+                  "1960-1981", "1959-1980", "1922-1932", "1981-1996",
+                  "1983-1996", "1995-2008", "1998-2016", "1997-2009",
+                  "1991-2002", "2000-2012")
+
+rk <- seq(1, 30)
+
+tennis <- data.frame(Players, Years.Active, rk)
+colnames(tennis) <- c("Player", "Years Active", "Rank")
+
+```
+
+# Basketball
+
+```{r basketball}
+
+# taken from ESPN
+# https://www.espn.com/nba/story/_/id/33297498/the-nba-75th-anniversary-team-ranked-where-76-basketball-legends-check-our-list
+
+Players <- c("Michael Jordan", "LeBron James", "Kareem Abdul-Jabbar", "Magic Johnson",
+             "Wilt Chamberlain", "Bill Russell", "Larry Bird", "Tim Duncan",
+             "Oscar Robertson", "Kobe Bryant", "Shaquille O'Neal", "Kevin Durant",
+             "Hakeem Olajuwon", "Julius Erving", "Moses Malone", "Stephen Curry",
+             "Dirk Nowitzki", "Giannis Antetokounmpo", "Jerry West", "Elgin Baylor",
+             "Kevin Garnett", "Charles Barkley", "Karl Malone", "John Stockton",
+             "David Robinson", "John Havlicek", "Isiah Thomas", "George Mikan", 
+             "Chris Paul", "Dwyane Wade", "Allen Iverson", "Scottie Pippen", 
+             "Kawhi Leonard", "Bob Cousy", "Bob Pettit", "Dominique Wilkins",
+             "Steve Nash", "Rick Barry", "Kevin McHale", "Patrick Ewing",
+             "Walt Frazier", "Gary Payton", "Jason Kidd", "Bill Walton",
+             "Bob McAdoo", "Jerry Lucas", "Ray Allen", "Wes Unseld",
+             "Nate Thurmond", "James Harden")
+
+
+Years.Active <- c("1984-2003", "2003-present", "1969-1989", "1979-1991",
+                  "1959-1973", "1956-1969", "1979-1992", "1997-2016",
+                  "1960-1974", "1996-2016", "1992-2011", "2007-present",
+                  "1984-2002", "1971-1987", "1974-1995", "2009-present",
+                  "1998-2019", "2013-present", "1960-1974", "1958-1972",
+                  "1995-2016", "1984-2000", "1985-2004", "1984-2003",
+                  "1989-2003", "1962-1978", "1981-1994", "1948-1956",
+                  "2005-present", "2003-2019", "1996-2010", "1987-2004",
+                  "2011-present", "1950-1970", "1954-1965", "1982-1999",
+                  "1996-2014", "1965-1980", "1980-1993", "1985-2002",
+                  "1967-1979", "1990-2007", "1994-2013", "1974-1987",
+                  "1972-1986", "1963-1974", "1996-2014", "1968-1981",
+                  "1963-1977", "2009-present"
+                  )
+
+rk <- seq(1, 50)
+
+basketball <- data.frame(Players, Years.Active)
+colnames(basketball) <- c("Player", "Years Active")
+
+```
+
+# Baseball
+
+```{r baseball}
+
+# taken from ESPN
+# https://www.espn.com/mlb/story/_/id/33158613/top-100-mlb-players-all-nos-25-1
+# https://www.espn.com/mlb/story/_/id/33145627/top-100-mlb-players-all-nos-50-26
+
+Players <- c("Babe Ruth", "Willie Mays", "Hank Aaron", "Ty Cobb",
+             "Ted Williams", "Lou Gehrig", "Mickey Mantle", "Barry Bonds",
+             "Walter Johnson", "Stan Musial", "Pedro Martinez", "Honus Wagner",
+             "Ken Griffey Jr.", "Greg Maddux", "Mike Trout", "Joe DiMaggio",
+             "Roger Clemens", "Mike Schmidt", "Frank Robinson", "Roger Hornsby",
+             "Cy Young", "Tom Seaver", "Rickey Henderson", "Randy Johnson",
+             "Christy Mathewson", "Alex Rodriguez", "Roberto Clemente", "Derek Jeter",
+             "Johnny Bench", "Albert Pujols", "Mariano Rivera", "Sandy Koufax",
+             "Bob Gibson", "Pete Rose", "Josh Gibson", "Tris Speaker", 
+             "Joe Morgan", "Jackie Robinson", "Yogi Berra", "Jimmie Foxx",
+             "Satchel Paige", "Nolan Ryan", "George Brett", "Tony Gwynn",
+             "Wade Boggs", "Ichiro Suzuki", "Warren Spahn", "Nap Lajoie",
+             "Frank Thomas", "Bob Feller")
+
+Years.Active <- c("1914-1935", "1948, 1951-1952, 1954-1973", "1951, 1954-1976", "1905-1928",
+                  "1939-1942, 1946-1960", "1923-1939", "1951-1968", "1986-2007",
+                  "1907-1927", "1941-1963", "1992-2009", "1897-1917",
+                  "1989-2010", "1986-2008", "2011-present", "1936-1951",
+                  "1984-2007", "1972-1989", "1956-1976", "1915-1937",
+                  "1890-1911", "1967-1986", "1979-2003", "1988-2009",
+                  "1900-1916", "1994-2016", "1955-1972", "1995-2014",
+                  "1967-1983", "2001-2022", "1995-2013", "1955-1966",
+                  "1959-1975", "1963-1986", "1930-1946", "1907-1928",
+                  "1963-1984", "1945, 1947-1956", "1946-1965", "1925-1945",
+                  "1927-1949, 1951-1953, 1965", "1966-1993", "1973-1993", "1982-2001",
+                  "1982-1999", "2001-2019", "1942, 1946-1965", "1896-1916",
+                  "1990-2008", "1936-1941, 1945-1956") 
+
+rk <- seq(1, 50)
+
+baseball <- data.frame(Players, Years.Active, rk)
+colnames(baseball) <- c("Player", "Years Active", "Rank")
+
+```
+
+# Golf
+
+```{r golf}
+
+# taken from Athlon Sports
+# https://athlonsports.com/golf/greatest-golfers-all-time
+
+# Players <- c("Tiger Woods", "Jack Nicklaus", "Sam Snead", "Arnold Palmer",
+#              "Ben Hogan", "Bobby Jones", "Tom Watson", "Gary Player",
+#              "Gene Sarazen", "Phil Mickelson", "Seve Ballesteros", "Byron Nelson",
+#              "Lee Trevino", "Nick Faldo", "Walter Hagen", "Ernie Els",
+#              "Billy Casper", "Vijay Singh", "Rory McIlroy", "Greg Norman")
+# 
+# Years.Active <- c("1996-present", "1962-1986", )
+# 
+# rk <- seq(1, 20)
+# 
+# golf <- data.frame(Players, Years.Active, rk)
+# colnames(golf) <- c("Player", "Years Active", "Rank")
+
+```
+
+
+
