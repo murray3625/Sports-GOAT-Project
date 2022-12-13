@@ -216,6 +216,50 @@ colnames(baseball) <- c("Player", "Years Active", "Rank")
 
 ```
 
+# Football
+
+
+```{r football}
+
+# taken from ClutchPoints
+# https://clutchpoints.com/updating-and-ranking-the-50-greatest-nfl-players-of-all-time
+
+Players <- c("Tom Brady", "Jerry Rice", "Lawrence Taylor", "Jim Brown",
+             "Joe Montana", "Walter Payton", "Reggie White", "Johnny Unitas",
+             "Peyton Manning", "Emmitt Smith", "Joe Green", "Ronnie Lott",
+             "John Elway", "Dick Butkus", "Ray Lewis", "Barry Sanders",
+             "Deion Sanders", "Dan Marino", "Anthony Munoz", "Deacon Jones",
+             "Otto Graham", "Gale Sayers", "Brett Favre", "Randy Moss",
+             "Jack Lambert", "Alan Page", "Bruce Smith", "Don Hutson",
+             "Drew Brees", "Ed Reed", "Sammy Baugh", "Bob Lilly",
+             "Dick Lane", "Aaron Rodgers", "Gino Marchetti", "Tony Gonzalez",
+             "Rod Woodson", "Mel Blount", "Eric Dickerson", "Ray Nitschke",
+             "John Hannah", "Mike Singletary", "Early Campbell", "Jim Thorpe",
+             "Roger Staubach", "Chuck Bednarik", "OJ Simpson", "Forrest Gregg",
+             "Steve Young", "Terrell Owens")
+
+Years.Active <- c("2000-present", "1985-2004", "1981-1993", "1957-1965",
+                  "1979-1994", "1975-1987", "1985-2000", "1955-1973",
+                  "1998-2015", "1990-2004", "1969-1981", "1981-1994",
+                  "1983-1998", "1965-1973", "1996-2012", "1989-1998",
+                  "1989-2000, 2004-2005", "1983-1999", "1980-1992", "1961-1974",
+                  "1946-1955", "1965-1971", "1991-2010", "1998-2012",
+                  "1974-1984", "1967-1981", "1985-2003", "1935-1945",
+                  "2001-2020", "2002-2013", "1937-1952", "1961-1974",
+                  "1952-1965", "2005-present", "1952-1966", "1997-2013",
+                  "1987-2003", "1970-1983", "1983-1993", "1958-1972",
+                  "1973-1985", "1981-1992", "1978-1985", "1920-1928", 
+                  "1969-1979", "1949-1962", "1969-1979", "1956-1971",
+                  "1985-1999", "1996-2010")
+
+rk <- seq(1, 50)
+
+football <- data.frame(Players, Years.Active, rk)
+colnames(football) <- c("Players", "Years Active", "Rank")
+
+```
+
+
 # Golf
 
 ```{r golf}
