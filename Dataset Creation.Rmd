@@ -19,6 +19,8 @@ knitr::opts_chunk$set(echo = TRUE)
 library(janitor)
 library(dplyr)
 library(tidyverse)
+library(lubridate)
+library(stringi)
 
 ```
 
@@ -54,7 +56,7 @@ Peak <- c("1985-1990", "1958-1964", "2009-2012", "1966-1976",
           "1979-1984", "1960-1965", "2008-2012", "1971-1978",
           "2002-2006", "1990-1994", "1977-1979", "1950-1955",
           "1956-1964", "2005-2009", "1993-1996", "1974-1981",
-          "1982", "1958-1961", "1970", "1986-1990",
+          "1982-1982", "1958-1961", "1970-1970", "1986-1990",
           "1957-1960", "2014-2018")
 
 rk <- seq(1, 50)
@@ -64,6 +66,7 @@ soccer <- data.frame(Players, Peak, rk)
 colnames(soccer) = c("Player", "Peak", "Rank")
 
 ```
+
 
 # Cricket 
 
@@ -116,7 +119,7 @@ Players <- c("Roger Federer", "Rafael Nadal", "Novak Djokovic", "Pete Sampras",
 Years.Active <- c("1998-2022", "2001-present", "2003-present", "1988-2002",
                   "1956-1979", "1973-1983", "1978-1994", "1978-1994",
                   "1986-2006", "1972-1996", "1932-1955", "1984-1999",
-                  "2005-?", "1912-1946", "1953-1983", "1956-1980",
+                  "2005-present", "1912-1946", "1953-1983", "1956-1980",
                   "1929-1956", "1969-1992", "1988-2000", "1966-1985",
                   "1960-1981", "1959-1980", "1922-1932", "1981-1996",
                   "1983-1996", "1995-2008", "1998-2016", "1997-2009",
@@ -176,11 +179,9 @@ colnames(basketball) <- c("Player", "Years Active")
 # Baseball
 
 ```{r baseball}
-
 # taken from ESPN
 # https://www.espn.com/mlb/story/_/id/33158613/top-100-mlb-players-all-nos-25-1
 # https://www.espn.com/mlb/story/_/id/33145627/top-100-mlb-players-all-nos-50-26
-
 Players <- c("Babe Ruth", "Willie Mays", "Hank Aaron", "Ty Cobb",
              "Ted Williams", "Lou Gehrig", "Mickey Mantle", "Barry Bonds",
              "Walter Johnson", "Stan Musial", "Pedro Martinez", "Honus Wagner",
@@ -194,7 +195,6 @@ Players <- c("Babe Ruth", "Willie Mays", "Hank Aaron", "Ty Cobb",
              "Satchel Paige", "Nolan Ryan", "George Brett", "Tony Gwynn",
              "Wade Boggs", "Ichiro Suzuki", "Warren Spahn", "Nap Lajoie",
              "Frank Thomas", "Bob Feller")
-
 Years.Active <- c("1914-1935", "1948, 1951-1952, 1954-1973", "1951, 1954-1976", "1905-1928",
                   "1939-1942, 1946-1960", "1923-1939", "1951-1968", "1986-2007",
                   "1907-1927", "1941-1963", "1992-2009", "1897-1917",
@@ -208,12 +208,9 @@ Years.Active <- c("1914-1935", "1948, 1951-1952, 1954-1973", "1951, 1954-1976", 
                   "1927-1949, 1951-1953, 1965", "1966-1993", "1973-1993", "1982-2001",
                   "1982-1999", "2001-2019", "1942, 1946-1965", "1896-1916",
                   "1990-2008", "1936-1941, 1945-1956") 
-
 rk <- seq(1, 50)
-
 baseball <- data.frame(Players, Years.Active, rk)
 colnames(baseball) <- c("Player", "Years Active", "Rank")
-
 ```
 
 # Football
@@ -303,7 +300,6 @@ colnames(hockey) <- c("Players", "Years Active", "Rank")
 ```
 
 
-
 # Golf
 
 ```{r golf}
@@ -328,3 +324,123 @@ colnames(hockey) <- c("Players", "Years Active", "Rank")
 
 
 
+\newpage 
+
+# Visualization
+
+```{r}
+
+cricket.revised <- cricket
+for (i in 1:nrow(cricket.revised)){
+  cricket.revised[i, "Years Active"] <- str_replace(cricket.revised[i, "Years Active"], "present", "2022")
+}
+
+tennis.revised <- tennis
+for (i in 1:nrow(tennis.revised)){
+  tennis.revised[i, "Years Active"] <- str_replace(tennis.revised[i, "Years Active"], "present", "2022")
+}
+
+basketball.revised <- basketball
+for (i in 1:nrow(basketball.revised)){
+  basketball.revised[i, "Years Active"] <- str_replace(basketball.revised[i, "Years Active"], "present", "2022")
+}
+
+football.revised <- football
+for (i in 1:nrow(football.revised)){
+  football.revised[i, "Years Active"] <- str_replace(football.revised[i, "Years Active"], "present", "2022")
+}
+
+hockey.revised <- hockey
+for (i in 1:nrow(football.revised)){
+  hockey.revised[i, "Years Active"] <- str_replace(hockey.revised[i, "Years Active"], "present", "2022")
+}
+
+```
+
+```{r figure-1-data}
+
+df = data.frame(Player=character(),
+                Year=integer(),
+                Sport = character())
+rownum = 0
+
+for (i in 1:nrow(soccer)){
+  seq = seq(strtoi(substr(soccer[i, 2], 1, 4)),
+            strtoi(substr(soccer[i,2], 6, 9)))
+  for (x in 1:length(seq)){
+    rownum = rownum + 1
+    df[rownum, ] = c(soccer[i,1], seq[x], "Soccer")
+  }
+}
+
+for (i in 1:nrow(cricket.revised)){
+  seq = seq(strtoi(substr(cricket.revised[i, 2], 1, 4)),
+            strtoi(substr(cricket.revised[i,2], 6, 9)))
+  for (x in 1:length(seq)){
+    rownum = rownum + 1
+    df[rownum, ] = c(cricket.revised[i,1], seq[x], "Cricket")
+  }
+}
+
+for (i in 1:nrow(tennis.revised)){
+  seq = seq(strtoi(substr(tennis.revised[i, 2], 1, 4)),
+            strtoi(substr(tennis.revised[i,2], 6, 9)))
+  for (x in 1:length(seq)){
+    rownum = rownum + 1
+    df[rownum, ] = c(tennis.revised[i,1], seq[x], "Tennis")
+  }
+}
+
+for (i in 1:nrow(basketball.revised)){
+  seq = seq(strtoi(substr(basketball.revised[i, 2], 1, 4)),
+            strtoi(substr(basketball.revised[i,2], 6, 9)))
+  for (x in 1:length(seq)){
+    rownum = rownum + 1
+    df[rownum, ] = c(basketball.revised[i,1], seq[x], "Basketball")
+  }
+}
+
+for (i in 1:nrow(football.revised)){
+  seq = seq(strtoi(substr(football.revised[i, 2], 1, 4)),
+            strtoi(substr(football.revised[i,2], 6, 9)))
+  for (x in 1:length(seq)){
+    rownum = rownum + 1
+    df[rownum, ] = c(football.revised[i,1], seq[x], "Football")
+  }
+}
+
+for (i in 1:nrow(hockey.revised)){
+  seq = seq(strtoi(substr(hockey.revised[i, 2], 1, 4)),
+            strtoi(substr(hockey.revised[i,2], 6, 9)))
+  for (x in 1:length(seq)){
+    rownum = rownum + 1
+    df[rownum, ] = c(hockey.revised[i,1], seq[x], "Hockey")
+  }
+}
+
+f1.data <- df %>%
+  group_by(Year, Sport) %>%
+  count()
+
+f1.data
+
+```
+
+```{r figure-1}
+
+f1 <- ggplot(data = f1.data, 
+       aes(x = as.numeric(Year), y = n, group = Sport, color = Sport)) + 
+  geom_line() +
+  labs(x = "Year", 
+       y = "Number of All-Time Greats", 
+       title = "Number of All-Time Greats by Year",
+       caption = "Figure 1") + 
+  scale_x_continuous(limits = c(1900, 2025)) + 
+  theme_bw() +
+  theme(text = element_text(family = "serif")) +
+  theme(plot.title=element_text(family = "serif", face = "bold", hjust = 0.5, size = 12))
+
+f1
+
+
+```
