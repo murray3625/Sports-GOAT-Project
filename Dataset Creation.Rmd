@@ -22,6 +22,79 @@ library(tidyverse)
 library(lubridate)
 library(stringi)
 library(r2r)
+library(purrr)
+
+```
+
+\newpage
+
+# Functions
+
+```{r}
+
+create.df <- function(Players, Year) {
+  df <- data.frame(Players, Year, seq(1, length(Players)))
+  colnames(df) = c("Player", "Years", "Rank")
+  return(df)
+}
+
+```
+
+```{r}
+
+# modifying strings so that 'present' is changed is 2022/2023
+
+presentto2022 <- function(df) {
+  for (i in 1:nrow(df)){
+    df[i, "Years"] <- str_replace(df[i, "Years"], "present", "2022")
+}
+  return(df)
+}
+
+```
+
+```{r}
+
+# changing the intervals from a string to actual series of integers with a row for each year
+# doing that for each sport and placing those rows into the new dataframe, df
+
+rowforyear <- function(big.df, sport.df, string){
+  for (i in 1:nrow(sport.df)){
+    seq = seq(strtoi(substr(sport.df[i, 2], 1, 4)),
+              strtoi(substr(sport.df[i, 2], 6, 9)))
+  for (x in 1:length(seq)){
+    rownum = rownum + 1
+    big.df[rownum, ] = c(sport.df[i, 1], seq[x], string, sport.df[i, 3], sport.df[i, 2])
+  }
+  }
+  return(big.df)
+}
+
+```
+
+```{r}
+
+# filter df for sport
+# take the max oldest year for each player
+# create empty dataframe for goats
+# if the player has the best ranking at that point in his career, put him into goats dataframe
+
+sportgoats <- function(df, string){
+  filter <- df[df$Sport == string, ]
+  filter <- filter %>% group_by(Player) %>% summarise(Year = max(Year),
+                                                                    Rank = max(Rank),
+                                                                    Years = unique(Interval))
+  goats <- data.frame(matrix(nrow = 0, ncol = 4))
+    
+  for (i in 1:nrow(filter)){
+    filter.2 <- filter[filter$Year <= as.numeric(filter[i, 2])[[1]], ]
+    if(as.numeric(min(filter.2$Rank)) == as.numeric(filter[i, 3][[1,1]])){
+      goats <- rbind(goats, filter[i,])
+    }
+  }
+  return(goats)
+}
+
 
 ```
 
@@ -64,11 +137,7 @@ Peak <- c("1985-1990", "1958-1964", "2009-2012", "1966-1976",
           "1982-1982", "1958-1961", "1970-1970", "1986-1990",
           "1957-1960", "2014-2018")
 
-rk <- seq(1, 50)
-
-
-soccer <- data.frame(Players, Peak, rk)
-colnames(soccer) = c("Player", "Peak", "Rank")
+soccer <- create.df(Players, Peak)
 
 ```
 
@@ -98,10 +167,7 @@ Years.Active <- c("1927-1949", "1988-2013", "1952-1974", "1971-1992",
                   "1971-1987", "1997-2011", "1988-2000", "1997-2015",
                   "2004-2020", "1991-2003")
 
-rk <- seq(1, 30)
-
-cricket <- data.frame(Players, Years.Active, rk)
-colnames(cricket) <- c("Player", "Years Active", "Rank")
+cricket <- create.df(Players, Years.Active)
 
 ```
 
@@ -130,10 +196,7 @@ Years.Active <- c("1998-2022", "2001-present", "2003-present", "1988-2002",
                   "1983-1996", "1995-2008", "1998-2016", "1997-2009",
                   "1991-2002", "2000-2012")
 
-rk <- seq(1, 30)
-
-tennis <- data.frame(Players, Years.Active, rk)
-colnames(tennis) <- c("Player", "Years Active", "Rank")
+tennis <- create.df(Players, Years.Active)
 
 ```
 
@@ -174,16 +237,15 @@ Years.Active <- c("1984-2003", "2003-present", "1969-1989", "1979-1991",
                   "1963-1977", "2009-present"
                   )
 
-rk <- seq(1, 50)
 
-basketball <- data.frame(Players, Years.Active, rk)
-colnames(basketball) <- c("Player", "Years Active", "Rank")
+basketball <- create.df(Players, Years.Active)
 
 ```
 
 ## Baseball
 
 ```{r baseball}
+
 # taken from ESPN
 # https://www.espn.com/mlb/story/_/id/33158613/top-100-mlb-players-all-nos-25-1
 # https://www.espn.com/mlb/story/_/id/33145627/top-100-mlb-players-all-nos-50-26
@@ -213,9 +275,10 @@ Years.Active <- c("1914-1935", "1948, 1951-1952, 1954-1973", "1951, 1954-1976", 
                   "1927-1949, 1951-1953, 1965", "1966-1993", "1973-1993", "1982-2001",
                   "1982-1999", "2001-2019", "1942, 1946-1965", "1896-1916",
                   "1990-2008", "1936-1941, 1945-1956") 
-rk <- seq(1, 50)
-baseball <- data.frame(Players, Years.Active, rk)
-colnames(baseball) <- c("Player", "Years Active", "Rank")
+
+
+baseball <- create.df(Players, Years.Active)
+
 ```
 
 ## Football
@@ -254,10 +317,7 @@ Years.Active <- c("2000-present", "1985-2004", "1981-1993", "1957-1965",
                   "1969-1979", "1949-1962", "1969-1979", "1956-1971",
                   "1985-1999", "1996-2010")
 
-rk <- seq(1, 50)
-
-football <- data.frame(Players, Years.Active, rk)
-colnames(football) <- c("Players", "Years Active", "Rank")
+football <- create.df(Players, Years.Active)
 
 ```
 
@@ -297,10 +357,7 @@ Years.Active <- c("1978-1999", "1984-1997, 2000-2006", "1946-1971, 1973-1980", "
                   "1978-1998", "1984-2010", "1969-1984", "1977-1998",
                   "2001-present", "1970-1986")
 
-rk <- seq(1, 50)
-
-hockey <- data.frame(Players, Years.Active, rk)
-colnames(hockey) <- c("Players", "Years Active", "Rank")
+hockey <- create.df(Players, Years.Active)
 
 ```
 
@@ -329,225 +386,44 @@ colnames(hockey) <- c("Players", "Years Active", "Rank")
 
 \newpage 
 
-# Setting Up Data for Visualization
+# Data Wrangling
 
 ```{r}
 
-# modifying string so that present is changed is 2022/2023
-
-cricket.revised <- cricket
-for (i in 1:nrow(cricket.revised)){
-  cricket.revised[i, "Years Active"] <- str_replace(cricket.revised[i, "Years Active"], "present", "2022")
-}
-
-tennis.revised <- tennis
-for (i in 1:nrow(tennis.revised)){
-  tennis.revised[i, "Years Active"] <- str_replace(tennis.revised[i, "Years Active"], "present", "2022")
-}
-
-basketball.revised <- basketball
-for (i in 1:nrow(basketball.revised)){
-  basketball.revised[i, "Years Active"] <- str_replace(basketball.revised[i, "Years Active"], "present", "2022")
-}
-
-football.revised <- football
-for (i in 1:nrow(football.revised)){
-  football.revised[i, "Years Active"] <- str_replace(football.revised[i, "Years Active"], "present", "2022")
-}
-
-hockey.revised <- hockey
-for (i in 1:nrow(football.revised)){
-  hockey.revised[i, "Years Active"] <- str_replace(hockey.revised[i, "Years Active"], "present", "2022")
-}
+df.list <- list(soccer, cricket, tennis, basketball, football, hockey)
+df.list <- lapply(df.list, presentto2022)
 
 ```
-
 
 ```{r}
 
 # new, empty dataframe
-df = data.frame(Player = character(),
+df.new = data.frame(Player = character(),
                 Year = integer(),
                 Sport = character(),
                 Rank = integer(),
                 Interval = character())
 rownum = 0
 
-# changing the intervals from a string to actual series of integers with a row for each year
-# doing that for each sport and placing those rows into the new dataframe, df
+# names of sports and iterator for the list
+strings = list("Soccer", "Cricket", "Tennis", "Basketball", "Football", "Hockey")
+iterator = 0
 
-
-# Soccer
-for (i in 1:nrow(soccer)){
-  seq = seq(strtoi(substr(soccer[i, 2], 1, 4)),
-            strtoi(substr(soccer[i,2], 6, 9)))
-  for (x in 1:length(seq)){
-    rownum = rownum + 1
-    df[rownum, ] = c(soccer[i, 1], seq[x], "Soccer", soccer[i, 3], soccer[i, 2])
-  }
-}
-
-# Cricket
-for (i in 1:nrow(cricket.revised)){
-  seq = seq(strtoi(substr(cricket.revised[i, 2], 1, 4)),
-            strtoi(substr(cricket.revised[i,2], 6, 9)))
-  for (x in 1:length(seq)){
-    rownum = rownum + 1
-    df[rownum, ] = c(cricket.revised[i, 1], seq[x], "Cricket", cricket.revised[i, 3], cricket.revised[i, 2])
-  }
-}
-
-# Tennis
-for (i in 1:nrow(tennis.revised)){
-  seq = seq(strtoi(substr(tennis.revised[i, 2], 1, 4)),
-            strtoi(substr(tennis.revised[i,2], 6, 9)))
-  for (x in 1:length(seq)){
-    rownum = rownum + 1
-    df[rownum, ] = c(tennis.revised[i, 1], seq[x], "Tennis", tennis.revised[i, 3], tennis.revised[i, 2])
-  }
-}
-
-# Basketball
-for (i in 1:nrow(basketball.revised)){
-  seq = seq(strtoi(substr(basketball.revised[i, 2], 1, 4)),
-            strtoi(substr(basketball.revised[i,2], 6, 9)))
-  for (x in 1:length(seq)){
-    rownum = rownum + 1
-    df[rownum, ] = c(basketball.revised[i, 1], seq[x], "Basketball", basketball.revised[i, 3], basketball.revised[i, 2])
-  }
-}
-
-# Football
-for (i in 1:nrow(football.revised)){
-  seq = seq(strtoi(substr(football.revised[i, 2], 1, 4)),
-            strtoi(substr(football.revised[i,2], 6, 9)))
-  for (x in 1:length(seq)){
-    rownum = rownum + 1
-    df[rownum, ] = c(football.revised[i, 1], seq[x], "Football", football.revised[i, 3], football.revised[i, 2])
-  }
-}
-
-# Hockey
-for (i in 1:nrow(hockey.revised)){
-  seq = seq(strtoi(substr(hockey.revised[i, 2], 1, 4)),
-            strtoi(substr(hockey.revised[i,2], 6, 9)))
-  for (x in 1:length(seq)){
-    rownum = rownum + 1
-    df[rownum, ] = c(hockey.revised[i, 1], seq[x], "Hockey", hockey.revised[i, 3], hockey.revised[i, 2])
-  }
-}
-
-```
-
-
-```{r}
-
-# filter df for sport
-# take the max oldest year for each player
-# create empty dataframe for goats
-# if the player has the best ranking at that point in his career, put him into goats dataframe
-
-
-# Soccer
-soccer.filter <- df[df$Sport == "Soccer", ]
-soccer.filter <- soccer.filter %>% group_by(Player) %>% summarise(Year = max(Year),
-                                                                  Rank = max(Rank),
-                                                                  Interval = unique(Interval))
-soccer.goats <- data.frame(matrix(nrow = 0, ncol = 4))
-  
-for (i in 1:nrow(soccer.filter)){
-  df.filter <- soccer.filter[soccer.filter$Year <= as.numeric(soccer.filter[i, 2])[[1]], ]
-  if(as.numeric(min(df.filter$Rank)) == as.numeric(soccer.filter[i, 3][[1,1]])){
-    soccer.goats <- rbind(soccer.goats, soccer.filter[i,])
-  }
-}
-
-
-# Cricket
-cricket.filter <- df[df$Sport == "Cricket", ]
-cricket.filter <- cricket.filter %>% group_by(Player) %>% summarise(Year = max(Year),
-                                                                  Rank = max(Rank),
-                                                                  Interval = unique(Interval))
-cricket.goats <- data.frame(matrix(nrow = 0, ncol = 4))
-  
-for (i in 1:nrow(cricket.filter)){
-  df.filter <- cricket.filter[cricket.filter$Year <= as.numeric(cricket.filter[i, 2])[[1]], ]
-  if(as.numeric(min(df.filter$Rank)) == as.numeric(cricket.filter[i, 3][[1,1]])){
-    cricket.goats <- rbind(cricket.goats, cricket.filter[i,])
-  }
-}
-
-
-# Tennis
-tennis.filter <- df[df$Sport == "Tennis", ]
-tennis.filter <- tennis.filter %>% group_by(Player) %>% summarise(Year = max(Year),
-                                                                  Rank = max(Rank),
-                                                                  Interval = unique(Interval))
-tennis.goats <- data.frame(matrix(nrow = 0, ncol = 4))
-  
-for (i in 1:nrow(tennis.filter)){
-  df.filter <- tennis.filter[tennis.filter$Year <= as.numeric(tennis.filter[i, 2])[[1]], ]
-  if(as.numeric(min(df.filter$Rank)) == as.numeric(tennis.filter[i, 3][[1,1]])){
-    tennis.goats <- rbind(tennis.goats, tennis.filter[i,])
-  }
-}
-
-
-# Basketball
-basketball.filter <- df[df$Sport == "Basketball", ]
-basketball.filter <- basketball.filter %>% group_by(Player) %>% summarise(Year = max(Year),
-                                                                  Rank = max(Rank),
-                                                                  Interval = unique(Interval))
-basketball.goats <- data.frame(matrix(nrow = 0, ncol = 4))
-  
-for (i in 1:nrow(basketball.filter)){
-  df.filter <- basketball.filter[basketball.filter$Year <= as.numeric(basketball.filter[i, 2])[[1]], ]
-  if(as.numeric(min(df.filter$Rank)) == as.numeric(basketball.filter[i, 3][[1,1]])){
-    basketball.goats <- rbind(basketball.goats, basketball.filter[i,])
-  }
-}
-
-# Football
-football.filter <- df[df$Sport == "Football", ]
-football.filter <- football.filter %>% group_by(Player) %>% summarise(Year = max(Year),
-                                                                  Rank = max(Rank),
-                                                                  Interval = unique(Interval))
-football.goats <- data.frame(matrix(nrow = 0, ncol = 4))
-  
-for (i in 1:nrow(football.filter)){
-  df.filter <- football.filter[football.filter$Year <= as.numeric(football.filter[i, 2])[[1]], ]
-  if(as.numeric(min(df.filter$Rank)) == as.numeric(football.filter[i, 3][[1,1]])){
-    football.goats <- rbind(football.goats, football.filter[i,])
-  }
-}
-
-
-# Hockey
-hockey.filter <- df[df$Sport == "Hockey", ]
-hockey.filter <- hockey.filter %>% group_by(Player) %>% summarise(Year = max(Year),
-                                                                  Rank = max(Rank),
-                                                                  Interval = unique(Interval))
-hockey.goats <- data.frame(matrix(nrow = 0, ncol = 4))
-  
-for (i in 1:nrow(hockey.filter)){
-  df.filter <- hockey.filter[hockey.filter$Year <= as.numeric(hockey.filter[i, 2])[[1]], ]
-  if(as.numeric(min(df.filter$Rank)) == as.numeric(hockey.filter[i, 3][[1,1]])){
-    hockey.goats <- rbind(hockey.goats, hockey.filter[i,])
-  }
+for (df in df.list){
+  iterator = iterator + 1
+  df.new <- rbind(df.new, rowforyear(df.new, df.list[[iterator]], strings[iterator]))
 }
 
 ```
 
 ```{r}
 
-# take out the year variable from all the goats lists
-
-soccer.goats$Year <- NULL
-cricket.goats$Year <- NULL
-tennis.goats$Year <- NULL
-basketball.goats$Year <- NULL
-football.goats$Year <- NULL
-hockey.goats$Year <- NULL
+goats.list <- replicate(length(strings), data.frame())
+for (i in 1:length(strings)) {
+  goats.list[[i]] = sportgoats(df.new, strings[i])
+  goats.list[[i]]$Year <- NULL
+  goats.list[[i]] <- goats.list[[i]][, c("Player", "Years", "Rank")]
+}
 
 ```
 
@@ -560,72 +436,20 @@ df.goats = data.frame(Player = character(),
                 Rank = integer())
 rownum = 0
 
-# changing the intervals from a string to actual series of integers with a row for each year
-# doing that for each sport and placing those rows into the new dataframe, df.goats
+# names of sports and iterator for the list
+strings = list("Soccer", "Cricket", "Tennis", "Basketball", "Football", "Hockey")
+iterator = 0
 
-
-# Soccer
-for (i in 1:nrow(soccer.goats)){
-  seq = seq(strtoi(substr(soccer.goats[i, 3], 1, 4)),
-            strtoi(substr(soccer.goats[i,3], 6, 9)))
-  for (x in 1:length(seq)){
-    rownum = rownum + 1
-    df.goats[rownum, ] = c(soccer.goats[i, 1], seq[x], "Soccer", soccer[i, 3])
-  }
-}
-
-# Cricket
-for (i in 1:nrow(cricket.goats)){
-  seq = seq(strtoi(substr(cricket.goats[i, 3], 1, 4)),
-            strtoi(substr(cricket.goats[i,3], 6, 9)))
-  for (x in 1:length(seq)){
-    rownum = rownum + 1
-    df.goats[rownum, ] = c(cricket.goats[i, 1], seq[x], "Cricket", cricket[i, 3])
-  }
-}
-
-# Tennis
-for (i in 1:nrow(tennis.goats)){
-  seq = seq(strtoi(substr(tennis.goats[i, 3], 1, 4)),
-            strtoi(substr(tennis.goats[i,3], 6, 9)))
-  for (x in 1:length(seq)){
-    rownum = rownum + 1
-    df.goats[rownum, ] = c(tennis.goats[i, 1], seq[x], "Tennis", tennis[i, 3])
-  }
-}
-
-# Basketball
-for (i in 1:nrow(basketball.goats)){
-  seq = seq(strtoi(substr(basketball.goats[i, 3], 1, 4)),
-            strtoi(substr(basketball.goats[i,3], 6, 9)))
-  for (x in 1:length(seq)){
-    rownum = rownum + 1
-    df.goats[rownum, ] = c(basketball.goats[i, 1], seq[x], "Basketball", basketball[i, 3])
-  }
-}
-
-# Football
-for (i in 1:nrow(football.goats)){
-  seq = seq(strtoi(substr(football.goats[i, 3], 1, 4)),
-            strtoi(substr(football.goats[i,3], 6, 9)))
-  for (x in 1:length(seq)){
-    rownum = rownum + 1
-    df.goats[rownum, ] = c(football.goats[i, 1], seq[x], "Football", football[i, 3])
-  }
-}
-
-# Hockey
-for (i in 1:nrow(hockey.goats)){
-  seq = seq(strtoi(substr(hockey.goats[i, 3], 1, 4)),
-            strtoi(substr(hockey.goats[i,3], 6, 9)))
-  for (x in 1:length(seq)){
-    rownum = rownum + 1
-    df.goats[rownum, ] = c(hockey.goats[i, 1], seq[x], "Hockey", hockey[i, 3])
-  }
+for (df in goats.list){
+  iterator = iterator + 1
+  df.goats <- rbind(df.goats, rowforyear(df.goats, goats.list[[iterator]], strings[iterator]))
 }
 
 ```
 
+\newpage
+
+# Visualization
 
 ```{r}
 
@@ -633,7 +457,10 @@ for (i in 1:nrow(hockey.goats)){
 
 df.goats.subset <- df.goats %>%
   group_by(Year, Sport) %>%
-  count()
+  summarize(N = n()) %>%
+    ungroup() %>%
+    complete(Year, Sport,
+             fill = list(N = 0))
 
 f1.data.dummy <- data.frame(matrix(nrow = 0, ncol = length(unique(df.goats.subset$Year))))
 colnames(f1.data.dummy) <- unique(df.goats.subset$Year)
@@ -652,14 +479,15 @@ for (i in 1:nrow(df.goats.subset)){
 
 ```
 
+
 ```{r figure-1}
 
 f1 <- ggplot(data = df.goats.subset, 
-       aes(x = as.numeric(Year), y = n, group = Sport, color = Sport)) + 
+       aes(x = as.numeric(Year), y = N, group = Sport, color = Sport)) + 
   geom_line() +
   labs(x = "Year", 
        y = "Number of Potential GOATs", 
-       title = "Number of Potential GOATs by Year (Version 2.0)",
+       title = "Number of Potential GOATs by Year (Version 3.0)",
        caption = "Figure 1") + 
   theme_bw() +
   theme(text = element_text(family = "serif")) +
