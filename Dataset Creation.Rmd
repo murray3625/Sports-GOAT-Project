@@ -200,6 +200,30 @@ tennis <- create.df(Players, Years.Active)
 
 ```
 
+## Tennis 2
+
+```{r tennis-2}
+
+# taken from https://www.landoftennis.com/statistics_men/grand_slam_most_titles.htm
+# including players who have won at least 7 majors 
+
+Players <- c("Rafael Nadal", "Novak Djokovic", "Roger Federer", "Pete Sampras",
+             "Roy Emerson", "Bjorn Borg", "Rod Laver", "Bill Tilden", 
+             "Andre Agassi", "Jimmy Connors", "Ivan Lendl", "Fred Perry",
+             "Ken Rosewall", "Henri Cochet", "Rene Lacoste", "William Larned",
+             "John McEnroe", "John Newcombe", "William Renshaw", "Richard Sears",
+             "Mats Wilander")
+
+Majors <- c(22, 21, 20, 14,
+            12, 11, 11, 10,
+            8, 8, 8, 8,
+            8, 7, 7, 7,
+            7, 7, 7, 7, 
+            7)
+
+```
+
+
 ## Basketball
 
 ```{r basketball}
@@ -239,6 +263,49 @@ Years.Active <- c("1984-2003", "2003-present", "1969-1989", "1979-1991",
 
 
 basketball <- create.df(Players, Years.Active)
+
+```
+
+
+## Basketball 2
+
+```{r basketball-2}
+
+# taken from ESPN
+# https://www.espn.com/nba/story/_/id/33297498/the-nba-75th-anniversary-team-ranked-where-76-basketball-legends-check-our-list
+
+Players <- c("Michael Jordan", "LeBron James", "Kareem Abdul-Jabbar", "Magic Johnson",
+             "Wilt Chamberlain", "Bill Russell", "Larry Bird", "Tim Duncan",
+             "Oscar Robertson", "Kobe Bryant", "Shaquille O'Neal", "Kevin Durant",
+             "Hakeem Olajuwon", "Julius Erving", "Moses Malone", "Stephen Curry",
+             "Dirk Nowitzki", "Giannis Antetokounmpo", "Jerry West", "Elgin Baylor",
+             "Kevin Garnett", "Charles Barkley", "Karl Malone", "John Stockton",
+             "David Robinson", "John Havlicek", "Isiah Thomas", "George Mikan", 
+             "Chris Paul", "Dwyane Wade", "Allen Iverson", "Scottie Pippen", 
+             "Kawhi Leonard", "Bob Cousy", "Bob Pettit", "Dominique Wilkins",
+             "Steve Nash", "Rick Barry", "Kevin McHale", "Patrick Ewing",
+             "Walt Frazier", "Gary Payton", "Jason Kidd", "Bill Walton",
+             "Bob McAdoo", "Jerry Lucas", "Ray Allen", "Wes Unseld",
+             "Nate Thurmond", "James Harden")
+
+
+Years.Active <- c("1984-1993, 1995-1998, 2001-2003", "2003-present", "1969-1989", "1979-1991, 1996",
+                  "1959-1973", "1956-1969", "1979-1992", "1997-2016",
+                  "1960-1974", "1996-2016", "1992-2011", "2007-present",
+                  "1984-2002", "1971-1987", "1974-1995", "2009-present",
+                  "1998-2019", "2013-present", "1960-1974", "1958-1972",
+                  "1995-2016", "1984-2000", "1985-2004", "1984-2003",
+                  "1989-2003", "1962-1978", "1981-1994", "1948-1956",
+                  "2005-present", "2003-2019", "1996-2010", "1987-2004",
+                  "2011-present", "1950-1963, 1969-1970", "1954-1965", "1982-1999",
+                  "1996-2014", "1965-1980", "1980-1993", "1985-2002",
+                  "1967-1979", "1990-2007", "1994-2013", "1974-1987",
+                  "1972-1986", "1963-1974", "1996-2014", "1968-1981",
+                  "1963-1977", "2009-present"
+                  )
+
+
+basketball.2 <- create.df(Players, Years.Active)
 
 ```
 
@@ -323,7 +390,7 @@ football <- create.df(Players, Years.Active)
 
 ## Ice Hockey 
 
-```{r}
+```{r hockey}
 
 # players taken from Bleacher Report
 # https://bleacherreport.com/articles/630824-nhl-power-rankings-the-50-greatest-players-in-nhl-and-hockeys-history
@@ -367,22 +434,50 @@ hockey <- create.df(Players, Years.Active)
 ```{r golf}
 
 # taken from Athlon Sports
-# https://athlonsports.com/golf/greatest-golfers-all-time
+# including players who have won at least 5 majors 
+# taken from https://en.wikipedia.org/wiki/List_of_men%27s_major_championships_winning_golfers
 
-# Players <- c("Tiger Woods", "Jack Nicklaus", "Sam Snead", "Arnold Palmer",
-#              "Ben Hogan", "Bobby Jones", "Tom Watson", "Gary Player",
-#              "Gene Sarazen", "Phil Mickelson", "Seve Ballesteros", "Byron Nelson",
-#              "Lee Trevino", "Nick Faldo", "Walter Hagen", "Ernie Els",
-#              "Billy Casper", "Vijay Singh", "Rory McIlroy", "Greg Norman")
-# 
-# Years.Active <- c("1996-present", "1962-1986", )
-# 
-# rk <- seq(1, 20)
-# 
-# golf <- data.frame(Players, Years.Active, rk)
-# colnames(golf) <- c("Player", "Years Active", "Rank")
+Players <- c("Jack Nicklaus", "Tiger Woods", "Walter Hagen", "Ben Hogan",
+             "Gary Player", "Tom Watson", "Harry Vardon", "Bobby Jones",
+             "Gene Sarazen", "Sam Snead", "Arnold Palmer", "Lee Trevino",
+             "Nick Faldo", "Phil Mickelson", "James Braid", "John Henry Taylor",
+             "Byron Nelson", "Peter Thomson", "Seve Ballesteros")
+
+Winning.Span <- c("1962-1986", "1997-2019", "1914-1929", "1946-1953",
+                  "1959-1978", "1975-1983", "1896-1914", "1923-1930",
+                  "1922-1935", "1942-1954", "1958-1964", "1968-1984",
+                  "1987-1996", "2004-2021", "1901-1910", "1894-1913",
+                  "1937-1945", "1954-1965", "1979-1988")
+
+golf <- create.df(Players, Winning.Span)
+
 
 ```
+
+## Chess
+
+```{r chess}
+
+# players who had a peak ELO rating of 2775 +
+# taken from https://en.wikipedia.org/wiki/List_of_chess_players_by_peak_FIDE_rating#2800+
+
+Players <- c("Magnus Carlsen", "Garry Kasparov", "Fabiano Caruana", "Levon Aronian",
+             "Wesley So", "Shakhriyar Mamedyarov", "Maxime Vachier-Lagrave", "Viswanathan Anand",
+             "Vladimir Kramnik", "Veselin Topalov", "Hikaru Nakamura", "Ding Liren",
+             "Alexander Grischuk", "Alireza Firouzja", "Anish Giri", "Teimour Radjabov",
+             "Ian Nepomniachtchi", "Alexander Morozevich", "Sergey Karjakin", "Vassily Ivanchuk",
+             "Bobby Fischer", "Anatoly Karpov", "Boris Gelfand", "Richard Rapport")
+
+Peak.Rating <- c(2881, 2851, 2844, 2830,
+                 2822, 2820, 2819, 2817,
+                 2817, 2816, 2816, 2816,
+                 2810, 2804, 2798, 2793,
+                 2793, 2788, 2788, 2787,
+                 2785, 2780, 2777, 2776)
+
+```
+
+
 
 \newpage 
 
@@ -390,7 +485,7 @@ hockey <- create.df(Players, Years.Active)
 
 ```{r}
 
-df.list <- list(soccer, cricket, tennis, basketball, football, hockey)
+df.list <- list(soccer, cricket, tennis, basketball, football, hockey, golf)
 df.list <- lapply(df.list, presentto2022)
 
 ```
@@ -406,7 +501,7 @@ df.new = data.frame(Player = character(),
 rownum = 0
 
 # names of sports and iterator for the list
-strings = list("Soccer", "Cricket", "Tennis", "Basketball", "Football", "Hockey")
+strings = list("Soccer", "Cricket", "Tennis", "Basketball", "Football", "Hockey", "Golf")
 iterator = 0
 
 for (df in df.list){
@@ -437,7 +532,7 @@ df.goats = data.frame(Player = character(),
 rownum = 0
 
 # names of sports and iterator for the list
-strings = list("Soccer", "Cricket", "Tennis", "Basketball", "Football", "Hockey")
+strings = list("Soccer", "Cricket", "Tennis", "Basketball", "Football", "Hockey", "Golf")
 iterator = 0
 
 for (df in goats.list){
@@ -487,7 +582,7 @@ f1 <- ggplot(data = df.goats.subset,
   geom_line() +
   labs(x = "Year", 
        y = "Number of Potential GOATs", 
-       title = "Number of Potential GOATs by Year (Version 3.0)",
+       title = "Number of Potential GOATs by Year (Version 4.0)",
        caption = "Figure 1") + 
   theme_bw() +
   theme(text = element_text(family = "serif")) +
