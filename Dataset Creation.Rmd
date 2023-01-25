@@ -59,13 +59,14 @@ presentto2022 <- function(df) {
 # doing that for each sport and placing those rows into the new dataframe, df
 
 rowforyear <- function(big.df, sport.df, string){
+  rownum = 0
   for (i in 1:nrow(sport.df)){
     seq = seq(strtoi(substr(sport.df[i, 2], 1, 4)),
               strtoi(substr(sport.df[i, 2], 6, 9)))
-  for (x in 1:length(seq)){
-    rownum = rownum + 1
-    big.df[rownum, ] = c(sport.df[i, 1], seq[x], string, sport.df[i, 3], sport.df[i, 2])
-  }
+    for (x in 1:length(seq)){
+      rownum = rownum + 1
+      big.df[rownum, ] = c(sport.df[i, 1], seq[x], string, sport.df[i, 3], sport.df[i, 2])
+    }
   }
   return(big.df)
 }
@@ -504,10 +505,15 @@ rownum = 0
 strings = list("Soccer", "Cricket", "Tennis", "Basketball", "Football", "Hockey", "Golf")
 iterator = 0
 
+new.list <- list()
+
 for (df in df.list){
   iterator = iterator + 1
-  df.new <- rbind(df.new, rowforyear(df.new, df.list[[iterator]], strings[iterator]))
+  new.list[[iterator]] = rowforyear(df.new, df.list[[iterator]], strings[iterator])
 }
+
+df.new <- bind_rows(new.list, .id = "column_label")
+df.new$column_label <- NULL
 
 ```
 
@@ -528,19 +534,26 @@ for (i in 1:length(strings)) {
 df.goats = data.frame(Player = character(),
                 Year = integer(),
                 Sport = character(),
-                Rank = integer())
+                Rank = integer(),
+                Interval = integer())
 rownum = 0
 
 # names of sports and iterator for the list
 strings = list("Soccer", "Cricket", "Tennis", "Basketball", "Football", "Hockey", "Golf")
 iterator = 0
 
+goat.list <- list()
+
 for (df in goats.list){
   iterator = iterator + 1
-  df.goats <- rbind(df.goats, rowforyear(df.goats, goats.list[[iterator]], strings[iterator]))
+  goat.list[[iterator]] = rowforyear(df.goats, goats.list[[iterator]], strings[iterator])
 }
 
+df.goats <- bind_rows(goat.list, .id = "column_label")
+df.goats$column_label <- NULL
+
 ```
+
 
 \newpage
 
@@ -573,7 +586,6 @@ for (i in 1:nrow(df.goats.subset)){
 }
 
 ```
-
 
 ```{r figure-1}
 
