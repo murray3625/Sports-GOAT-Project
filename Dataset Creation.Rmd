@@ -435,6 +435,29 @@ football <- create.df(Players, Years.Active)
 
 ```
 
+```{r football-2}
+
+# taken from Sporting News
+# list with players who have won more than 1 NFL MVP
+# https://www.sportingnews.com/us/nfl/news/nfl-mvp-winners-list-most-repeat/e17cir63vdd41u4gb0s8ahoby
+
+Players <- c("Peyton Manning", "Aaron Rodgers", "Tom Brady", "Brett Favre",
+             "Jim Brown", "Johnny Unitas", "Kurt Warner", "Steve Young",
+             "Joe Montana")
+
+Years.Active <- c("1998-2015", "2005-present", "2000-present", "1991-2010",
+                  "1957-1965", "1955-1973", "1998-2009", "1985-1999",
+                  "1979-1994")
+
+football.2 <- create.df(Players, Years.Active)
+
+# changing the rank column account for players with the same number of MVP's
+football.2[3:6, 3] = 3 
+football.2[7:9, 3] = 4
+
+```
+
+
 ## Ice Hockey 
 
 ```{r hockey}
@@ -529,7 +552,7 @@ Peak.Rating <- c(2881, 2851, 2844, 2830,
 
 ```{r}
 
-df.list <- list(soccer, cricket, tennis, tennis.2, basketball, basketball.3, football, hockey, golf)
+df.list <- list(soccer, cricket, tennis, tennis.2, basketball, basketball.3, football, football.2, hockey, golf)
 df.list <- lapply(df.list, presentto2022)
 
 ```
@@ -545,7 +568,7 @@ df.new = data.frame(Player = character(),
 rownum = 0
 
 # names of sports and iterator for the list
-strings = list("Soccer", "Cricket", "Tennis", "Tennis 2", "Basketball", "Basketball 3", "Football", "Hockey", "Golf")
+strings = list("Soccer", "Cricket", "Tennis", "Tennis 2", "Basketball", "Basketball 3", "Football", "Football 2", "Hockey", "Golf")
 iterator = 0
 
 new.list <- list()
@@ -582,7 +605,7 @@ df.goats = data.frame(Player = character(),
 rownum = 0
 
 # names of sports and iterator for the list
-strings = list("Soccer", "Cricket", "Tennis", "Tennis 2", "Basketball", "Basketball 3", "Football", "Hockey", "Golf")
+strings = list("Soccer", "Cricket", "Tennis", "Tennis 2", "Basketball", "Basketball 3", "Football", "Football 2", "Hockey", "Golf")
 iterator = 0
 
 goat.list <- list()
@@ -601,6 +624,7 @@ df.goats$column_label <- NULL
 # combine same sports 
 df.goats$Sport <- str_replace(df.goats$Sport, "Tennis 2", "Tennis")
 df.goats$Sport <- str_replace(df.goats$Sport, "Basketball 3", "Basketball")
+df.goats$Sport <- str_replace(df.goats$Sport, "Football 2", "Football")
 
 # eliminate identical rows
 df.goats <- distinct(df.goats)
