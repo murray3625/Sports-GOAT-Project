@@ -1,0 +1,241 @@
+---
+title: "Visualizations"
+author: "Matthew Murray"
+date: "`r Sys.Date()`"
+output:
+  pdf_document: default
+  html_document:
+    df_print: paged
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+
+# libraries
+
+library(janitor)
+library(dplyr)
+library(tidyverse)
+library(lubridate)
+library(stringi)
+library(r2r)
+library(purrr)
+library(scales)
+
+```
+
+```{r}
+
+# read in data 
+data <- read.csv("data.csv")
+
+# truncate/filter data
+data <- data[data$Year >= 1954, ]
+
+
+```
+
+\newpage
+
+# Visualizations
+
+## All Subjective Sports
+
+```{r figure-1}
+
+f1 <- ggplot(data = data, 
+       aes(x = as.numeric(Year), y = as.integer(N), group = Sport, color = Sport)) + 
+  scale_y_continuous(breaks = function(y) seq(floor(min(y, digits = 1)), 
+                                              ceiling(max(y, digits = 1)), 
+                                              by = 1))+
+  geom_line() +
+  labs(x = "Year", 
+       y = "Number of Potential GOATs", 
+       title = "Number of Potential GOATs by Year (Version 5.0)",
+       caption = "Figure 1") + 
+  theme_bw() +
+  theme(text = element_text(family = "serif")) +
+  theme(plot.title=element_text(family = "serif", face = "bold", hjust = 0.5, size = 12))
+
+f1
+
+```
+
+\newpage
+
+## Soccer
+
+```{r figure-2}
+
+soccer.filter = data[data$Sport == "Soccer",]
+
+ggplot(data = soccer.filter, 
+       aes(x = as.numeric(Year), y = as.integer(N))) + 
+       scale_y_continuous(breaks = function(y) seq(floor(min(y, digits = 1)), 
+                                              ceiling(max(y, digits = 1)), 
+                                              by = 1))+
+  geom_line() +
+  labs(x = "Year", 
+       y = "Number of Potential GOATs", 
+       title = "Number of Potential Soccer GOATs by Year",
+       caption = "Figure 2") + 
+  theme_bw() +
+  theme(text = element_text(family = "serif")) +
+  theme(plot.title=element_text(family = "serif", face = "bold", hjust = 0.5, size = 12))
+
+
+```
+
+\newpage
+
+## Cricket
+
+```{r figure-3}
+
+cricket.filter = data[data$Sport == "Cricket",]
+
+ggplot(data = cricket.filter, 
+       aes(x = as.numeric(Year), y = as.integer(N))) + 
+       scale_y_continuous(breaks = function(y) seq(floor(min(y, digits = 1)), 
+                                              ceiling(max(y, digits = 1)), 
+                                              by = 1))+
+  geom_line() +
+  labs(x = "Year", 
+       y = "Number of Potential GOATs", 
+       title = "Number of Potential Cricket GOATs by Year",
+       caption = "Figure 3") + 
+  theme_bw() +
+  theme(text = element_text(family = "serif")) +
+  theme(plot.title=element_text(family = "serif", face = "bold", hjust = 0.5, size = 12))
+
+
+```
+
+\newpage
+
+## Tennis
+
+```{r figure-4}
+
+tennis.filter = data[data$Sport == "Tennis",]
+
+ggplot(data = tennis.filter, 
+       aes(x = as.numeric(Year), y = as.integer(N))) + 
+       scale_y_continuous(breaks = function(y) seq(floor(min(y, digits = 1)), 
+                                              ceiling(max(y, digits = 1)), 
+                                              by = 1))+
+  geom_line() +
+  labs(x = "Year", 
+       y = "Number of Potential GOATs", 
+       title = "Number of Potential Tennis GOATs by Year",
+       caption = "Figure 4") + 
+  theme_bw() +
+  theme(text = element_text(family = "serif")) +
+  theme(plot.title=element_text(family = "serif", face = "bold", hjust = 0.5, size = 12))
+
+
+```
+
+\newpage
+
+## Basketball
+
+```{r figure-5}
+
+basketball.filter = data[data$Sport == "Basketball",]
+
+ggplot(data = basketball.filter, 
+       aes(x = as.numeric(Year), y = as.integer(N))) + 
+       scale_y_continuous(breaks = function(y) seq(floor(min(y, digits = 1)), 
+                                              ceiling(max(y, digits = 1)), 
+                                              by = 1))+
+  geom_line() +
+  labs(x = "Year", 
+       y = "Number of Potential GOATs", 
+       title = "Number of Potential Basketball GOATs by Year",
+       caption = "Figure 5") + 
+  theme_bw() +
+  theme(text = element_text(family = "serif")) +
+  theme(plot.title=element_text(family = "serif", face = "bold", hjust = 0.5, size = 12))
+
+
+```
+
+\newpage
+
+## Football
+
+```{r figure-6}
+
+football.filter = data[data$Sport == "Football",]
+
+ggplot(data = football.filter, 
+       aes(x = as.numeric(Year), y = as.integer(N))) + 
+       scale_y_continuous(breaks = function(y) seq(floor(min(y, digits = 1)), 
+                                              ceiling(max(y, digits = 1)), 
+                                              by = 1))+
+  geom_line() +
+  labs(x = "Year", 
+       y = "Number of Potential GOATs", 
+       title = "Number of Potential Football GOATs by Year",
+       caption = "Figure 6") + 
+  theme_bw() +
+  theme(text = element_text(family = "serif")) +
+  theme(plot.title=element_text(family = "serif", face = "bold", hjust = 0.5, size = 12))
+
+
+```
+
+\newpage
+
+## Hockey
+
+```{r figure-7}
+
+hockey.filter = data[data$Sport == "Hockey",]
+
+ggplot(data = hockey.filter, 
+       aes(x = as.numeric(Year), y = as.integer(N))) + 
+       scale_y_continuous(breaks = function(y) seq(floor(min(y, digits = 1)), 
+                                              ceiling(max(y, digits = 1)), 
+                                              by = 1))+
+  geom_line() +
+  labs(x = "Year", 
+       y = "Number of Potential GOATs", 
+       title = "Number of Potential Hockey GOATs by Year",
+       caption = "Figure 7") + 
+  theme_bw() +
+  theme(text = element_text(family = "serif")) +
+  theme(plot.title=element_text(family = "serif", face = "bold", hjust = 0.5, size = 12))
+
+
+```
+
+\newpage
+
+## Golf
+
+```{r figure-8}
+
+golf.filter = data[data$Sport == "Golf",]
+
+ggplot(data = golf.filter, 
+       aes(x = as.numeric(Year), y = as.integer(N))) + 
+       scale_y_continuous(breaks = function(y) seq(floor(min(y, digits = 1)), 
+                                              ceiling(max(y, digits = 1)), 
+                                              by = 1))+
+  geom_line() +
+  labs(x = "Year", 
+       y = "Number of Potential GOATs", 
+       title = "Number of Potential Golf GOATs by Year",
+       caption = "Figure 8") + 
+  theme_bw() +
+  theme(text = element_text(family = "serif")) +
+  theme(plot.title=element_text(family = "serif", face = "bold", hjust = 0.5, size = 12))
+
+
+```
+
