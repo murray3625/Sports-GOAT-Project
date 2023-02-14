@@ -7,9 +7,9 @@ create.df <- function(Players, Year) {
 }
 
 # modifying strings so that 'present' is changed is 2022/2023
-presentto2022 <- function(df) {
+presentto2023 <- function(df) {
   for (i in 1:nrow(df)){
-    df[i, "Years"] <- str_replace(df[i, "Years"], "present", "2022")
+    df[i, "Years"] <- str_replace(df[i, "Years"], "present", "2023")
   }
   return(df)
 }

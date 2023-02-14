@@ -57,7 +57,7 @@ f1 <- ggplot(data = data,
   geom_line() +
   labs(x = "Year", 
        y = "Number of Potential GOATs", 
-       title = "Number of Potential GOATs by Year (Version 6.0)",
+       title = "Number of Potential GOATs by Year (Version 7.0)",
        caption = "Figure 1") + 
   theme_bw() +
   theme(text = element_text(family = "serif")) +
