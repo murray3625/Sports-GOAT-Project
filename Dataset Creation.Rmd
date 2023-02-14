@@ -8,11 +8,11 @@ output:
     df_print: paged
 ---
 
-```{r setup, include=FALSE}
+```{r setup, include=FALSE, cache=TRUE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-```{r}
+```{r libraries, warning=False}
 
 # libraries
 
@@ -30,74 +30,11 @@ library(stringr)
 
 \newpage
 
-# Functions
-
 ```{r}
 
-create.df <- function(Players, Year) {
-  df <- data.frame(Players, Year, seq(1, length(Players)))
-  colnames(df) = c("Player", "Years", "Rank")
-  return(df)
-}
-
-```
-
-```{r}
-
-# modifying strings so that 'present' is changed is 2022/2023
-
-presentto2022 <- function(df) {
-  for (i in 1:nrow(df)){
-    df[i, "Years"] <- str_replace(df[i, "Years"], "present", "2022")
-}
-  return(df)
-}
-
-```
-
-```{r}
-
-# changing the intervals from a string to actual series of integers with a row for each year
-# doing that for each sport and placing those rows into the new dataframe, df
-
-rowforyear <- function(big.df, sport.df, string){
-  rownum = 0
-  for (i in 1:nrow(sport.df)){
-    seq = seq(strtoi(substr(sport.df[i, 2], 1, 4)),
-              strtoi(substr(sport.df[i, 2], 6, 9)))
-    for (x in 1:length(seq)){
-      rownum = rownum + 1
-      big.df[rownum, ] = c(sport.df[i, 1], seq[x], string, sport.df[i, 3], sport.df[i, 2])
-    }
-  }
-  return(big.df)
-}
-
-```
-
-```{r}
-
-# filter df for sport
-# take the max oldest year for each player
-# create empty dataframe for goats
-# if the player has the best ranking at that point in his career, put him into goats dataframe
-
-sportgoats <- function(df, string){
-  filter <- df[df$Sport == string, ]
-  filter <- filter %>% group_by(Player) %>% summarise(Year = max(Year),
-                                                                    Rank = max(Rank),
-                                                                    Years = unique(Interval))
-  goats <- data.frame(matrix(nrow = 0, ncol = 4))
-    
-  for (i in 1:nrow(filter)){
-    filter.2 <- filter[filter$Year <= as.numeric(filter[i, 2])[[1]], ]
-    if(as.numeric(min(filter.2$Rank)) == as.numeric(filter[i, 3][[1,1]])){
-      goats <- rbind(goats, filter[i,])
-    }
-  }
-  return(goats)
-}
-
+# import necessary functions
+# the 'local' argument makes sure that the code is evaluated in the correct environment
+source("Functions.R", local = knitr::knit_global())
 
 ```
 
@@ -587,8 +524,7 @@ df.new$column_label <- NULL
 
 goats.list <- replicate(length(strings), data.frame())
 for (i in 1:length(strings)) {
-  goats.list[[i]] = sportgoats(df.new, strings[i])
-  goats.list[[i]]$Year <- NULL
+  goats.list[[i]] <- sportgoats(df.new, strings[i])
   goats.list[[i]] <- goats.list[[i]][, c("Player", "Years", "Rank")]
 }
 
@@ -627,6 +563,8 @@ df.goats$Sport <- str_replace(df.goats$Sport, "Basketball 3", "Basketball")
 df.goats$Sport <- str_replace(df.goats$Sport, "Football 2", "Football")
 
 # eliminate identical rows
+df.goats$Rank <- NULL
+df.goats$Interval <- NULL
 df.goats <- distinct(df.goats)
 
 ```

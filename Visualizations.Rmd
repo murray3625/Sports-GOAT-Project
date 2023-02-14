@@ -9,10 +9,10 @@ output:
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_chunk$set(echo = FALSE)
 ```
 
-```{r}
+```{r, include=FALSE}
 
 # libraries
 
@@ -33,7 +33,10 @@ library(scales)
 data <- read.csv("data.csv")
 
 # truncate/filter data
-data <- data[data$Year >= 1954, ]
+# 1945 is post-WWII
+# can talk about the prevalence of media
+# perhaps look for a reason in the data
+data <- data[data$Year >= 1945, ]
 
 
 ```
@@ -54,7 +57,7 @@ f1 <- ggplot(data = data,
   geom_line() +
   labs(x = "Year", 
        y = "Number of Potential GOATs", 
-       title = "Number of Potential GOATs by Year (Version 5.0)",
+       title = "Number of Potential GOATs by Year (Version 6.0)",
        caption = "Figure 1") + 
   theme_bw() +
   theme(text = element_text(family = "serif")) +
