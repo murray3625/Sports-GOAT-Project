@@ -1,17 +1,35 @@
 
+library(janitor)
+library(dplyr)
+library(tidyverse)
+library(lubridate)
+library(stringi)
+library(r2r)
+library(purrr)
+library(base)
+library(stringr)
+library(tidyr)
+
 # creates a data frame given input data 
 create.df <- function(Players, Year) {
   df <- data.frame(Players, Year, seq(1, length(Players)))
   colnames(df) = c("Player", "Years", "Rank")
+  df <- df %>% 
+    mutate(Years = strsplit(as.character(Years), ", ")) %>% 
+    unnest(Years)
   return(df)
 }
 
 # modifying strings so that 'present' is changed is 2022/2023
 presentto2023 <- function(df) {
-  for (i in 1:nrow(df)){
-    df[i, "Years"] <- str_replace(df[i, "Years"], "present", "2023")
+  if("Years" %in% colnames(df)){
+    rep_str <- c("present" = "2023")
+    df$Years <- str_replace_all(df$Years, rep_str)
+    return (df)
   }
-  return(df)
+  else {
+    return (NULL)
+  }
 }
 
 # changing the intervals from a string to actual series of integers with a row for each year
@@ -25,12 +43,12 @@ rowforyear <- function(big.df, sport.df, string){
       rownum = rownum + 1
       big.df[rownum, ] = c(sport.df[i, 1], seq[x], string, sport.df[i, 3], sport.df[i, 2])
     }
-  }
+}
   return(big.df)
 }
 
 # filter df for sport
-# take the max oldest year for each player
+# take the min oldest year for each player
 # create empty dataframe for goats
 # if the player has the best ranking at that point in his career, put him into goats dataframe
 

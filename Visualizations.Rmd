@@ -57,7 +57,7 @@ f1 <- ggplot(data = data,
   geom_line() +
   labs(x = "Year", 
        y = "Number of Potential GOATs", 
-       title = "Number of Potential GOATs by Year (Version 7.0)",
+       title = "Number of Potential GOATs by Year (Version 8.0)",
        caption = "Figure 1") + 
   theme_bw() +
   theme(text = element_text(family = "serif")) +
@@ -77,9 +77,7 @@ soccer.filter = data[data$Sport == "Soccer",]
 
 ggplot(data = soccer.filter, 
        aes(x = as.numeric(Year), y = as.integer(N))) + 
-       scale_y_continuous(breaks = function(y) seq(floor(min(y, digits = 1)), 
-                                              ceiling(max(y, digits = 1)), 
-                                              by = 1))+
+       scale_y_continuous(limits = c(0, 4), breaks = seq(0, 4, by = 1))+
   geom_line() +
   labs(x = "Year", 
        y = "Number of Potential GOATs", 
@@ -102,9 +100,7 @@ cricket.filter = data[data$Sport == "Cricket",]
 
 ggplot(data = cricket.filter, 
        aes(x = as.numeric(Year), y = as.integer(N))) + 
-       scale_y_continuous(breaks = function(y) seq(floor(min(y, digits = 1)), 
-                                              ceiling(max(y, digits = 1)), 
-                                              by = 1))+
+       scale_y_continuous(limits = c(0, 4), breaks = seq(0, 4, by = 1))+
   geom_line() +
   labs(x = "Year", 
        y = "Number of Potential GOATs", 
@@ -127,9 +123,7 @@ tennis.filter = data[data$Sport == "Tennis",]
 
 ggplot(data = tennis.filter, 
        aes(x = as.numeric(Year), y = as.integer(N))) + 
-       scale_y_continuous(breaks = function(y) seq(floor(min(y, digits = 1)), 
-                                              ceiling(max(y, digits = 1)), 
-                                              by = 1))+
+       scale_y_continuous(limits = c(0, 4), breaks = seq(0, 4, by = 1))+
   geom_line() +
   labs(x = "Year", 
        y = "Number of Potential GOATs", 
@@ -152,9 +146,7 @@ basketball.filter = data[data$Sport == "Basketball",]
 
 ggplot(data = basketball.filter, 
        aes(x = as.numeric(Year), y = as.integer(N))) + 
-       scale_y_continuous(breaks = function(y) seq(floor(min(y, digits = 1)), 
-                                              ceiling(max(y, digits = 1)), 
-                                              by = 1))+
+       scale_y_continuous(limits = c(0, 4), breaks = seq(0, 4, by = 1))+
   geom_line() +
   labs(x = "Year", 
        y = "Number of Potential GOATs", 
@@ -166,25 +158,45 @@ ggplot(data = basketball.filter,
 
 
 ```
+\newpage
+
+## Baseball
+
+```{r figure-6}
+
+football.filter = data[data$Sport == "Baseball",]
+
+ggplot(data = football.filter, 
+       aes(x = as.numeric(Year), y = as.integer(N))) + 
+       scale_y_continuous(limits = c(0, 4), breaks = seq(0, 4, by = 1))+
+  geom_line() +
+  labs(x = "Year", 
+       y = "Number of Potential GOATs", 
+       title = "Number of Potential Baseball GOATs by Year",
+       caption = "Figure 6") + 
+  theme_bw() +
+  theme(text = element_text(family = "serif")) +
+  theme(plot.title=element_text(family = "serif", face = "bold", hjust = 0.5, size = 12))
+
+
+```
 
 \newpage
 
 ## Football
 
-```{r figure-6}
+```{r figure-7}
 
 football.filter = data[data$Sport == "Football",]
 
 ggplot(data = football.filter, 
        aes(x = as.numeric(Year), y = as.integer(N))) + 
-       scale_y_continuous(breaks = function(y) seq(floor(min(y, digits = 1)), 
-                                              ceiling(max(y, digits = 1)), 
-                                              by = 1))+
+       scale_y_continuous(limits = c(0, 4), breaks = seq(0, 4, by = 1))+
   geom_line() +
   labs(x = "Year", 
        y = "Number of Potential GOATs", 
        title = "Number of Potential Football GOATs by Year",
-       caption = "Figure 6") + 
+       caption = "Figure 7") + 
   theme_bw() +
   theme(text = element_text(family = "serif")) +
   theme(plot.title=element_text(family = "serif", face = "bold", hjust = 0.5, size = 12))
@@ -196,20 +208,18 @@ ggplot(data = football.filter,
 
 ## Hockey
 
-```{r figure-7}
+```{r figure-8}
 
 hockey.filter = data[data$Sport == "Hockey",]
 
 ggplot(data = hockey.filter, 
        aes(x = as.numeric(Year), y = as.integer(N))) + 
-       scale_y_continuous(breaks = function(y) seq(floor(min(y, digits = 1)), 
-                                              ceiling(max(y, digits = 1)), 
-                                              by = 1))+
+       scale_y_continuous(limits = c(0, 4), breaks = seq(0, 4, by = 1))+
   geom_line() +
   labs(x = "Year", 
        y = "Number of Potential GOATs", 
        title = "Number of Potential Hockey GOATs by Year",
-       caption = "Figure 7") + 
+       caption = "Figure 8") + 
   theme_bw() +
   theme(text = element_text(family = "serif")) +
   theme(plot.title=element_text(family = "serif", face = "bold", hjust = 0.5, size = 12))
@@ -221,20 +231,18 @@ ggplot(data = hockey.filter,
 
 ## Golf
 
-```{r figure-8}
+```{r figure-9}
 
 golf.filter = data[data$Sport == "Golf",]
 
 ggplot(data = golf.filter, 
        aes(x = as.numeric(Year), y = as.integer(N))) + 
-       scale_y_continuous(breaks = function(y) seq(floor(min(y, digits = 1)), 
-                                              ceiling(max(y, digits = 1)), 
-                                              by = 1))+
+       scale_y_continuous(limits = c(0, 4), breaks = seq(0, 4, by = 1))+
   geom_line() +
   labs(x = "Year", 
        y = "Number of Potential GOATs", 
        title = "Number of Potential Golf GOATs by Year",
-       caption = "Figure 8") + 
+       caption = "Figure 9") + 
   theme_bw() +
   theme(text = element_text(family = "serif")) +
   theme(plot.title=element_text(family = "serif", face = "bold", hjust = 0.5, size = 12))
