@@ -12,7 +12,7 @@ output:
 knitr::opts_chunk$set(echo = FALSE)
 ```
 
-```{r, include=FALSE}
+```{r, include=FALSE, warning=FALSE}
 
 # libraries
 
@@ -24,6 +24,7 @@ library(stringi)
 library(r2r)
 library(purrr)
 library(scales)
+library(broom)
 
 ```
 
@@ -249,4 +250,27 @@ ggplot(data = golf.filter,
 
 
 ```
+
+
+\newpage
+
+### Commentary & Notes
+
+***Cricket & Baseball***
+
+* There have not been any GOAT candidates in a while (before 1950). The GOAT for cricket is Sir Donald Bradman and that of baseball is Babe Ruth. Is this contention valid? Have there legitimately been no GOAT candidates in this long? If so, is there something intrinsic about these sports that make them so difficult to find GOAT-quality players? 
+
+* Other questions that one can ask related to these sports is - would these players (Sir Donald Bradman and Babe Ruth) be as good as they were if they played today? 
+
+***Hockey & Golf*** 
+
+* The patterns that are seen with these sports appear to resemble what most people would likely expect: GOAT candidates occur sporadically without any legitimate pattern. Additionally, there has no been a GOAT in a while, and data does not suggest that there will be a GOAT candidate anytime soon (although this may be different if Tiger Woods is finally included as a GOAT candidate for golf). 
+
+***Soccer, Tennis, Basketball, Football***
+
+* Tennis also seems interesting because there were **22** consecutive years where there were at least **3** GOAT candidates playing at the same time. This 22 year windows spans from 2001 to 2022. 
+
+* With basketball, there has been at least one GOAT candidate (playing) for a while. 
+
+* An interesting note about football is that there were **4** GOAT candidates playing from 2000-2004. I personally wonder if this increase in GOAT candidates can be attributed to the inflation of the importance of the quarterback position, as 3 of the 4 candidates were quarterbacks (Brett Farve, Peyton Manning, and Tom Brady). Of course, the presence of 4 GOAT candidates can also be chalked up to mere coincidence, or simply the fact that we have multiple (2) lists of GOATs for football. 
 
