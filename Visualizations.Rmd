@@ -275,11 +275,11 @@ ggplot(data = golf.filter,
 
 ## Commentary & Notes
 
-***Cricket & Baseball***
+***Cricket***
 
-* There have not been any GOAT candidates in a while (before 1950). The GOAT for cricket is Sir Donald Bradman and that of baseball is Babe Ruth. Is this contention valid? Have there legitimately been no GOAT candidates in this long? If so, is there something intrinsic about these sports that make them so difficult to find GOAT-quality players? 
+* There have not been any GOAT candidates in a while (before 1950). The GOAT for cricket is Sir Donald Bradman. Is this contention valid? Have there legitimately been no GOAT candidates in this long? If so, is there something intrinsic about cricket that makes it so difficult to find GOAT-quality players? Or is Bradman just such a statistical anomaly? 
 
-* Other questions that one can ask related to these sports is - would these players (Sir Donald Bradman and Babe Ruth) be as good as they were if they played today? 
+* Would Sir Donald Bradman be as good as he was if he were to play today? 
 
 ***Hockey & Golf*** 
 

@@ -92,6 +92,20 @@ soccer <- create.df(Players, Years.Active)
 ```
 
 
+## Soccer 2
+
+```{r soccer-2}
+
+# list based on the number of Ballon d'Ors that a players has won
+# list of players who have won more than 1 Ballon d'Or AFTER 1995/2007
+# https://en.as.com/soccer/ballon-dor-which-players-have-won-it-the-most-n/
+
+Players <- c("Lionel Messi", "Cristiano Ronaldo")
+Years.Active <- c("2003-present", "2002-present")
+soccer.2 <- create.df(Players, Years.Active)
+
+```
+
 ## Cricket 
 
 ```{r cricket}
@@ -344,6 +358,33 @@ baseball <- create.df(Players, Years.Active)
 
 ```
 
+
+## Baseball 2
+
+```{r baseball-2}
+
+# ranks players (top 15) based on their MVP shares 
+# https://www.baseball-reference.com/leaders/mvp_cya.shtml
+
+Players <- c("Barry Bonds", "Stan Musial", "Albert Pujols", "Mike Trout",
+             "Ted Williams", "Willie Mays", "Mickey Mantle", "Hank Aaron",
+             "Joe DiMaggio", "Lou Gehrig", "Alex Rodriguez", "Mike Schmidt",
+             "Frank Robinson", "Frank Thomas", "Miguel Cabrera")
+
+Years.Active <- c("1986-2007", "1941-1963", "2001-2022", "2011-present",
+                  "1939-1942, 1946-1960", "1948-1948, 1951-1952, 1954-1973", "1951-1968", "1951-1951, 1954-1976",
+                  "1936-1951", "1923-1939", "1994-2016", "1972-1989",
+                  "1956-1976", "1990-2008", "2003-2023") 
+
+
+baseball.2 <- create.df(Players, Years.Active)
+
+# changing the rank column account for players with the same number of MVP shares
+baseball.2[13:14, 3] = 8
+
+```
+
+
 ## Football
 
 
@@ -501,7 +542,7 @@ Peak.Rating <- c(2881, 2851, 2844, 2830,
 
 ```{r}
 
-df.list <- list(soccer, cricket, tennis, tennis.2, basketball.2, basketball.3, baseball, football, football.2, hockey, golf)
+df.list <- list(soccer, soccer.2, cricket, tennis, tennis.2, basketball.2, basketball.3, baseball, baseball.2, football, football.2, hockey, golf)
 df.list <- lapply(df.list, presentto2023)
 
 ```
@@ -517,7 +558,7 @@ df.new = data.frame(Player = character(),
 rownum = 0
 
 # names of sports and iterator for the list
-strings = list("Soccer", "Cricket", "Tennis", "Tennis 2", "Basketball 2", "Basketball 3", "Baseball", "Football", "Football 2", "Hockey", "Golf")
+strings = list("Soccer", "Soccer 2", "Cricket", "Tennis", "Tennis 2", "Basketball 2", "Basketball 3", "Baseball", "Baseball 2", "Football", "Football 2", "Hockey", "Golf")
 iterator = 0
 
 new.list <- list()
@@ -553,7 +594,7 @@ df.goats = data.frame(Player = character(),
 rownum = 0
 
 # names of sports and iterator for the list
-strings = list("Soccer", "Cricket", "Tennis", "Tennis 2", "Basketball", "Basketball 3", "Baseball", "Football", "Football 2", "Hockey", "Golf")
+strings = list("Soccer", "Soccer 2", "Cricket", "Tennis", "Tennis 2", "Basketball", "Basketball 3", "Baseball", "Baseball 2", "Football", "Football 2", "Hockey", "Golf")
 iterator = 0
 
 goat.list <- list()
@@ -570,8 +611,10 @@ df.goats <- bind_rows(goat.list, .id = "column_label")
 df.goats$column_label <- NULL
 
 # combine same sports 
+df.goats$Sport <- str_replace(df.goats$Sport, "Soccer 2", "Soccer")
 df.goats$Sport <- str_replace(df.goats$Sport, "Tennis 2", "Tennis")
 df.goats$Sport <- str_replace(df.goats$Sport, "Basketball 3", "Basketball")
+df.goats$Sport <- str_replace(df.goats$Sport, "Baseball 2", "Baseball")
 df.goats$Sport <- str_replace(df.goats$Sport, "Football 2", "Football")
 
 # eliminate identical rows
