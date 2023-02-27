@@ -9,7 +9,7 @@ output:
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = FALSE)
+knitr::opts_chunk$set(echo = FALSE, warning = FALSE)
 ```
 
 ```{r, include=FALSE, warning=FALSE}
@@ -25,6 +25,7 @@ library(r2r)
 library(purrr)
 library(scales)
 library(broom)
+library(kableExtra)
 
 ```
 
@@ -32,6 +33,7 @@ library(broom)
 
 # read-in
 data <- read.csv("data.csv")
+data.2 <- read.csv("data.2.csv")
 
 # truncate
 data <- data[data$Year >= 1945, ]
@@ -73,7 +75,7 @@ f1
 
 f2 <- ggplot(data = data.agg, 
        aes(x = as.numeric(Year), y = as.integer(N))) + 
-  scale_y_continuous(limits = c(0, 12), breaks = seq(0, 12, by = 1))+
+  scale_y_continuous(limits = c(0, 12), breaks = seq(0, 15, by = 1))+
   geom_line() +
   labs(x = "Year", 
        y = "Number of Potential GOATs", 
@@ -270,7 +272,6 @@ ggplot(data = golf.filter,
 
 ```
 
-
 \newpage
 
 ## Commentary & Notes
@@ -292,6 +293,69 @@ ggplot(data = golf.filter,
 * With basketball, there has been at least one GOAT candidate (playing) for a while. 
 
 * An interesting note about football is that there were **4** GOAT candidates playing from 2000-2004. I personally wonder if this increase in GOAT candidates can be attributed to the inflation of the importance of the quarterback position, as 3 of the 4 candidates were quarterbacks (Brett Farve, Peyton Manning, and Tom Brady). Of course, the presence of 4 GOAT candidates can also be chalked up to mere coincidence, or simply the fact that we have multiple (2) lists of GOATs for football. 
+
+\newpage
+
+# Tables and Visualizations Related to Career Longevity
+
+```{r tbl-1}
+
+tbl.1 <- as.data.frame(data.2)%>%
+  arrange(., desc(avg.length)) %>%
+  mutate (avg.length = round(avg.length, 1)) %>%
+  rename("Average Career Length" = avg.length)%>%
+  kable(format = "markdown", align = "cc", caption = "Average Career Length by Sport") %>%
+  kable_styling(font_size = 8.5, latex_options = c("hold_position"),
+                full_width = FALSE, position = "float_left")
+
+tbl.1
+
+```
+
+```{r}
+
+tbl.2 <- data[data$N == 0,] %>%
+  group_by(Sport) %>%
+  summarize(N = n()) %>%
+  arrange(., desc(N)) %>%
+  rename ("#" = N) %>%
+  kable(format = "markdown", align = "cc", caption = "Number of Years with 0 GOAT Candiates by Sport (since 1945)") %>%
+  kable_styling(font_size = 8.5, latex_options = c("hold_position"),
+                full_width = FALSE, position = "float_left")
+tbl.2
+
+```
+
+```{r}
+
+# filter data for years, sports with no GOAT candidates
+data.0 <- data[data$N == 0,]
+
+# left merge
+data.combined <- merge(x = data.0, y = data.2, by = "Sport", all.x = TRUE)
+data.combined.2 <- data.combined %>%
+  group_by(Sport) %>%
+  summarize(N= n(), avg.length = unique(avg.length))
+
+```
+
+```{r figure-11}
+
+ggplot(data = data.combined.2, 
+       aes(x = avg.length, y = as.integer(N),
+           shape = Sport)) +
+  scale_x_continuous(expand = c(0, 0), limits = c(0, 25)) +
+  scale_y_continuous(expand = c(0, 0), limits = c(0, 80)) +
+  geom_point() +
+  labs(x = "Average Career Length in Years", 
+       y = "Number of Years with no Potential GOATs", 
+       title = "Number of Years with No Potential GOATs vs. Average Career Length",
+       caption = "Figure 11") + 
+  theme_bw() +
+  theme(text = element_text(family = "serif")) +
+  theme(plot.title=element_text(family = "serif", face = "bold", hjust = 0.5, size = 12))
+
+```
 
 \newpage
 

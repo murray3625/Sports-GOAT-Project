@@ -640,8 +640,28 @@ df.goats.subset <- df.goats %>%
     complete(Year, Sport,
              fill = list(N = 0))
 
-f1.data.dummy <- data.frame(matrix(nrow = 0, ncol = length(unique(df.goats.subset$Year))))
-colnames(f1.data.dummy) <- unique(df.goats.subset$Year)
+data.2 <- df.goats %>%
+  group_by(Player, Sport) %>%
+  summarize(Length = n())
+
+data.2 <- data.2 %>%
+  group_by(Sport) %>%
+  summarize(avg.length = mean(Length))
+
+# write visualization data to csv 
+write.csv(df.goats.subset, "data.csv", row.names=FALSE)
+
+# write career length data to csv
+write.csv(data.2, "data.2.csv", row.names=FALSE)
+
+```
+
+
+```{r}
+
+# f1.data.dummy <- data.frame(matrix(nrow = 0, ncol = length(unique(df.goats.subset$Year))))
+# colnames(f1.data.dummy) <- unique(df.goats.subset$Year)
+
 # 
 # for (i in 1:nrow(df.goats.subset)){
 #   for (j in 1:length(unique(df.goats.subset$Year))){
@@ -655,10 +675,5 @@ colnames(f1.data.dummy) <- unique(df.goats.subset$Year)
 #   }
 # }
 
-
-# write visualization data to csv 
-write.csv(df.goats.subset, "data.csv", row.names=FALSE)
-
 ```
-
 
