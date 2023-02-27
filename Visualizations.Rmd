@@ -312,7 +312,7 @@ tbl.1
 
 ```
 
-```{r}
+```{r tbl-2}
 
 tbl.2 <- data[data$N == 0,] %>%
   group_by(Sport) %>%
@@ -337,25 +337,59 @@ data.combined.2 <- data.combined %>%
   group_by(Sport) %>%
   summarize(N= n(), avg.length = unique(avg.length))
 
+# add new indicator variable for contact sports
+data.combined.2$Contact <- "No"
+data.combined.2[c(2, 4, 6, 7), 4] <- "Yes"
+
 ```
+
+Average # of GOAT candiates per year conditional on not having 0
+
+```{r tbl-3}
+
+tbl.3 <- data[data$N != 0,]%>%
+  group_by(Sport) %>%
+  summarize(Average = round(mean(N), 2)) %>%
+  kable(format = "markdown", align = "cc", caption = "Average # of GOAT Candidates per Year per Sport (Conditional on  there being at least one)") %>%
+  kable_styling(font_size = 8.5, latex_options = c("hold_position"),
+                full_width = FALSE, position = "float_left")
+tbl.3
+
+```
+
 
 ```{r figure-11}
 
 ggplot(data = data.combined.2, 
        aes(x = avg.length, y = as.integer(N),
-           shape = Sport)) +
+           shape = Sport, color = Contact)) +
+  scale_shape_manual(values = seq(8)) + 
   scale_x_continuous(expand = c(0, 0), limits = c(0, 25)) +
   scale_y_continuous(expand = c(0, 0), limits = c(0, 80)) +
   geom_point() +
   labs(x = "Average Career Length in Years", 
-       y = "Number of Years with no Potential GOATs", 
-       title = "Number of Years with No Potential GOATs vs. Average Career Length",
+       y = "# Years with no Potential GOATs", 
+       title = "# Years with No Potential GOATs vs. Average Career Length",
        caption = "Figure 11") + 
   theme_bw() +
   theme(text = element_text(family = "serif")) +
   theme(plot.title=element_text(family = "serif", face = "bold", hjust = 0.5, size = 12))
 
 ```
+
+\newpage
+
+## Commentary and Notes
+
+***Figure 11*** - One would expect to see a **negative** relationship between the average career length and the number of years with ZERO potential GOATs. 
+
+  * "Medical Conditions Affecting Sports Participation" published by *The American Academy of Pediatrics*
+  * Link to article: https://publications.aap.org/pediatrics/article/121/4/841/70953/Medical-Conditions-Affecting-Sports-Participation?autologincheck=redirected
+  * In this article, sports are divided into three main categories: (1) contact, (2) limited-contact, and (3) non contact 
+    * Additionally, contact sports are sub-divided into: (1) collision and (2) contact sports 
+    * "In collision sports (eg, boxing, ice hockey, football, lacrosse, and rodeo), athletes purposely hit or collide with each other or with inanimate objects (including the ground) with great force. In contact sports (eg, basketball and soccer), athletes routinely make contact with each other or with inanimate objects but usually with less force than in collision sports. In limited-contact sports (eg, softball and squash), contact with other athletes or with inanimate objects is infrequent or inadvertent. However, some limited-contact sports (eg, skateboarding) can be as dangerous as collision or contact sports. Even in noncontact sports (eg, power lifting), in which contact is rare and unexpected, serious injuries can occur." 
+  * Above, I will classify **basketball, football, hockey, and soccer** as **contact** sports; conversely, **baseball, cricket, golf, and tennis** will be classified as **limited contact or non contact**. 
+    
 
 \newpage
 
