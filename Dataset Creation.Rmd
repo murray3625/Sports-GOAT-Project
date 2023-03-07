@@ -600,7 +600,7 @@ df.goats$Sport <- str_replace(df.goats$Sport, "Tennis 2", "Tennis")
 df.goats$Sport <- str_replace(df.goats$Sport, "Basketball 2", "Basketball")
 df.goats$Sport <- str_replace(df.goats$Sport, "Baseball 2", "Baseball")
 df.goats$Sport <- str_replace(df.goats$Sport, "Football 2", "Football")
-df.goats$Sport <- str_replace(df.goats$Sports, "Golf 2", "Golf")
+df.goats$Sport <- str_replace(df.goats$Sport, "Golf 2", "Golf")
 
 # eliminate identical rows
 df.goats$Rank <- NULL
