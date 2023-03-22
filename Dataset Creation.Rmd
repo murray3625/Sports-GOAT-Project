@@ -1,5 +1,5 @@
 ---
-title: "Dataset Creation"
+title: "Dataset Creation [DO NOT KNIT]"
 author: "Matthew Murray"
 date: "`r Sys.Date()`"
 output:
@@ -486,7 +486,9 @@ Winning.Span <- c("1942-1954", "1997-2019", "1962-1986", "1946-1953",
                   "1991-2021", "1945-1961", "1974-1998")
 
 golf.2 <- create.df(Players, Winning.Span)
-
+golf.2[2,3] = 1
+golf.2[9,3] = 8
+golf.2[11,3] = 10
 
 ```
 

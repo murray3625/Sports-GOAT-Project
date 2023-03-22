@@ -296,6 +296,21 @@ ggplot(data = golf.filter,
 
 \newpage
 
+### Average Career Length by Sport (in Years)
+
+* Cricket
+* Hockey
+* Soccer
+* Baseball
+* Tennis
+* Golf
+* Basketball: 4.5
+  * https://dunkorthree.com/nba-player-career-length/
+* Football: 3.3
+  * https://www.statista.com/statistics/240102/average-player-career-length-in-the-national-football-league/
+
+\newpage
+
 # Tables and Visualizations Related to Career Longevity
 
 ```{r tbl-1}

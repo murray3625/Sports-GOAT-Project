@@ -1,0 +1,117 @@
+---
+title: |
+  <center> Greatness in Sports: </center>
+  <center> Understanding and Visualizing its Patterns </center>
+author: "Matthew Murray"
+geometry: "top = 2cm, bottom = 2cm, left = 2cm, right = 2cm"
+fontsize: 10 pt
+bibliography: references.bib
+output: 
+  pdf_document:
+    latex_engine: pdflatex
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, options(knitr.table.format = "markdown"))
+```
+
+
+
+# 1 Introduction
+
+## 1.1 Background
+
+A common phrase that is emphasized among sports fans and expert calls to not take greatness for granted. While the sports themselves are (hopefully) lasting, the athletes come and go, with their careers seeming like a brief blip in time when it is all said and done. Baseball fans listen to stories of the Great Bambino from their elders, wondering if they will ever see a player or a talent burst on to the scene again. Meanwhile, basketball fans seem to engage in a persistent dispute between Michael Jordan and Lebron James. 
+
+Nonetheless, with the seemingly endless abundance of talent on display today, coupled with the advances being made in athlete performance and recovery that have athletes performing at the highest levels ever, one has to call to question: can we take greatness for granted? Are there more greatest of all time (GOAT) candidates than one may intuitively believe there to be? Are there patterns in which greatness occurs in one sport, and a lack thereof in another? Do certainly qualities (e.g: contact vs. non-contact) tend to attract more GOAT candidates to a sport than to another. In this paper, we seek to provide the answers to these questions. 
+
+
+## 1.2 Data Collection
+
+### 1.2.1 Sports 
+
+Due to the unique nature of this project, we had to impute our own datasets. We decided to compile lists of mens GOAT candidates from the following sports:
+
+1. Soccer
+2. Cricket
+3. Tennis
+4. Basketball
+5. Baseball
+6. Football
+7. Ice Hockey
+8. Golf
+
+The inclusion of football, baseball, basketball, and ice hockey can be attributed to the fact that they are the 4 of the 5 most popular sports in the United States [@Gallup]. Golf and tennis were included because professionals in both sports compete in four "major" tournaments each year. Soccer and cricket were included due to their immense popularity and following worldwide [@SFB]. 
+
+### 1.2.2 GOAT Sources and Rationale
+
+For each sport, we imputed two lists that rank the best players of all time. One list would be a subjective ranking of the players from a reputable, respected source. While the reputability of a source is inherently subjective, we tried as much as possible to include sources that are mainstream and whose respectability would be difficult to refute. The sources of the subjective ranking lists for each sport are as follows:
+
+* Soccer - *Sports Illustrated*
+* Cricket - *British Broadcasting Company (BBC)*
+* Tennis - *Stadium Talk*
+* Basketball - *ESPN*
+* Baseball - *ESPN*
+* Football - *ClutchPoints*
+* Ice Hockey - *Bleacher Report*
+* Golf - None
+
+The other list would be based on an objective measure, such as the number of MVP's or tournaments won throughout one's career. The criteria/measures used for each sports are noted below:
+
+* For **soccer**, players were ranked by the number of Ballon d'Ors they won. More specifically, the list includes the number of Ballon d'Ors won by each player *since 2007*. The Ballon d'Or was chosen because it is widely recognized as the most prestigious award in soccer. Nonetheless, this award does have a few limitations. From 1956 (the first year the award was given out) to 1995, the Ballon d'Or was only given to the best soccer player of European origin. In 1995, the award was expanded to consider soccer players from any European club. It was not until 2007 that the award was expanded to consider all soccer players worldwide [@CBC]. 
+
+* Cricket - TBD
+
+* Tennis - Players were ranked based on the number of majors they won. The four majors, also known as Grand Slam events, in tennis include the Australian Open, the French Open, Wimbledon, and the US Open, each of which is played annually. These tournaments became open to professionals in 1968, thus marking the advent of the Open Era in tennis as well as a significant shift and maturation of the sport [@TC]. Today, tennis player accomplishments are often discussed in the context of Open Era record, with one of the most prominent ones being Grand Slam or major titles. 
+
+
+* Basketball - Players were ranked based on their Value over Replacement Player. (Explain this metric)
+* Baseball - Players were based on their MVP shares. (Explain this metric)
+* Football - Players were ranked based on the number of MVP's they won. More specifically, the list includes players more than 1 NFL MVP.  
+* Ice Hockey - TBD
+* Golf - Players were ranked based on the number of majors they won. More specifically, we included players who have won at least 5 majors. Addiiontally, we ranked players based on the number of PGA Tour wins that they have. 
+
+
+### 1.2.3 Time Span
+
+Each of our graphs includes data/players from 1945 to the present (although we may later change this to 2010; after 2010, we are likely underestimating the number of GOATs just because most of the great players have not been playing long enough to truly be in the GOAT conversation; a perfect example of such a player would be Patrick Mahomes II, who plays for the Kansas City Chiefs. The choice of 1945 can be attributed to the fact that at this time, MLB (1876) and NFL (1920) were already founded, while the Basketball Association of America (which eventually became the NBA) was founded shortly thereafter in 1946. Therefore, one can argue that the three most popular sports in North America (in addition to soccer) were already up and running by that time period. Additionally, 1945 marked the end of World War II and the advent of a period of economic flourishing in the Western world. 
+
+### 1.2.4 Career Span
+
+\newpage
+
+# Topics of Interest 
+
+
+## Contact vs. Non-Contact Sports
+
+One distinction that we chose to investigate is contact sports vs. non-contact sports. An article published by *The American Academy of Pediatrics* titled "Medical Conditions Affecting Sports Participation" divides sports into three main categories: (1) contact, (2) limited-contact, and (3) non contact. Furthermore, contact sports are sub-divided into (1) collision and (2) contact sports. It further states:
+
+"In collision sports (eg, boxing, ice hockey, football, lacrosse, and rodeo), athletes purposely hit or collide with each other or with inanimate objects (including the ground) with great force. In contact sports (eg, basketball and soccer), athletes routinely make contact with each other or with inanimate objects but usually with less force than in collision sports. In limited-contact sports (eg, softball and squash), contact with other athletes or with inanimate objects is infrequent or inadvertent. However, some limited-contact sports (eg, skateboarding) can be as dangerous as collision or contact sports. Even in noncontact sports (eg, power lifting), in which contact is rare and unexpected, serious injuries can occur." 
+
+Using the criteria noted above, we decided to classify **basketball, football, hockey, and soccer** as **contact** sports; conversely, **baseball, cricket, golf, and tennis** were deemed **limited contact or non contact**. In doing so, we were looking to investigate whether the type of sport that a player participates in affects a GOAT candidate's career length. 
+
+---(Include Figure 11 here)---
+
+Based on **Figure 11*, no trends in particular seem to stick out. Although football and basketball (both of which are contact sports) both seem to have shorter average career lengths, one cannot say this for all contact sports compared to non-contact sports. However, a potential limitation/inconsistency for golf (a non-contact sport) is that the average career length may appear to be shorter than it actually is because we used the first and last years a player won a major for a career span.
+
+
+Talk about how we defined a player's career length/span
+
+
+Another challenge that occurred during the data imputation process was properly and consistently defining the length and years of an athlete's career. In doing so, we hoped to capture the **entirety** of a player's career, including the advent, peak, and twilight of one's playing years. The specific details of how we defined the beginning and end of a player's career is below:
+
+
+Soccer - 
+Cricket - 
+Tennis - 
+Basketball - 
+Baseball - 
+Football - 
+Ice Hockey - 
+Golf - 
+
+\pagebreak
+
+## References
+
