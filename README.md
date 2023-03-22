@@ -1,4 +1,4 @@
-# Understanding and Visualizing the Patterns in which Greatness Occurs in Various Sports
+# Greatness in Sports: Understanding and Visualizing its Patterns
 
 by Matthew Murray and Benjamin Leinwand
 
