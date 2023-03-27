@@ -62,14 +62,17 @@ The other list would be based on an objective measure, such as the number of MVP
 
 * Cricket - TBD
 
-* Tennis - Players were ranked based on the number of majors they won. The four majors, also known as Grand Slam events, in tennis include the Australian Open, the French Open, Wimbledon, and the US Open, each of which is played annually. These tournaments became open to professionals in 1968, thus marking the advent of the Open Era in tennis as well as a significant shift and maturation of the sport [@TC]. Today, tennis player accomplishments are often discussed in the context of Open Era record, with one of the most prominent ones being Grand Slam or major titles. 
+* Tennis - Players were ranked based on the number of majors they won. The four majors, also known as Grand Slam events, in tennis include the Australian Open, the French Open, Wimbledon, and the US Open, each of which is played annually. These tournaments became open to professionals in 1968, thus marking the advent of the Open Era in tennis as well as a significant shift and maturation of the sport [@TC]. Today, tennis player accomplishments are often discussed in the context of Open Era records, with one of the most prominent ones being Grand Slam or major titles. 
 
+* Basketball - Players were ranked based on their Value over Replacement Player (VORP). This metric measures "the number of points that a player contributed per 100 team possessions above a replacement level player" [@Qlik].
 
-* Basketball - Players were ranked based on their Value over Replacement Player. (Explain this metric)
-* Baseball - Players were based on their MVP shares. (Explain this metric)
-* Football - Players were ranked based on the number of MVP's they won. More specifically, the list includes players more than 1 NFL MVP.  
+* Baseball - Players were ranked based on their Most Valuable Player (MVP) shares. Put simply, an award share is equal to the number of points that a player received for an award divided by the total number of first place votes. For example, assuming there are 10 votes, if a player wins 9 first place votes, each of which are worth 3 points, and 1 second place vote, which is worth 2 points, the player wins up with an award share of 29/30 ($\approx$ 0.967). The benefit of using this metric is that it rewards and considers players who did not necessarily win the MVP, but were close. 
+
+* Football - Players were ranked based on the number of MVP Awards they won. More specifically, the list includes players who won more than 1 NFL MVP.  
+
 * Ice Hockey - TBD
-* Golf - Players were ranked based on the number of majors they won. More specifically, we included players who have won at least 5 majors. Addiiontally, we ranked players based on the number of PGA Tour wins that they have. 
+
+* Golf - Players were ranked based on the number of majors (Masters, PGA Championship, U.S. Open, and The Open) they won. More specifically, we included players who have won at least 5 majors. Additionally, we ranked players based on PGA tournament victories.
 
 
 ### 1.2.3 Time Span
@@ -77,6 +80,26 @@ The other list would be based on an objective measure, such as the number of MVP
 Each of our graphs includes data/players from 1945 to the present (although we may later change this to 2010; after 2010, we are likely underestimating the number of GOATs just because most of the great players have not been playing long enough to truly be in the GOAT conversation; a perfect example of such a player would be Patrick Mahomes II, who plays for the Kansas City Chiefs. The choice of 1945 can be attributed to the fact that at this time, MLB (1876) and NFL (1920) were already founded, while the Basketball Association of America (which eventually became the NBA) was founded shortly thereafter in 1946. Therefore, one can argue that the three most popular sports in North America (in addition to soccer) were already up and running by that time period. Additionally, 1945 marked the end of World War II and the advent of a period of economic flourishing in the Western world. 
 
 ### 1.2.4 Career Span
+
+Another challenge that we encountered during the data imputation process was properly, consistently, and logically defining defining the beginning and end of a player's professional career. In doing so, we hoped to capture the **entirety** of a player's career, including the advent, peak, and twilight of one's playing years. The specific details of how we defined the beginning and end of a player's career is below:
+
+* Soccer - 
+
+* Cricket - We imputed a player's active years as the first and last year calendar years that he played professional internationally *or* domestically, and all years in between. 
+
+* Tennis - 
+
+* Basketball - 
+
+* Baseball - 
+
+* Football - 
+
+* Ice Hockey - 
+
+* Golf - We imputed a player's active years as the first and last calendar years that he won a major, and all years in between. For example, since Tiger Woods won his first major in 1997 and his last major in 2019, his active years are listed as 1997-2019, even though he is still playing in professional golf tournaments (in fact I know he most recently played in the Genesis Open). The reason why we used this logic is that professional golfers can play for a longer (compared to atheletes in other sports) period of time due to the presence of the PGA Tour Champions (formerly known as the Senior PGA Tour) as well as the nature of the sport itself (more specifically, the fact that players can sit out certain tournaments and the less violent nature of the sport). For example, Jack Nicklaus, whom many consider to be the greatest golfer of all time, played at his last U.S. Open in 2000, but did not play his last Masters, PGA Championship, and Open Championship until 2005 (add source here). 
+
+
 
 \newpage
 
@@ -96,20 +119,6 @@ Using the criteria noted above, we decided to classify **basketball, football, h
 Based on **Figure 11*, no trends in particular seem to stick out. Although football and basketball (both of which are contact sports) both seem to have shorter average career lengths, one cannot say this for all contact sports compared to non-contact sports. However, a potential limitation/inconsistency for golf (a non-contact sport) is that the average career length may appear to be shorter than it actually is because we used the first and last years a player won a major for a career span.
 
 
-Talk about how we defined a player's career length/span
-
-
-Another challenge that occurred during the data imputation process was properly and consistently defining the length and years of an athlete's career. In doing so, we hoped to capture the **entirety** of a player's career, including the advent, peak, and twilight of one's playing years. The specific details of how we defined the beginning and end of a player's career is below:
-
-
-Soccer - 
-Cricket - 
-Tennis - 
-Basketball - 
-Baseball - 
-Football - 
-Ice Hockey - 
-Golf - 
 
 \pagebreak
 
