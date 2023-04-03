@@ -319,7 +319,7 @@ tbl.1 <- as.data.frame(data.2)%>%
   arrange(., desc(avg.length)) %>%
   mutate (avg.length = round(avg.length, 1)) %>%
   rename("Average Career Length" = avg.length)%>%
-  kable(format = "markdown", align = "cc", caption = "Average Career Length by Sport") %>%
+  kable(format = "markdown", align = "cc", caption = "Average Career Length by Sport for GOAT Candidates") %>%
   kable_styling(font_size = 8.5, latex_options = c("hold_position"),
                 full_width = FALSE, position = "float_left")
 
@@ -329,7 +329,43 @@ tbl.1
 
 ```{r tbl-2}
 
-tbl.2 <- data[data$N == 0,] %>%
+# data
+lengths <- c(5.6, 4.8, 12.5, 3.3, 5.95, 5.72, 8.6, 6.12)
+tbl.2.data <- cbind(data.2[, 1], lengths)
+colnames(tbl.2.data) <- colnames(data.2)
+
+# figure 
+tbl.2 <- as.data.frame(tbl.2.data)%>%
+  arrange(., desc(avg.length)) %>%
+  rename("Average Career Length" = avg.length)
+
+dt_footnote <- tbl.2
+
+for (i in 1:nrow(dt_footnote)){
+  dt_footnote[i,1] <- paste0(dt_footnote[i,1], footnote_marker_alphabet(i))
+}
+
+tbl.2 <- kable(dt_footnote, format = "markdown", align = "cc", caption = "Average Career Length by Sport") %>%
+  kable_styling(font_size = 8.5, latex_options = c("hold_position"),
+                full_width = FALSE, position = "float_left") %>%
+  add_footnote(c("https://jamanetwork.com/journals/jamaneurology/fullarticle/2782750",
+                 "https://www.sciencedirect.com/science/article/abs/pii/S0927537121000865#tbl0001",
+                 "https://books.google.com/books?hl=en&lr=&id=594WCQAAQBAJ&oi=fnd&pg=PA152&ots=gFrFml8OoE&sig=Grtp8yTxcZ1OOk4ZzqYLrpgLT-o#v=onepage&q&f=false",
+                 "https://www.cbsnews.com/minnesota/news/good-question-how-long-can-athletes-stay-in-the-game/",
+                 "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3184466/",
+                 "https://www.espn.com/nba/story/_/page/nextforplayers-111114/nba-players-do-next",
+                 "https://www.espn.com/blog/nflnation/post/_/id/207780/current-and-former-nfl-players-in-the-drivers-seat-after-completing-mba-program",
+                 "https://www.espncricinfo.com/story/how-long-is-a-career-272194"),
+               notation = "alphabet",
+               escape = FALSE)
+
+tbl.2
+
+```
+
+```{r tbl-3}
+
+tbl.3 <- data[data$N == 0,] %>%
   group_by(Sport) %>%
   summarize(N = n()) %>%
   arrange(., desc(N)) %>%
@@ -337,7 +373,7 @@ tbl.2 <- data[data$N == 0,] %>%
   kable(format = "markdown", align = "cc", caption = "Number of Years with 0 GOAT Candiates by Sport (since 1945)") %>%
   kable_styling(font_size = 8.5, latex_options = c("hold_position"),
                 full_width = FALSE, position = "float_left")
-tbl.2
+tbl.3
 
 ```
 
@@ -360,15 +396,15 @@ data.combined.2[c(2, 4, 6, 7), 4] <- "Yes"
 
 Average # of GOAT candidates per year conditional on not having 0
 
-```{r tbl-3}
+```{r tbl-4}
 
-tbl.3 <- data[data$N != 0,]%>%
+tbl.4 <- data[data$N != 0,]%>%
   group_by(Sport) %>%
   summarize(Average = round(mean(N), 2)) %>%
   kable(format = "markdown", align = "cc", caption = "Average # of GOAT Candidates per Year per Sport (Conditional on  there being at least one)") %>%
   kable_styling(font_size = 8.5, latex_options = c("hold_position"),
                 full_width = FALSE, position = "float_left")
-tbl.3
+tbl.4
 
 ```
 
@@ -383,7 +419,31 @@ ggplot(data = data.combined.2,
   scale_y_continuous(expand = c(0, 0), limits = c(0, 80)) +
   geom_point() +
   labs(x = "Average Career Length in Years", 
-       y = "# Years with no Potential GOATs", 
+       y = "# Years with no GOAT Candidates", 
+       title = "# Years with No Potential GOATs vs. Average Career Length for GOAT Candidates",
+       caption = "Figure 11") + 
+  theme_bw() +
+  theme(text = element_text(family = "serif")) +
+  theme(plot.title=element_text(family = "serif", face = "bold", hjust = 0.5, size = 12))
+
+```
+
+```{r figure-12}
+
+data.combined.3 <- data.combined.2
+data.combined.3[, 3] <- as.data.frame(tbl.2.data)%>%
+  arrange(., Sport) %>%
+  select("avg.length")
+
+ggplot(data = data.combined.3, 
+       aes(x = as.numeric(avg.length), y = as.integer(N),
+           shape = Sport, color = Contact)) +
+  scale_shape_manual(values = seq(8)) + 
+  scale_x_continuous(expand = c(0, 0), limits = c(0, 25)) +
+  scale_y_continuous(expand = c(0, 0), limits = c(0, 80)) +
+  geom_point() +
+  labs(x = "Average Career Length in Years", 
+       y = "# Years with no GOAT Candidates", 
        title = "# Years with No Potential GOATs vs. Average Career Length",
        caption = "Figure 11") + 
   theme_bw() +
@@ -416,4 +476,21 @@ ggplot(data = data.combined.2,
 * For golf, I imputed a player's active years as the first and last calendar years that he won a major. For example, since Tiger Woods won his first major in 1997 and his last major in 2019, his active years are listed as 1997-2019, even though he is still playing in professional golf tournaments (in fact I know he most recently played in the Genesis Open). 
 
 * Until 1995, only soccer players of European origin could win the Ballon d'Or. From 1995 to 2007, the award was open to players who played for European football clubs, regardless of their ethnicity. Only after 2007 could any player, with any club, win the award, which is why greats like Maradona and Pele never won the award. 
+
+\newpage
+
+# Average career length for each sports
+
+* Basketball (NBA): 4.8 years
+  * https://www.espn.com/nba/story/_/page/nextforplayers-111114/nba-players-do-next 
+  * 4.5 years from this article - https://www.nba.com/nuggets/features/junior_bridgeman_20100610.html
+* Football (NFL): 3.3 years
+  * https://www.espn.com/blog/nflnation/post/_/id/207780/current-and-former-nfl-players-in-the-drivers-seat-after-completing-mba-program
+* Baseball (MLB): 5.6 years
+  * https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3184466/
+
+
+
+Repeat Table 1 and Figure 11 - in Table 1, add a footnote with the sources
+
 

@@ -15,7 +15,9 @@ output:
 knitr::opts_chunk$set(echo = TRUE, options(knitr.table.format = "markdown"))
 ```
 
+\textcolor{red}{Note: Limitations/concerns are noted in red.}
 
+\textcolor{red}{We are aware and cognizant of the fact that if a reader were to conduct a similar analysis, the results and data may be very different. However, our goal in this project is not to conduct an analysis that is extremely robust/resistant to sensitivty tests, but rather, one that is informative, insightful, and interesting.}
 
 # 1 Introduction
 
@@ -77,29 +79,29 @@ The other list would be based on an objective measure, such as the number of MVP
 
 ### 1.2.3 Time Span
 
-Each of our graphs includes data/players from 1945 to the present (although we may later change this to 2010; after 2010, we are likely underestimating the number of GOATs just because most of the great players have not been playing long enough to truly be in the GOAT conversation; a perfect example of such a player would be Patrick Mahomes II, who plays for the Kansas City Chiefs. The choice of 1945 can be attributed to the fact that at this time, MLB (1876) and NFL (1920) were already founded, while the Basketball Association of America (which eventually became the NBA) was founded shortly thereafter in 1946. Therefore, one can argue that the three most popular sports in North America (in addition to soccer) were already up and running by that time period. Additionally, 1945 marked the end of World War II and the advent of a period of economic flourishing in the Western world. 
+Each of our graphs includes data/players from 1945 to the present (although we may later change this to 2010; after 2010, we are likely underestimating the number of GOATs just because most of the great players have not been playing long enough to truly be in the GOAT conversation; a perfect example of such a player would be Patrick Mahomes II, who plays for the Kansas City Chiefs. The choice of 1945 can be attributed to the fact that at this time, the MLB (1876) and NFL (1920) were already founded, while the Basketball Association of America (which eventually became the NBA) was founded shortly thereafter in 1946. Therefore, one can argue that the three most popular sports in North America (in addition to soccer) were already up and running by that time period. Additionally, 1945 marked the end of World War II and the advent of a period of economic flourishing in the Western world. 
 
 ### 1.2.4 Career Span
 
 Another challenge that we encountered during the data imputation process was properly, consistently, and logically defining defining the beginning and end of a player's professional career. In doing so, we hoped to capture the **entirety** of a player's career, including the advent, peak, and twilight of one's playing years. The specific details of how we defined the beginning and end of a player's career is below:
 
-* Soccer - 
+* Soccer - We imputed a player's active years as the first and last calendar years that one played professionally, either internationally *or* for a professional club), and all years in between. 
 
-* Cricket - We imputed a player's active years as the first and last year calendar years that he played professional internationally *or* domestically, and all years in between. 
+* Cricket - We imputed a player's active years as the first and last calendar years that one played professionally, either internationally *or* domestically, and all years in between. 
 
-* Tennis - 
+* Tennis - We imputed a player's active years as the first and last calendar years that one played professionally 
 
-* Basketball - 
+* Basketball - We imputed a player's active years as all years that he played in the NBA. 
 
-* Baseball - 
+* Baseball - We imputed a player's active years as all years that he played in the MLB. 
 
-* Football - 
+* Football - We imputed a player's active years as all years that he played in the NFL.
 
-* Ice Hockey - 
+* Ice Hockey - We imputed a player's active years as all years that he played in the NHL.
 
 * Golf - We imputed a player's active years as the first and last calendar years that he won a major, and all years in between. For example, since Tiger Woods won his first major in 1997 and his last major in 2019, his active years are listed as 1997-2019, even though he is still playing in professional golf tournaments (in fact I know he most recently played in the Genesis Open). The reason why we used this logic is that professional golfers can play for a longer (compared to atheletes in other sports) period of time due to the presence of the PGA Tour Champions (formerly known as the Senior PGA Tour) as well as the nature of the sport itself (more specifically, the fact that players can sit out certain tournaments and the less violent nature of the sport). For example, Jack Nicklaus, whom many consider to be the greatest golfer of all time, played at his last U.S. Open in 2000, but did not play his last Masters, PGA Championship, and Open Championship until 2005 (add source here). 
 
-
+\textcolor{red}{Another limitation to take into account is the fact that we imputed data year-by-year for athletes in some sports, but not in others.}
 
 \newpage
 
