@@ -2,7 +2,7 @@
 title: |
   <center> Greatness in Sports: </center>
   <center> Understanding and Visualizing its Patterns </center>
-author: "Matthew Murray"
+author: "Benjamin Leinwand and Matthew Murray"
 geometry: "top = 2cm, bottom = 2cm, left = 2cm, right = 2cm"
 fontsize: 10 pt
 bibliography: references.bib
@@ -17,7 +17,7 @@ knitr::opts_chunk$set(echo = TRUE, options(knitr.table.format = "markdown"))
 
 \textcolor{red}{Note: Limitations/concerns are noted in red.}
 
-\textcolor{red}{We are aware and cognizant of the fact that if a reader were to conduct a similar analysis, the results and data may be very different. However, our goal in this project is not to conduct an analysis that is extremely robust/resistant to sensitivty tests, but rather, one that is informative, insightful, and interesting.}
+\textcolor{red}{We are aware and cognizant of the fact that if a reader were to conduct a similar analysis, the results and data may be very different. However, our goal in this project is not to conduct an analysis that is extremely robust/resistant to sensitivty tests, but rather, one that is informative, insightful, and interesting. If 25 different researchers were to conduct this analysis, each dataset and approach may be very different, and we are okay with that fact.}
 
 # 1 Introduction
 
@@ -58,11 +58,11 @@ For each sport, we imputed two lists that rank the best players of all time. One
 * Ice Hockey - *Bleacher Report*
 * Golf - None
 
-The other list would be based on an objective measure, such as the number of MVP's or tournaments won throughout one's career. The criteria/measures used for each sports are noted below:
+The other list would be based on an objective metric, such as the number of MVP's won throughout one's career or a comprehensive statistic that aptly captures a players value. We tried to use metrics that are both fair and comprehensive in that they thoroughly and aptly capture a player's greatness. The criteria/measures used for each sport - as well as the inevitable limitation(s) of each criteria - are noted below:
 
 * For **soccer**, players were ranked by the number of Ballon d'Ors they won. More specifically, the list includes the number of Ballon d'Ors won by each player *since 2007*. The Ballon d'Or was chosen because it is widely recognized as the most prestigious award in soccer. Nonetheless, this award does have a few limitations. From 1956 (the first year the award was given out) to 1995, the Ballon d'Or was only given to the best soccer player of European origin. In 1995, the award was expanded to consider soccer players from any European club. It was not until 2007 that the award was expanded to consider all soccer players worldwide [@CBC]. 
 
-* Cricket - TBD
+* Cricket - \textcolor{red}{Players were ranked based on their batting average.}
 
 * Tennis - Players were ranked based on the number of majors they won. The four majors, also known as Grand Slam events, in tennis include the Australian Open, the French Open, Wimbledon, and the US Open, each of which is played annually. These tournaments became open to professionals in 1968, thus marking the advent of the Open Era in tennis as well as a significant shift and maturation of the sport [@TC]. Today, tennis player accomplishments are often discussed in the context of Open Era records, with one of the most prominent ones being Grand Slam or major titles. 
 
@@ -72,14 +72,14 @@ The other list would be based on an objective measure, such as the number of MVP
 
 * Football - Players were ranked based on the number of MVP Awards they won. More specifically, the list includes players who won more than 1 NFL MVP.  
 
-* Ice Hockey - TBD
+* Ice Hockey - \textcolor{red}{Players were ranked based on their points. In hockey, a player earns 1 point every time he either scores or assists a goal.}
 
 * Golf - Players were ranked based on the number of majors (Masters, PGA Championship, U.S. Open, and The Open) they won. More specifically, we included players who have won at least 5 majors. Additionally, we ranked players based on PGA tournament victories.
 
 
 ### 1.2.3 Time Span
 
-Each of our graphs includes data/players from 1945 to the present (although we may later change this to 2010; after 2010, we are likely underestimating the number of GOATs just because most of the great players have not been playing long enough to truly be in the GOAT conversation; a perfect example of such a player would be Patrick Mahomes II, who plays for the Kansas City Chiefs. The choice of 1945 can be attributed to the fact that at this time, the MLB (1876) and NFL (1920) were already founded, while the Basketball Association of America (which eventually became the NBA) was founded shortly thereafter in 1946. Therefore, one can argue that the three most popular sports in North America (in addition to soccer) were already up and running by that time period. Additionally, 1945 marked the end of World War II and the advent of a period of economic flourishing in the Western world. 
+Each of our graphs includes data/players from 1945 to the present (although we may later change this to 2010; after 2010, we are likely underestimating the number of GOATs just because most of the great players have not been playing long enough to truly be in the GOAT conversation; a perfect example of such a player would be Patrick Mahomes II, who plays for the Kansas City Chiefs). The choice of 1945 can be attributed to the fact that at this time, the MLB (1876) and NFL (1920) were already founded, while the Basketball Association of America (which eventually became the NBA) was founded shortly thereafter in 1946. Therefore, one can argue that the three most popular sports in North America (in addition to soccer) were already up and running by that time period. Additionally, 1945 marked the end of World War II and the advent of a period of economic flourishing in the Western world. 
 
 ### 1.2.4 Career Span
 
@@ -101,7 +101,7 @@ Another challenge that we encountered during the data imputation process was pro
 
 * Golf - We imputed a player's active years as the first and last calendar years that he won a major, and all years in between. For example, since Tiger Woods won his first major in 1997 and his last major in 2019, his active years are listed as 1997-2019, even though he is still playing in professional golf tournaments (in fact I know he most recently played in the Genesis Open). The reason why we used this logic is that professional golfers can play for a longer (compared to atheletes in other sports) period of time due to the presence of the PGA Tour Champions (formerly known as the Senior PGA Tour) as well as the nature of the sport itself (more specifically, the fact that players can sit out certain tournaments and the less violent nature of the sport). For example, Jack Nicklaus, whom many consider to be the greatest golfer of all time, played at his last U.S. Open in 2000, but did not play his last Masters, PGA Championship, and Open Championship until 2005 (add source here). 
 
-\textcolor{red}{Another limitation to take into account is the fact that we imputed data year-by-year for athletes in some sports, but not in others.}
+\textcolor{red}{Another limitation to take into account is the fact that we imputed data year-by-year for athletes in some sports, but not in others. A potential result of this limitation is that said years may have an inflated number of active GOAT candidates.}
 
 \newpage
 
@@ -120,9 +120,42 @@ Using the criteria noted above, we decided to classify **basketball, football, h
 
 Based on **Figure 11*, no trends in particular seem to stick out. Although football and basketball (both of which are contact sports) both seem to have shorter average career lengths, one cannot say this for all contact sports compared to non-contact sports. However, a potential limitation/inconsistency for golf (a non-contact sport) is that the average career length may appear to be shorter than it actually is because we used the first and last years a player won a major for a career span.
 
+\newpage
+
+## Maximal Value for Increasing Distribution
+
+Let’s examine this from a probabilistic perspective. Consider a standard uniform distribution, that is randomly picking any real number between 0 and 1 with equal probability, including any fraction or decimal in that range. Imagine we keep drawing random numbers from this standard uniform distribution. The first value we pick must be the largest value we have observed as of yet, just like the first competitor to complete a time trial will always be the leader in the competition, even if only temporarily. However, the second value we draw has to be larger than the first value, and since they’re both drawn randomly, it has probability ½ of being the largest value.  The 3rd value would have to be larger than the first and second values, which has probability 1/3.  This logic continues, meaning the probability that the nth draw is larger than all previous draws is 1/n.  Under that model, we expect that we will see a lot of “bests” early on, but fewer and fewer as time goes on. This makes intuitive sense. When a sport is new, an athlete is competing with only a few predecessors. Later on, when competing to be the best ever, an athlete may be competing with the same number of contemporaries, but also competing against many more “ghosts” who could have finished their careers decades ago. 
+
+This simple model assumes that the distribution remains the same, in other words that there is no growth over time. Let’s look at the other extreme that holds in a completely different domain. Moore’s Law states “the number of transistors on integrated circuits doubles about every two years.” In that case, as long as Moore’s Law holds, we systematically expect the latest generation of computers to be much faster than all previous generations. It’s worth noting that by invoking doubling, Moore’s Law describes exponential growth, but even linear growth could suffice to expect new computers to be faster than old computers. Consider a variant of Moore’s Law that would instead say “the number of transistors on integrated circuits increases by 1000 every two years.”   
+
+This linear variant of Moore’s law might describe the progress of professional athletes. Over time, sports has become a bigger business, and training methods have improved. J.J. Redick caused a bit of a stir when he said Bob Cousy played against “plumbers and firemen.” As a stylized model, let’s imagine the first year, players are drawn from a N(0, 1). In any subsequent year i, the players are drawn from a N(c(i-1), 1). This means that the expected average ability increases by c units each year. If c is very large, we’d expect each year to be much better than every previous year. This is still a very simple model, that assumes a constant linear increase in skill, when in fact, skill growth may accelerate or decelerate. Maybe rule changes, or new equipment, or revolutionary strategies represent a larger one-time spike.  It seems plausible that new swimsuits in 2008-2009 represented a one-time drastic boost, but that advantage was soon removed when the suits were banned, leaving the original moderate improvement trend without the spike from equipment. Furthermore, improving competition may obscure greatness, as an outlier in an earlier era may be merely excellent in a later one.     
+
+Let’s examine this simple model. Imagine that each year for 100 years, n new athletes turn professional. Each one of those n new professionals has the same probability of exceeding all values observed in prior years, given by:
+
+\textcolor{red}{$P_{i1} = \int_{-\infty}^{\infty}\prod_{j=1}^{i-1}\prod_{k=1}^{n}F_{x_{jk}}(a)f_{x_{i1}}(a)da$}
+
+Where F_(X_jk ) represents the CDF of a value in year j, and f_(X_i1 )represents the pdf of a value in year i. The probability that no value in year i is greater than all values observed in previous years is therefore (1- Pi1)n , so the probability the greatest year appears in year i is 1- (1- Pi1)n.
+
+ Chart 1 shows the probability that under different values of c and n, an athlete debuting each year will have the highest value observed so far. 
+
+n = 10, 100, 1000
+c = .01, .05, .1, 1 
 
 
-\pagebreak
+Competition complicates things 
+
+\newpage
+
+## Revolutions in Sports
+
+### Fosbury Flop 
+
+The Fosbury flop is the most predominant technique used in the track and field event high jump. It was introduced by US Olympian and gold medalist Dick Fosbury, who first used the technique at the 1968 Summer Olympics in Mexico City. The technique was revolutionary in the sense that it consists of jumping backwards off the "wrong" foot. While Fosbury was the first athlete to use this technique in 1968, it was quickly adopted, as 28 of the 40 high jumpers used it in the 1972 Munich Olympics. Furthermore, the technique was quickly deemed to be the most effective and efficient way to perform a high jump. Today, the Fosbury flop is the only technique used by Olympic level high jumpers.
+
+The Fosbury flop is a prime example of how advancements in technique and strategy can give athletes advantages over their predecessors. The advent and introduction of the technique has been linked to the rapid world record progression of the high jump in the 1970's and 80's. More information about it can be found [\textcolor{blue}{here}](https://worldathletics.org/news/feature/dick-fosbury-flop).
+
+
+\newpage
 
 ## References
 

@@ -1,6 +1,6 @@
 ---
 title: "Visualizations"
-author: "Matthew Murray"
+author: "Benjmamin Leinwand and Matthew Murray"
 date: "`r Sys.Date()`"
 output:
   pdf_document: default
@@ -479,18 +479,8 @@ ggplot(data = data.combined.3,
 
 \newpage
 
-# Average career length for each sports
-
-* Basketball (NBA): 4.8 years
-  * https://www.espn.com/nba/story/_/page/nextforplayers-111114/nba-players-do-next 
-  * 4.5 years from this article - https://www.nba.com/nuggets/features/junior_bridgeman_20100610.html
-* Football (NFL): 3.3 years
-  * https://www.espn.com/blog/nflnation/post/_/id/207780/current-and-former-nfl-players-in-the-drivers-seat-after-completing-mba-program
-* Baseball (MLB): 5.6 years
-  * https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3184466/
 
 
 
-Repeat Table 1 and Figure 11 - in Table 1, add a footnote with the sources
 
 
