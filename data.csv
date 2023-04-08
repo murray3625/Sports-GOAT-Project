@@ -201,7 +201,7 @@
 1907,"Tennis",1
 1908,"Baseball",3
 1908,"Basketball",0
-1908,"Cricket",0
+1908,"Cricket",1
 1908,"Football",0
 1908,"Golf",2
 1908,"Hockey",1
@@ -209,7 +209,7 @@
 1908,"Tennis",1
 1909,"Baseball",3
 1909,"Basketball",0
-1909,"Cricket",0
+1909,"Cricket",1
 1909,"Football",0
 1909,"Golf",2
 1909,"Hockey",1
@@ -217,7 +217,7 @@
 1909,"Tennis",1
 1910,"Baseball",3
 1910,"Basketball",0
-1910,"Cricket",0
+1910,"Cricket",1
 1910,"Football",0
 1910,"Golf",2
 1910,"Hockey",2
@@ -225,7 +225,7 @@
 1910,"Tennis",1
 1911,"Baseball",3
 1911,"Basketball",0
-1911,"Cricket",0
+1911,"Cricket",1
 1911,"Football",0
 1911,"Golf",2
 1911,"Hockey",2
@@ -233,7 +233,7 @@
 1911,"Tennis",1
 1912,"Baseball",2
 1912,"Basketball",0
-1912,"Cricket",0
+1912,"Cricket",1
 1912,"Football",0
 1912,"Golf",2
 1912,"Hockey",2
@@ -241,7 +241,7 @@
 1912,"Tennis",1
 1913,"Baseball",2
 1913,"Basketball",0
-1913,"Cricket",0
+1913,"Cricket",1
 1913,"Football",0
 1913,"Golf",2
 1913,"Hockey",2
@@ -249,7 +249,7 @@
 1913,"Tennis",1
 1914,"Baseball",3
 1914,"Basketball",0
-1914,"Cricket",0
+1914,"Cricket",1
 1914,"Football",0
 1914,"Golf",2
 1914,"Hockey",2
@@ -257,7 +257,7 @@
 1914,"Tennis",1
 1915,"Baseball",3
 1915,"Basketball",0
-1915,"Cricket",0
+1915,"Cricket",1
 1915,"Football",0
 1915,"Golf",1
 1915,"Hockey",2
@@ -265,7 +265,7 @@
 1915,"Tennis",1
 1916,"Baseball",3
 1916,"Basketball",0
-1916,"Cricket",0
+1916,"Cricket",1
 1916,"Football",0
 1916,"Golf",1
 1916,"Hockey",2
@@ -273,7 +273,7 @@
 1916,"Tennis",1
 1917,"Baseball",3
 1917,"Basketball",0
-1917,"Cricket",0
+1917,"Cricket",1
 1917,"Football",0
 1917,"Golf",1
 1917,"Hockey",2
@@ -281,7 +281,7 @@
 1917,"Tennis",1
 1918,"Baseball",2
 1918,"Basketball",0
-1918,"Cricket",0
+1918,"Cricket",1
 1918,"Football",0
 1918,"Golf",1
 1918,"Hockey",2
@@ -289,7 +289,7 @@
 1918,"Tennis",1
 1919,"Baseball",2
 1919,"Basketball",0
-1919,"Cricket",0
+1919,"Cricket",1
 1919,"Football",0
 1919,"Golf",1
 1919,"Hockey",2
@@ -297,7 +297,7 @@
 1919,"Tennis",1
 1920,"Baseball",2
 1920,"Basketball",0
-1920,"Cricket",0
+1920,"Cricket",1
 1920,"Football",1
 1920,"Golf",1
 1920,"Hockey",2
@@ -305,7 +305,7 @@
 1920,"Tennis",1
 1921,"Baseball",2
 1921,"Basketball",0
-1921,"Cricket",0
+1921,"Cricket",1
 1921,"Football",1
 1921,"Golf",1
 1921,"Hockey",2
@@ -313,7 +313,7 @@
 1921,"Tennis",1
 1922,"Baseball",2
 1922,"Basketball",0
-1922,"Cricket",0
+1922,"Cricket",1
 1922,"Football",1
 1922,"Golf",1
 1922,"Hockey",2
@@ -321,7 +321,7 @@
 1922,"Tennis",1
 1923,"Baseball",3
 1923,"Basketball",0
-1923,"Cricket",0
+1923,"Cricket",1
 1923,"Football",1
 1923,"Golf",1
 1923,"Hockey",2
@@ -329,7 +329,7 @@
 1923,"Tennis",1
 1924,"Baseball",3
 1924,"Basketball",0
-1924,"Cricket",0
+1924,"Cricket",2
 1924,"Football",1
 1924,"Golf",1
 1924,"Hockey",2
@@ -337,7 +337,7 @@
 1924,"Tennis",1
 1925,"Baseball",3
 1925,"Basketball",0
-1925,"Cricket",0
+1925,"Cricket",2
 1925,"Football",1
 1925,"Golf",1
 1925,"Hockey",1
@@ -345,7 +345,7 @@
 1925,"Tennis",1
 1926,"Baseball",3
 1926,"Basketball",0
-1926,"Cricket",0
+1926,"Cricket",2
 1926,"Football",1
 1926,"Golf",1
 1926,"Hockey",1
@@ -353,7 +353,7 @@
 1926,"Tennis",1
 1927,"Baseball",3
 1927,"Basketball",0
-1927,"Cricket",1
+1927,"Cricket",3
 1927,"Football",1
 1927,"Golf",1
 1927,"Hockey",1
@@ -361,7 +361,7 @@
 1927,"Tennis",1
 1928,"Baseball",3
 1928,"Basketball",0
-1928,"Cricket",1
+1928,"Cricket",3
 1928,"Football",1
 1928,"Golf",1
 1928,"Hockey",0
@@ -369,7 +369,7 @@
 1928,"Tennis",1
 1929,"Baseball",2
 1929,"Basketball",0
-1929,"Cricket",1
+1929,"Cricket",3
 1929,"Football",0
 1929,"Golf",1
 1929,"Hockey",0
@@ -377,7 +377,7 @@
 1929,"Tennis",1
 1930,"Baseball",2
 1930,"Basketball",0
-1930,"Cricket",1
+1930,"Cricket",3
 1930,"Football",0
 1930,"Golf",0
 1930,"Hockey",0
@@ -385,7 +385,7 @@
 1930,"Tennis",1
 1931,"Baseball",2
 1931,"Basketball",0
-1931,"Cricket",1
+1931,"Cricket",2
 1931,"Football",0
 1931,"Golf",0
 1931,"Hockey",0
@@ -393,7 +393,7 @@
 1931,"Tennis",1
 1932,"Baseball",2
 1932,"Basketball",0
-1932,"Cricket",1
+1932,"Cricket",2
 1932,"Football",0
 1932,"Golf",0
 1932,"Hockey",0
@@ -401,7 +401,7 @@
 1932,"Tennis",2
 1933,"Baseball",2
 1933,"Basketball",0
-1933,"Cricket",1
+1933,"Cricket",2
 1933,"Football",0
 1933,"Golf",0
 1933,"Hockey",0
@@ -409,7 +409,7 @@
 1933,"Tennis",2
 1934,"Baseball",2
 1934,"Basketball",0
-1934,"Cricket",1
+1934,"Cricket",2
 1934,"Football",0
 1934,"Golf",0
 1934,"Hockey",0
@@ -417,7 +417,7 @@
 1934,"Tennis",2
 1935,"Baseball",2
 1935,"Basketball",0
-1935,"Cricket",1
+1935,"Cricket",2
 1935,"Football",1
 1935,"Golf",0
 1935,"Hockey",0

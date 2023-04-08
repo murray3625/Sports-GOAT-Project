@@ -113,13 +113,13 @@ soccer.2 <- create.df(Players, Years.Active)
 # taken from BBC
 # https://www.bbc.co.uk/programmes/articles/2V6BjFgdJ5KcfVHhR3bwBLz/the-greatest-cricketer-of-all-time-your-votes-revealed
 
-Players <- c("Sir Donald Bradman", "Sachin Tendulkar", "Sir Garfield Sobers", "Imran Khan",
-             "Sir Ian Botham", "Shane Warne", "Sir Viv Richards", "Brian Lara",
+Players <- c("Donald Bradman", "Sachin Tendulkar", "Garfield Sobers", "Imran Khan",
+             "Ian Botham", "Shane Warne", "Viv Richards", "Brian Lara",
              "Jaques Kallis", "MS Dhoni", "Wasim Akram", "Virat Kohli",
-             "James Anderson", "Sir Alastair Cook", "Muttiah Muralitharan", "Kumar Sangakkara",
-             "Kapil Dev", "Sir Richard Hadlee", "Adam Gilchrist", "Chris Gayle",
+             "James Anderson", "Alastair Cook", "Muttiah Muralitharan", "Kumar Sangakkara",
+             "Kapil Dev", "Richard Hadlee", "Adam Gilchrist", "Chris Gayle",
              "Glenn McGrath", "Ricky Ponting", "Steve Waugh", "Rahul Dravid",
-             "Sunil Gavaskar", "Shoaib Akhtar", "Sir Curtly Ambrose", "Mahela Jayawardene",
+             "Sunil Gavaskar", "Shoaib Akhtar", "Curtly Ambrose", "Mahela Jayawardene",
              "Dale Steyn", "Allan Donald")
 
 Years.Active <- c("1927-1949", "1988-2013", "1952-1974", "1971-1992",
@@ -134,6 +134,29 @@ Years.Active <- c("1927-1949", "1988-2013", "1952-1974", "1971-1992",
 cricket <- create.df(Players, Years.Active)
 
 ```
+
+## Cricket 2
+
+```{r cricket-2}
+
+# https://stats.espncricinfo.com/ci/content/records/282910.html
+
+Players <- c("Donald Bradman", "Adam Voges", "Robert Pollock", "George Headley",
+             "Herbert Sutcliffe", "Steven Smith", "Edward Paynter", "Kenneth Barrington",
+             "Everton Weekes", "Walter Hammond", "Garfield Sobers", "Marnus Labuschagne",
+             "Kumar Sangakkara", "Daryl Mitchell", "John Hobbs", "Clyde Walcott",
+             "Leonard Hutton", "Jacques Kallis", "George Tyldesley", "Kane Williamson")
+
+Years.Active <- c("1927-1949", "2015-2016", "1963-1970", "1930-1954",
+                  "1924-1935", "2010-2023", "1931-1939", "1955-1968",
+                  "1948-1958", "1927-1947", "1952-1974", "2018-2023",
+                  "2000-2015", "2019-2023", "1908-1930", "1948-1960",
+                  "1937-1955", "1995-2013", "1921-1929", "2010-2023")
+
+cricket.2 <- create.df(Players, Years.Active)
+
+```
+
 
 ## Tennis 
 
@@ -522,9 +545,7 @@ Peak.Rating <- c(2881, 2851, 2844, 2830,
 
 ```{r}
 
-df.list <- list(soccer, soccer.2, cricket, tennis, tennis.2, basketball,
-                basketball.2, baseball, baseball.2, football, football.2,
-                hockey, golf, golf.2)
+df.list <- list(soccer, soccer.2, cricket, cricket.2, tennis, tennis.2, basketball, basketball.2, baseball, baseball.2, football, football.2, hockey, golf, golf.2)
 df.list <- lapply(df.list, presentto2023)
 
 ```
@@ -540,7 +561,7 @@ df.new = data.frame(Player = character(),
 rownum = 0
 
 # names of sports and iterator for the list
-strings = list("Soccer", "Soccer 2", "Cricket", "Tennis", "Tennis 2",
+strings = list("Soccer", "Soccer 2", "Cricket", "Cricket 2", "Tennis", "Tennis 2",
                "Basketball 2", "Basketball 3", "Baseball", "Baseball 2",
                "Football", "Football 2", "Hockey", "Golf", "Golf 2")
 iterator = 0
@@ -578,7 +599,7 @@ df.goats = data.frame(Player = character(),
 rownum = 0
 
 # names of sports and iterator for the list
-strings = list("Soccer", "Soccer 2", "Cricket", "Tennis", "Tennis 2",
+strings = list("Soccer", "Soccer 2", "Cricket", "Cricket 2", "Tennis", "Tennis 2",
                "Basketball", "Basketball 2", "Baseball", "Baseball 2",
                "Football", "Football 2", "Hockey", "Golf", "Golf 2")
 iterator = 0
@@ -598,6 +619,7 @@ df.goats$column_label <- NULL
 
 # combine same sports 
 df.goats$Sport <- str_replace(df.goats$Sport, "Soccer 2", "Soccer")
+df.goats$Sport <- str_replace(df.goats$Sport, "Cricket 2", "Cricket")
 df.goats$Sport <- str_replace(df.goats$Sport, "Tennis 2", "Tennis")
 df.goats$Sport <- str_replace(df.goats$Sport, "Basketball 2", "Basketball")
 df.goats$Sport <- str_replace(df.goats$Sport, "Baseball 2", "Baseball")

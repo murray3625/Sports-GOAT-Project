@@ -62,7 +62,7 @@ The other list would be based on an objective metric, such as the number of MVP'
 
 * For **soccer**, players were ranked by the number of Ballon d'Ors they won. More specifically, the list includes the number of Ballon d'Ors won by each player *since 2007*. The Ballon d'Or was chosen because it is widely recognized as the most prestigious award in soccer. Nonetheless, this award does have a few limitations. From 1956 (the first year the award was given out) to 1995, the Ballon d'Or was only given to the best soccer player of European origin. In 1995, the award was expanded to consider soccer players from any European club. It was not until 2007 that the award was expanded to consider all soccer players worldwide [@CBC]. 
 
-* Cricket - \textcolor{red}{Players were ranked based on their batting average.}
+* Cricket - Players were ranked based on their batting average. We arbitrarily chose batting average because it is one of the most commonly cited offensive statistics for cricket. (For instance, Donald Bradman is often noted as the greatest cricketer of all *because* of his ridiculously high batting average.) It is equal to the number of runs a player has scored divided by the number of time he has gotten out; in other words, it is the average number of runs a player scores at bat before getting out.
 
 * Tennis - Players were ranked based on the number of majors they won. The four majors, also known as Grand Slam events, in tennis include the Australian Open, the French Open, Wimbledon, and the US Open, each of which is played annually. These tournaments became open to professionals in 1968, thus marking the advent of the Open Era in tennis as well as a significant shift and maturation of the sport [@TC]. Today, tennis player accomplishments are often discussed in the context of Open Era records, with one of the most prominent ones being Grand Slam or major titles. 
 
@@ -87,7 +87,7 @@ Another challenge that we encountered during the data imputation process was pro
 
 * Soccer - We imputed a player's active years as the first and last calendar years that one played professionally, either internationally *or* for a professional club), and all years in between. 
 
-* Cricket - We imputed a player's active years as the first and last calendar years that one played professionally, either internationally *or* domestically, and all years in between. 
+* Cricket - We imputed a player's active years in 1 of 2 ways. If the player was from our arbitrary list, the active years equate to the first and last calendar years that one played professionally - either internationally *or* domestically - and all years in between. If the player was from our list based on batting average, the active years equate to the first and last year he played in a test match, and all years in between. In the case that a player is on both lists, we used the former method. 
 
 * Tennis - We imputed a player's active years as the first and last calendar years that one played professionally 
 
