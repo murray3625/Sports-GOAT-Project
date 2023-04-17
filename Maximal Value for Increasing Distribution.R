@@ -25,8 +25,11 @@ results_n_10_c_50 = c(1, rep(0, 99))
 results_n_100_c_50 = c(1, rep(0, 99))
 results_n_1000_c_50 = c(1, rep(0, 99))
 
-#This is the main function of interest. We are looking at the product of the CDFs of previous generations (with lower mean values) multiplied n times, where n is  the number of players per generation
-#integrated over the pdf of the skill of a player in the current generation
+#This is the main function of interest. We are looking at the product of the CDFs
+# of previous generations (with lower mean values) multiplied n times, where n is
+# the number of players per generation
+# integrated over the pdf of the skill of a player in the current generation
+
 integrand <- function(x, i, n, inc_const) {
   (prod(pnorm(x, mean = seq(from =0, to = inc_const*(i-2), length.out=i-1)))^n)*dnorm(x, mean= inc_const*(i-1))  
   

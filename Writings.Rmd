@@ -60,7 +60,7 @@ For each sport, we imputed two lists that rank the best players of all time. One
 
 The other list would be based on an objective metric, such as the number of MVP's won throughout one's career or a comprehensive statistic that aptly captures a players value. We tried to use metrics that are both fair and comprehensive in that they thoroughly and aptly capture a player's greatness. The criteria/measures used for each sport - as well as the inevitable limitation(s) of each criteria - are noted below:
 
-* For **soccer**, players were ranked by the number of Ballon d'Ors they won. More specifically, the list includes the number of Ballon d'Ors won by each player *since 2007*. The Ballon d'Or was chosen because it is widely recognized as the most prestigious award in soccer. Nonetheless, this award does have a few limitations. From 1956 (the first year the award was given out) to 1995, the Ballon d'Or was only given to the best soccer player of European origin. In 1995, the award was expanded to consider soccer players from any European club. It was not until 2007 that the award was expanded to consider all soccer players worldwide [@CBC]. 
+* Soccer - players were ranked by the number of Ballon d'Ors they won. More specifically, the list includes the number of Ballon d'Ors won by each player *since 2007*. The Ballon d'Or was chosen because it is widely recognized as the most prestigious award in soccer. Nonetheless, this award does have a few limitations. From 1956 (the first year the award was given out) to 1995, the Ballon d'Or was only given to the best soccer player of European origin. In 1995, the award was expanded to consider soccer players from any European club. It was not until 2007 that the award was expanded to consider all soccer players worldwide [@CBC]. 
 
 * Cricket - Players were ranked based on their batting average. We arbitrarily chose batting average because it is one of the most commonly cited offensive statistics for cricket. (For instance, Donald Bradman is often noted as the greatest cricketer of all *because* of his ridiculously high batting average.) It is equal to the number of runs a player has scored divided by the number of time he has gotten out; in other words, it is the average number of runs a player scores at bat before getting out.
 
@@ -148,12 +148,22 @@ Competition complicates things
 
 ## Revolutions in Sports
 
-### Fosbury Flop 
+### Background
+
+Various changes in rule, equipment, and technique have enabled athletes to gain competitive advantages over their predecessors in a plethora of ways. We now elucidate on some of the most prominent ones in the sports that we have covered. 
+
+### 1. Fosbury Flop 
 
 The Fosbury flop is the most predominant technique used in the track and field event high jump. It was introduced by US Olympian and gold medalist Dick Fosbury, who first used the technique at the 1968 Summer Olympics in Mexico City. The technique was revolutionary in the sense that it consists of jumping backwards off the "wrong" foot. While Fosbury was the first athlete to use this technique in 1968, it was quickly adopted, as 28 of the 40 high jumpers used it in the 1972 Munich Olympics. Furthermore, the technique was quickly deemed to be the most effective and efficient way to perform a high jump. Today, the Fosbury flop is the only technique used by Olympic level high jumpers.
 
-The Fosbury flop is a prime example of how advancements in technique and strategy can give athletes advantages over their predecessors. The advent and introduction of the technique has been linked to the rapid world record progression of the high jump in the 1970's and 80's. More information about it can be found [\textcolor{blue}{here}](https://worldathletics.org/news/feature/dick-fosbury-flop).
+The Fosbury flop is a prime example of how advancements in technique and strategy can give athletes advantages over their predecessors. The advent and introduction of the technique has been linked to the rapid world record progression of the high jump in the 1970's and 80's. More information about it can be found [\textcolor{blue}{here}](https://worldathletics.org/news/feature/dick-fosbury-flop)[@Flop].
 
+
+### 2. Tech Suits
+
+Tech suits burst onto the professional swim scene shortly thereafter the 2004 Summer Olympics in Athens when Speedo asked NASA to help it design swim suits will less drag. In the subsequent yeats, Speedo released the LZR Racer, which furthermore led to the release of various other aerodynamic tech suits - or "susper-suits" - from prominent swimwear companies. During this period - known as the "shiny suit era" - swimming world records were broken at an unprecedented pace. More specifically, *74* world records were broken by swimmers wearing the LZR Racer suit. Consequently, World Aquatics, formerly known as the Federation Internationale de Natation (FINA), controversially banned tech suits in 2009, which has led a noticeable drop-off in the pace at which world records have been broken [@Tech]. 
+
+Tech suits are a prime example of how advancements in equipment can give athletes advantages over their predecessors. More information about them and the impact they had on world records can be found [\textcolor{blue}{here}](https://www.swimmingworldmagazine.com/news/can-world-records-supersede-the-super-suit-era/)[@Tech2].
 
 \newpage
 
