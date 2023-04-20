@@ -405,6 +405,8 @@ football <- create.df(Players, Years.Active)
 
 ```
 
+## Football 2
+
 ```{r football-2}
 
 # taken from Sporting News
@@ -430,7 +432,7 @@ football.2[7:9, 3] = 4
 
 ## Ice Hockey 
 
-```{r hockey}
+```{r ice-hockey}
 
 # players taken from Bleacher Report
 # https://bleacherreport.com/articles/630824-nhl-power-rankings-the-50-greatest-players-in-nhl-and-hockeys-history
@@ -465,6 +467,29 @@ Years.Active <- c("1978-1999", "1984-1997, 2000-2006", "1946-1971, 1973-1980", "
                   "2001-present", "1970-1986")
 
 hockey <- create.df(Players, Years.Active)
+
+```
+
+## Ice Hockey 2
+
+```{r ice-hockey-2}
+
+# players taken from NHL
+# https://records.nhl.com/records/skater-records/points/most-points-career
+
+Players <- c("Wayne Gretzky", "Jaromir Jagr", "Mark Messier", "Gordie Howe",
+             "Ron Francis", "Marcel Dionne", "Steve Yzerman", "Mario Lemieux",
+             "Joe Sakic", "Phil Esposito", "Ray Bourque", "Joe Thornton",
+             "Mark Recchi", "Paul Coffey", "Sidney Crosby", "Alexander Ovechkin",
+             "Stan Mikita", "Teemu Selanne", "Bryan Trottier", "Adam Oates")
+
+Years.Active <- c("1978-1999", "1988-present", "1978-2004", "1946-1971, 1973-1980",
+                  "1981-2004", "1971-1989", "1983-2006", "1984-1997, 2000-2006",
+                  "1988-2009", "1963-1981", "1979-2001", "1997-2022",
+                  "1988-2011", "1980-2001", "2005-present", "2001-present",
+                  "1958-1980", "1992-2014", "1975-1994", "1985-2004")
+
+hockey.2 <- create.df(Players, Years.Active)
 
 ```
 
@@ -545,7 +570,7 @@ Peak.Rating <- c(2881, 2851, 2844, 2830,
 
 ```{r}
 
-df.list <- list(soccer, soccer.2, cricket, cricket.2, tennis, tennis.2, basketball, basketball.2, baseball, baseball.2, football, football.2, hockey, golf, golf.2)
+df.list <- list(soccer, soccer.2, cricket, cricket.2, tennis, tennis.2, basketball, basketball.2, baseball, baseball.2, football, football.2, hockey, hockey.2, golf, golf.2)
 df.list <- lapply(df.list, presentto2023)
 
 ```
@@ -563,7 +588,7 @@ rownum = 0
 # names of sports and iterator for the list
 strings = list("Soccer", "Soccer 2", "Cricket", "Cricket 2", "Tennis", "Tennis 2",
                "Basketball 2", "Basketball 3", "Baseball", "Baseball 2",
-               "Football", "Football 2", "Hockey", "Golf", "Golf 2")
+               "Football", "Football 2", "Hockey", "Hockey 2", "Golf", "Golf 2")
 iterator = 0
 
 new.list <- list()
@@ -601,7 +626,7 @@ rownum = 0
 # names of sports and iterator for the list
 strings = list("Soccer", "Soccer 2", "Cricket", "Cricket 2", "Tennis", "Tennis 2",
                "Basketball", "Basketball 2", "Baseball", "Baseball 2",
-               "Football", "Football 2", "Hockey", "Golf", "Golf 2")
+               "Football", "Football 2", "Hockey", "Hockey 2", "Golf", "Golf 2")
 iterator = 0
 
 goat.list <- list()
@@ -624,6 +649,7 @@ df.goats$Sport <- str_replace(df.goats$Sport, "Tennis 2", "Tennis")
 df.goats$Sport <- str_replace(df.goats$Sport, "Basketball 2", "Basketball")
 df.goats$Sport <- str_replace(df.goats$Sport, "Baseball 2", "Baseball")
 df.goats$Sport <- str_replace(df.goats$Sport, "Football 2", "Football")
+df.goats$Sport <- str_replace(df.goats$Sport, "Hockey 2", "Hockey")
 df.goats$Sport <- str_replace(df.goats$Sport, "Golf 2", "Golf")
 
 # eliminate identical rows

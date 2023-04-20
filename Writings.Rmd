@@ -12,8 +12,80 @@ output:
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE, options(knitr.table.format = "markdown"))
+knitr::opts_chunk$set(echo = FALSE, warning = FALSE, options(knitr.table.format = "markdown"))
 ```
+
+```{r code, include=FALSE, warning=FALSE}
+
+
+##
+
+
+library(janitor)
+library(dplyr)
+library(tidyverse)
+library(lubridate)
+library(stringi)
+library(r2r)
+library(purrr)
+library(scales)
+library(broom)
+library(kableExtra)
+
+
+###
+
+
+# read-in
+data <- read.csv("data.csv")
+data.2 <- read.csv("data.2.csv")
+
+# truncate
+data <- data[data$Year >= 1945, ]
+
+# aggregate
+data.agg <- data %>% group_by(Year) %>% summarise(N = sum(N))
+
+
+###
+
+
+# filter data for years, sports with no GOAT candidates
+data.0 <- data[data$N == 0,]
+
+# left merge
+data.combined <- merge(x = data.0, y = data.2, by = "Sport", all.x = TRUE)
+data.combined.2 <- data.combined %>%
+  group_by(Sport) %>%
+  summarize(N= n(), avg.length = unique(avg.length))
+
+# add new indicator variable for contact sports
+data.combined.2$Contact <- "No"
+data.combined.2[c(2, 4, 6, 7), 4] <- "Yes"
+
+
+###
+
+
+fig.11 <- ggplot(data = data.combined.2, 
+       aes(x = avg.length, y = as.integer(N),
+           shape = Sport, color = Contact)) +
+  scale_shape_manual(values = seq(8)) + 
+  scale_x_continuous(expand = c(0, 0), limits = c(0, 25)) +
+  scale_y_continuous(expand = c(0, 0), limits = c(0, 80)) +
+  geom_point() +
+  labs(x = "Average Career Length in Years", 
+       y = "# Years with no GOAT Candidates", 
+       title = "# Years with No Potential GOATs vs. Average Career Length for GOAT Candidates",
+       caption = "Figure 11") + 
+  theme_bw() +
+  theme(text = element_text(family = "serif")) +
+  theme(plot.title=element_text(family = "serif", face = "bold", hjust = 0.5, size = 12)) +
+  labs(colour = "Contact Sport?") 
+
+
+```
+
 
 \textcolor{red}{Note: Limitations/concerns are noted in red.}
 
@@ -62,7 +134,7 @@ The other list would be based on an objective metric, such as the number of MVP'
 
 * Soccer - players were ranked by the number of Ballon d'Ors they won. More specifically, the list includes the number of Ballon d'Ors won by each player *since 2007*. The Ballon d'Or was chosen because it is widely recognized as the most prestigious award in soccer. Nonetheless, this award does have a few limitations. From 1956 (the first year the award was given out) to 1995, the Ballon d'Or was only given to the best soccer player of European origin. In 1995, the award was expanded to consider soccer players from any European club. It was not until 2007 that the award was expanded to consider all soccer players worldwide [@CBC]. 
 
-* Cricket - Players were ranked based on their batting average. We arbitrarily chose batting average because it is one of the most commonly cited offensive statistics for cricket. (For instance, Donald Bradman is often noted as the greatest cricketer of all *because* of his ridiculously high batting average.) It is equal to the number of runs a player has scored divided by the number of time he has gotten out; in other words, it is the average number of runs a player scores at bat before getting out.
+* Cricket - Players were ranked based on their batting average. It is equal to the number of runs a player has scored divided by the number of time he has gotten out; in other words, it is the average number of runs a player scores at bat before getting out. We arbitrarily chose batting average because it is one of the most commonly cited offensive statistics for cricket. (For instance, Donald Bradman is often noted as the greatest cricketers of all time *because* of his ridiculously high batting average.) Nonetheless, a limitation of using this metric is that it does not account for great cricket bowlers. 
 
 * Tennis - Players were ranked based on the number of majors they won. The four majors, also known as Grand Slam events, in tennis include the Australian Open, the French Open, Wimbledon, and the US Open, each of which is played annually. These tournaments became open to professionals in 1968, thus marking the advent of the Open Era in tennis as well as a significant shift and maturation of the sport [@TC]. Today, tennis player accomplishments are often discussed in the context of Open Era records, with one of the most prominent ones being Grand Slam or major titles. 
 
@@ -72,7 +144,7 @@ The other list would be based on an objective metric, such as the number of MVP'
 
 * Football - Players were ranked based on the number of MVP Awards they won. More specifically, the list includes players who won more than 1 NFL MVP.  
 
-* Ice Hockey - \textcolor{red}{Players were ranked based on their points. In hockey, a player earns 1 point every time he either scores or assists a goal.}
+* Ice Hockey - Players were ranked based on their points. A player earns 1 point every time he either scores or assists a goal. We arbitrarily chose chose points because it is one of the most commonly cited offensive statistics in hockey. (For instance, Wayne Gretzky is often noted as the greatest hockey player of all time *because* he has the most points among all players even if one were to take away his goals scored.) Nonetheless, a limitation of using this metric is that it does not account for defencemen and goalies, whose values cannot necessarily be deciphered through points. 
 
 * Golf - Players were ranked based on the number of majors (Masters, PGA Championship, U.S. Open, and The Open) they won. More specifically, we included players who have won at least 5 majors. Additionally, we ranked players based on PGA tournament victories.
 
@@ -116,19 +188,31 @@ One distinction that we chose to investigate is contact sports vs. non-contact s
 
 Using the criteria noted above, we decided to classify **basketball, football, hockey, and soccer** as **contact** sports; conversely, **baseball, cricket, golf, and tennis** were deemed **limited contact or non contact**. In doing so, we were looking to investigate whether the type of sport that a player participates in affects a GOAT candidate's career length. 
 
----(Include Figure 11 here)---
+```{r}
 
-Based on **Figure 11*, no trends in particular seem to stick out. Although football and basketball (both of which are contact sports) both seem to have shorter average career lengths, one cannot say this for all contact sports compared to non-contact sports. However, a potential limitation/inconsistency for golf (a non-contact sport) is that the average career length may appear to be shorter than it actually is because we used the first and last years a player won a major for a career span.
+fig.11
+
+```
+
+
+Based on **Figure 11**, no trends in particular seem to stick out. Although football and basketball (both of which are contact sports) both seem to have shorter average career lengths, one cannot say this for all contact sports compared to non-contact sports. However, a potential limitation/inconsistency for golf (a non-contact sport) is that the average career length may appear to be shorter than it actually is because we used the first and last years a player won a major for a career span.
 
 \newpage
 
 ## Maximal Value for Increasing Distribution
 
-Let’s examine this from a probabilistic perspective. Consider a standard uniform distribution, that is randomly picking any real number between 0 and 1 with equal probability, including any fraction or decimal in that range. Imagine we keep drawing random numbers from this standard uniform distribution. The first value we pick must be the largest value we have observed as of yet, just like the first competitor to complete a time trial will always be the leader in the competition, even if only temporarily. However, the second value we draw has to be larger than the first value, and since they’re both drawn randomly, it has probability ½ of being the largest value.  The 3rd value would have to be larger than the first and second values, which has probability 1/3.  This logic continues, meaning the probability that the nth draw is larger than all previous draws is 1/n.  Under that model, we expect that we will see a lot of “bests” early on, but fewer and fewer as time goes on. This makes intuitive sense. When a sport is new, an athlete is competing with only a few predecessors. Later on, when competing to be the best ever, an athlete may be competing with the same number of contemporaries, but also competing against many more “ghosts” who could have finished their careers decades ago. 
+One can examine the idea of finding the next GOAT candidate from a probabilistic perspective.
 
-This simple model assumes that the distribution remains the same, in other words that there is no growth over time. Let’s look at the other extreme that holds in a completely different domain. Moore’s Law states “the number of transistors on integrated circuits doubles about every two years.” In that case, as long as Moore’s Law holds, we systematically expect the latest generation of computers to be much faster than all previous generations. It’s worth noting that by invoking doubling, Moore’s Law describes exponential growth, but even linear growth could suffice to expect new computers to be faster than old computers. Consider a variant of Moore’s Law that would instead say “the number of transistors on integrated circuits increases by 1000 every two years.”   
+Consider a standard uniform distribution ($U(0,1)$), which allows you to randomly pick any real number between 0 and 1 with equal probability. Imagine we keep drawing random numbers from this distribution. The 1st value we pick must be the largest value we have observed as of yet, just like the first competitor to complete a time trial will always be the leader in the competition, even if only temporarily. Therefore, the probability that it is the largest value, $P(largest)$, is 1. Thereafter, in order for the 2nd value we draw to be the largest, it has to be larger than the 1st value; since both values are drawn randomly, it has $P(largest)$ = $\frac{1}{2}$. Likewise, in order for the 3rd value to be the largest, it has to be larger than the 1st and 2nd draws, giving it a  $P(largest)$ of $\frac{1}{3}$.  This logic continues, meaning the probability that the nth draw is larger than all previous draws is $\frac{1}{n}$. Under this model, we expect that we will see a lot of “bests” early on, but fewer and fewer as time goes on. This concept makes intuitive sense when applied our topic. When a sport is new, an athlete is competing with only a few predecessors. Later on, when competing to be the best ever, an athlete may be competing with the same number of contemporaries, but also competing against many more “ghosts” from the pasts who could have finished their careers decades ago. This simple-and perhaps over simplistic-model assumes that the distribution remains the same; in other words, it assumes that there is no growth over time and that athletes do not improve over tine.
 
-This linear variant of Moore’s law might describe the progress of professional athletes. Over time, sports has become a bigger business, and training methods have improved. J.J. Redick caused a bit of a stir when he said Bob Cousy played against “plumbers and firemen.” As a stylized model, let’s imagine the first year, players are drawn from a N(0, 1). In any subsequent year i, the players are drawn from a N(c(i-1), 1). This means that the expected average ability increases by c units each year. If c is very large, we’d expect each year to be much better than every previous year. This is still a very simple model, that assumes a constant linear increase in skill, when in fact, skill growth may accelerate or decelerate. Maybe rule changes, or new equipment, or revolutionary strategies represent a larger one-time spike.  It seems plausible that new swimsuits in 2008-2009 represented a one-time drastic boost, but that advantage was soon removed when the suits were banned, leaving the original moderate improvement trend without the spike from equipment. Furthermore, improving competition may obscure greatness, as an outlier in an earlier era may be merely excellent in a later one.     
+Conversely, we can consider the other extreme that holds in a completely different domain. Moore’s Law states “the number of transistors on integrated circuits doubles about every two years.” In that case, as long as Moore’s Law holds, we systematically expect the latest generation of computers to be much faster than all previous generations.^[It is worth noting that by invoking doubling, Moore’s Law describes exponential growth, but even linear growth could suffice to expect new computers to be faster than old computers. Consider a variant of Moore’s Law that would instead say “the number of transistors on integrated circuits increases by 1000 every two years.”]
+
+
+KEEP EDITING / ADDING
+
+-----
+
+This linear variant of Moore’s law might describe the progress of professional athletes. Over time, sports has become a bigger business, and training methods have improved. J.J. Reddick caused a bit of a stir when he said Bob Cousy played against “plumbers and firemen.” As a stylized model, let’s imagine the first year, players are drawn from a N(0, 1). In any subsequent year i, the players are drawn from a N(c(i-1), 1). This means that the expected average ability increases by c units each year. If c is very large, we’d expect each year to be much better than every previous year. This is still a very simple model, that assumes a constant linear increase in skill, when in fact, skill growth may accelerate or decelerate. Maybe rule changes, or new equipment, or revolutionary strategies represent a larger one-time spike.  It seems plausible that new swimsuits in 2008-2009 represented a one-time drastic boost, but that advantage was soon removed when the suits were banned, leaving the original moderate improvement trend without the spike from equipment. Furthermore, improving competition may obscure greatness, as an outlier in an earlier era may be merely excellent in a later one.     
 
 Let’s examine this simple model. Imagine that each year for 100 years, n new athletes turn professional. Each one of those n new professionals has the same probability of exceeding all values observed in prior years, given by:
 
@@ -142,7 +226,145 @@ n = 10, 100, 1000
 c = .01, .05, .1, 1 
 
 
-Competition complicates things 
+Competition greatly complicates our question at hand. 
+
+
+```{r}
+
+library(wesanderson)
+
+#initialize results for 
+#N= 10, 100, 1000
+#C = 0, .01, .05, .1, .5
+
+results_n_10_c_0 = c(1, rep(0, 99))
+results_n_100_c_0 = c(1, rep(0, 99))
+results_n_1000_c_0 = c(1, rep(0, 99))
+
+
+results_n_10_c_01 = c(1, rep(0, 99))
+results_n_100_c_01 = c(1, rep(0, 99))
+results_n_1000_c_01 = c(1, rep(0, 99))
+
+results_n_10_c_05 = c(1, rep(0, 99))
+results_n_100_c_05 = c(1, rep(0, 99))
+results_n_1000_c_05 = c(1, rep(0, 99))
+
+results_n_10_c_10 = c(1, rep(0, 99))
+results_n_100_c_10 = c(1, rep(0, 99))
+results_n_1000_c_10 = c(1, rep(0, 99))
+
+results_n_10_c_50 = c(1, rep(0, 99))
+results_n_100_c_50 = c(1, rep(0, 99))
+results_n_1000_c_50 = c(1, rep(0, 99))
+
+#This is the main function of interest. We are looking at the product of the CDFs
+# of previous generations (with lower mean values) multiplied n times, where n is
+# the number of players per generation
+# integrated over the pdf of the skill of a player in the current generation
+
+integrand <- function(x, i, n, inc_const) {
+  (prod(pnorm(x, mean = seq(from =0, to = inc_const*(i-2), length.out=i-1)))^n)*dnorm(x, mean= inc_const*(i-1))  
+  
+}
+
+#Run this integration for 100 years/generations, each year incrementing the skill level and number of previous generations
+#Note that since sigma=1, we're just integrating from  mean - 5 to mean +5, where the mean is of the current generation
+#First we calculate the probability 1 player will be the best, then from there, we calculate the probability that at least 1 player in the 
+#current generation will be better than all players of all previous generations
+for(i in 2:100){
+#print(i)
+  
+result_10_0 = integrate(Vectorize(integrand), lower = -5, upper = 5, subdivisions = 100000L, i=i, inc_const=0, n=10, rel.tol = .5e-11,  abs.tol = 0)$value
+result_100_0 = integrate(Vectorize(integrand), lower = -5, upper = 5, subdivisions = 100000L, i=i, inc_const=0, n=100, rel.tol = .5e-11,  abs.tol = 0)$value
+result_1000_0 = integrate(Vectorize(integrand), lower = -5, upper = 5, subdivisions = 100000L, i=i, inc_const=0, n=1000, rel.tol = .5e-11,  abs.tol = 0)$value
+  
+  
+result_10_01 = integrate(Vectorize(integrand), lower = (i*.01)-5, upper = (i*.01)+5, subdivisions = 100000L, i=i, inc_const=.01, n=10, rel.tol = .5e-11, abs.tol = 0)$value
+result_100_01 = integrate(Vectorize(integrand), lower = (i*.01)-5, upper = (i*.01)+5, subdivisions = 100000L, i=i, inc_const=.01, n=100, rel.tol = .5e-11,  abs.tol = 0)$value
+result_1000_01 = integrate(Vectorize(integrand), lower =(i*.01)-5, upper = (i*.01)+5, subdivisions = 100000L, i=i, inc_const=.01, n=1000, rel.tol = .5e-11,  abs.tol = 0)$value
+
+result_10_05 = integrate(Vectorize(integrand), lower = (i*.05)-5, upper = (i*.05)+5, subdivisions = 100000L, i=i, inc_const=.05, n=10, rel.tol = .5e-11, abs.tol = 0)$value
+result_100_05 = integrate(Vectorize(integrand), lower = (i*.05)-5, upper = (i*.05)+5, subdivisions = 100000L, i=i, inc_const=.05, n=100, rel.tol = .5e-11,  abs.tol = 0)$value
+result_1000_05 = integrate(Vectorize(integrand), lower = (i*.05)-5, upper = (i*.05)+5, subdivisions = 100000L, i=i, inc_const=.05, n=1000, rel.tol = .5e-11,  abs.tol = 0)$value
+
+result_10_10 = integrate(Vectorize(integrand), lower = (i*.1)-5, upper = (i*.1)+5, subdivisions = 100000L, i=i, inc_const=.1, n=10, rel.tol = .5e-11,  abs.tol = 0)$value
+result_100_10 = integrate(Vectorize(integrand), lower = (i*.1)-5, upper = (i*.1)+5, subdivisions = 100000L, i=i, inc_const=.1, n=100, rel.tol = .5e-11,  abs.tol = 0)$value
+result_1000_10 = integrate(Vectorize(integrand), lower = (i*.1)-5, upper = (i*.1)+5, subdivisions = 100000L, i=i, inc_const=.1, n=1000, rel.tol = .5e-11,  abs.tol = 0)$value
+
+result_10_50 = integrate(Vectorize(integrand), lower = (i*.5)-5, upper = (i*.5)+5, subdivisions = 100000L, i=i, inc_const=.5, n=10, rel.tol = .5e-11,  abs.tol = 0)$value
+result_100_50 = integrate(Vectorize(integrand), lower = (i*.5)-5, upper = (i*.5)+5, subdivisions = 100000L, i=i, inc_const=.5, n=100, rel.tol = .5e-11,  abs.tol = 0)$value
+result_1000_50 = integrate(Vectorize(integrand), lower = (i*.5)-5, upper = (i*.5)+5, subdivisions = 100000L, i=i, inc_const=.5, n=1000, rel.tol = .5e-11,  abs.tol = 0)$value
+
+
+#######
+results_n_10_c_0[i]= 1-((1-result_10_0)^10)
+results_n_100_c_0[i] = 1-((1-result_100_0)^100)
+results_n_1000_c_0[i] = 1-((1-result_1000_0)^1000)
+
+results_n_10_c_01[i]= 1-((1-result_10_01)^10)
+results_n_100_c_01[i] = 1-((1-result_100_01)^100)
+results_n_1000_c_01[i] = 1-((1-result_1000_01)^1000)
+
+results_n_10_c_05[i]= 1-((1-result_10_05)^10)
+results_n_100_c_05[i] = 1-((1-result_100_05)^100)
+results_n_1000_c_05[i] = 1-((1-result_1000_05)^1000)
+
+results_n_10_c_10[i]= 1-((1-result_10_10)^10)
+results_n_100_c_10[i] = 1-((1-result_100_10)^100)
+results_n_1000_c_10[i] = 1-((1-result_1000_10)^1000)
+
+results_n_10_c_50[i]= 1-((1-result_10_50)^10)
+results_n_100_c_50[i] = 1-((1-result_100_50)^100)
+results_n_1000_c_50[i] = 1-((1-result_1000_50)^1000)
+
+}
+
+#Plot the results above. There isn't much action after the curves stabilize, so we're only displaying over 30 generations, not 100
+#Why get stability? At some point, the probability that a player from more than G generations ago is still the highest value effectively goes to 0
+# at that point, it's only really a (weighted by recency) competition of the past G generations. Think about it, a N(-5, 1) will almost never exceed a N(0, 1), but a N(-.1, 1) may occasionally
+
+wp = wes_palette("Darjeeling1", 5)
+plot(results_n_1000_c_50[1:30], ylim=0:1, type='l', col=wp[1], xlab ="generation", ylab ="GOAT probability", main = "GOAT Probability with different N and C" )
+lines(1:30, results_n_1000_c_10[1:30], col=wp[2] )
+lines(1:30, results_n_1000_c_05[1:30], col=wp[3] )
+lines(1:30, results_n_1000_c_01[1:30], col=wp[5] )
+lines(1:30, results_n_100_c_50[1:30], lty=2, col=wp[1])
+lines(1:30, results_n_100_c_10[1:30], lty=2, col=wp[2])
+lines(1:30, results_n_100_c_05[1:30], col=wp[3] , lty=2)
+lines(1:30, results_n_100_c_01[1:30], col=wp[5] , lty=2)
+lines(1:30, results_n_10_c_50[1:30], lty=3, col=wp[1])
+lines(1:30, results_n_10_c_10[1:30], col=wp[2], lty=3 )
+lines(1:30, results_n_10_c_05[1:30], col=wp[3], lty=3 )
+lines(1:30, results_n_10_c_01[1:30], col=wp[5], lty=3 )
+lines(1:30, results_n_1000_c_0[1:30], type='l', lty=1)
+#lines(1:100, results_n_100_c_0, col='blue', lwd=4 )
+#lines(1:100, results_n_10_c_0, col='blue' )
+
+legend(x =3.2, y = .77, legend=c("c=.5, N=1000", "c=.5, N=100","c=.5, N=10"), col=wp[1], lty=1:3, lwd=2, horiz=T, box.lty=0, cex=.67, bg="transparent")
+legend(x =3.2, y = .7, legend=c("c=.1, N=1000", "c=.1, N=100","c=.1, N=10"), col=wp[2], lty=1:3, lwd=2, horiz=T, box.lty=0, cex=.67, bg="transparent")
+legend(x =3.2, y = .63, legend=c("c=.05, N=1000", "c=.05, N=100","c=.05, N=10"), col=wp[3], lty=1:3, lwd=2, horiz=T, box.lty=0, cex=.65, bg ="transparent")
+legend(x =3.2, y = .56, legend=c("c=.01, N=1000", "c=.01, N=100","c=.01, N=10"), col=wp[5], lty=1:3, lwd=2, horiz=T, box.lty=0, cex=.65, bg ="transparent")
+legend(x=12.5, y=.49, legend="c=0, N=1000", col=1, lty=1, lwd=2, horiz=T, box.lty=0, cex=.67, bg ="transparent")
+
+
+
+#Let's turn the previous plot on it's head. Instead of keeping c fixed and looking at probabilities over the generations and different values of N
+#We can instead fix the generation and plot the probabilities for different values of C
+#Below we plot the "stable probability" for different c values from 0 to 1 at generation=100, when N=1000
+results_n_1000_c_i = rep(0,101)
+for(i in 0:100){
+  # print(i)
+  result_1000_i = integrate(Vectorize(integrand), lower = (i)-5, upper = (i)+5, subdivisions = 100000L, i=100, inc_const=i/100, n=1000, rel.tol = .5e-11,  abs.tol = 0)$value
+  
+  results_n_1000_c_i[i+1] = 1-((1-result_1000_i)^1000)
+}  
+
+#rate of improvement vs Goat probability - note that this is probably dependent on a ratio of c/sigma, but since sigma=1, we can use the rate itself here 
+plot((0:100)/100, results_n_1000_c_i, xlab = "Average improvement per generation",  ylab ="probability of GOAT in 100th generation", main = "Long Term GOAT probability (N=1000)", cex=.8)
+
+```
+
 
 \newpage
 
@@ -156,14 +378,21 @@ Various changes in rule, equipment, and technique have enabled athletes to gain 
 
 The Fosbury flop is the most predominant technique used in the track and field event high jump. It was introduced by US Olympian and gold medalist Dick Fosbury, who first used the technique at the 1968 Summer Olympics in Mexico City. The technique was revolutionary in the sense that it consists of jumping backwards off the "wrong" foot. While Fosbury was the first athlete to use this technique in 1968, it was quickly adopted, as 28 of the 40 high jumpers used it in the 1972 Munich Olympics. Furthermore, the technique was quickly deemed to be the most effective and efficient way to perform a high jump. Today, the Fosbury flop is the only technique used by Olympic level high jumpers.
 
-The Fosbury flop is a prime example of how advancements in technique and strategy can give athletes advantages over their predecessors. The advent and introduction of the technique has been linked to the rapid world record progression of the high jump in the 1970's and 80's. More information about it can be found [\textcolor{blue}{here}](https://worldathletics.org/news/feature/dick-fosbury-flop)[@Flop].
+The Fosbury flop is a prime example of how advancements in technique and strategy can give athletes advantages over their predecessors. The advent and introduction of the technique has been linked to the rapid world record progression of the high jump in the 1970's and 80's. More information about it can be found [\textcolor{blue}{here}] (https://worldathletics.org/news/feature/dick-fosbury-flop)[@Flop].
 
 
 ### 2. Tech Suits
 
 Tech suits burst onto the professional swim scene shortly thereafter the 2004 Summer Olympics in Athens when Speedo asked NASA to help it design swim suits will less drag. In the subsequent yeats, Speedo released the LZR Racer, which furthermore led to the release of various other aerodynamic tech suits - or "susper-suits" - from prominent swimwear companies. During this period - known as the "shiny suit era" - swimming world records were broken at an unprecedented pace. More specifically, *74* world records were broken by swimmers wearing the LZR Racer suit. Consequently, World Aquatics, formerly known as the Federation Internationale de Natation (FINA), controversially banned tech suits in 2009, which has led a noticeable drop-off in the pace at which world records have been broken [@Tech]. 
 
-Tech suits are a prime example of how advancements in equipment can give athletes advantages over their predecessors. More information about them and the impact they had on world records can be found [\textcolor{blue}{here}](https://www.swimmingworldmagazine.com/news/can-world-records-supersede-the-super-suit-era/)[@Tech2].
+Tech suits are a prime example of how advancements in equipment can give athletes advantages over their predecessors. More information about them and their impact(s) on world records can be found [\textcolor{blue}{here}](https://www.swimmingworldmagazine.com/news/can-world-records-supersede-the-super-suit-era/) [@Tech2].
+
+\newpage
+
+## Final Note
+
+If you have further questions about our data collection process or any other aspect of the project, we encourage you to look at our [\textcolor{blue}{GitHub repository}](https://github.com/murray3625/Sports-GOAT-Project). 
+
 
 \newpage
 
