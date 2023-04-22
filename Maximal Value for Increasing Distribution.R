@@ -46,7 +46,7 @@ result_10_0 = integrate(Vectorize(integrand), lower = -5, upper = 5, subdivision
 result_100_0 = integrate(Vectorize(integrand), lower = -5, upper = 5, subdivisions = 100000L, i=i, inc_const=0, n=100, rel.tol = .5e-11,  abs.tol = 0)$value
 result_1000_0 = integrate(Vectorize(integrand), lower = -5, upper = 5, subdivisions = 100000L, i=i, inc_const=0, n=1000, rel.tol = .5e-11,  abs.tol = 0)$value
   
-  
+# rate of improvement is inc_const
 result_10_01 = integrate(Vectorize(integrand), lower = (i*.01)-5, upper = (i*.01)+5, subdivisions = 100000L, i=i, inc_const=.01, n=10, rel.tol = .5e-11, abs.tol = 0)$value
 result_100_01 = integrate(Vectorize(integrand), lower = (i*.01)-5, upper = (i*.01)+5, subdivisions = 100000L, i=i, inc_const=.01, n=100, rel.tol = .5e-11,  abs.tol = 0)$value
 result_1000_01 = integrate(Vectorize(integrand), lower =(i*.01)-5, upper = (i*.01)+5, subdivisions = 100000L, i=i, inc_const=.01, n=1000, rel.tol = .5e-11,  abs.tol = 0)$value

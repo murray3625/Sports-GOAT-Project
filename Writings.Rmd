@@ -205,29 +205,17 @@ One can examine the idea of finding the next GOAT candidate from a probabilistic
 
 Consider a standard uniform distribution ($U(0,1)$), which allows you to randomly pick any real number between 0 and 1 with equal probability. Imagine we keep drawing random numbers from this distribution. The 1st value we pick must be the largest value we have observed as of yet, just like the first competitor to complete a time trial will always be the leader in the competition, even if only temporarily. Therefore, the probability that it is the largest value, $P(largest)$, is 1. Thereafter, in order for the 2nd value we draw to be the largest, it has to be larger than the 1st value; since both values are drawn randomly, it has $P(largest)$ = $\frac{1}{2}$. Likewise, in order for the 3rd value to be the largest, it has to be larger than the 1st and 2nd draws, giving it a  $P(largest)$ of $\frac{1}{3}$.  This logic continues, meaning the probability that the nth draw is larger than all previous draws is $\frac{1}{n}$. Under this model, we expect that we will see a lot of “bests” early on, but fewer and fewer as time goes on. This concept makes intuitive sense when applied our topic. When a sport is new, an athlete is competing with only a few predecessors. Later on, when competing to be the best ever, an athlete may be competing with the same number of contemporaries, but also competing against many more “ghosts” from the pasts who could have finished their careers decades ago. This simple-and perhaps over simplistic-model assumes that the distribution remains the same; in other words, it assumes that there is no growth over time and that athletes do not improve over tine.
 
-Conversely, we can consider the other extreme that holds in a completely different domain. Moore’s Law states “the number of transistors on integrated circuits doubles about every two years.” In that case, as long as Moore’s Law holds, we systematically expect the latest generation of computers to be much faster than all previous generations.^[It is worth noting that by invoking doubling, Moore’s Law describes exponential growth, but even linear growth could suffice to expect new computers to be faster than old computers. Consider a variant of Moore’s Law that would instead say “the number of transistors on integrated circuits increases by 1000 every two years.”]
+Conversely, we can consider the other extreme that holds in a different domain. [\textcolor{blue}{Moore's Law}](https://www.technologyreview.com/2020/02/24/905789/were-not-prepared-for-the-end-of-moores-law/) states “the number of transistors on integrated circuits doubles about every two years.” In that case, as long as Moore’s Law holds, we systematically expect the latest generation of computers to be much faster than all previous generations.^[It is worth noting that by invoking doubling, Moore’s Law describes exponential growth, but even linear growth could suffice to expect new computers to be faster than old computers. Consider a variant of Moore’s Law that would instead say “the number of transistors on integrated circuits increases by 1000 every two years.”]
 
+A linear variant of Moore’s law may describe the progress of professional athletes. Over time, sports has become a bigger business, and training methods have improved. J.J. Reddick caused a bit of a stir when he said, on his podcast *The Old Man & the Three*, that Bob Cousy played against “plumbers and firemen.” As a stylized model, let’s imagine that in the first year, players are drawn from a standard Gaussian distribution ($N(0,1)$). In any subsequent year $i$, the players are drawn from a $N(c(i-1), 1)$ distribution. The distribution shift  means that the expected average ability increases by $c$ units each year. If c is very large, we would expect each year to be much better than every previous year. This model is still over simplistic in that it assumes a constant linear increase in skill, when in fact, skill growth may accelerate or decelerate. Additionally, rule changes, new equipment, or revolutionary strategies can represent a larger one-time spike. It seems plausible that new swimsuits in 2008-2009 (described in more detail in [Revolutions in Sports]) represented a one-time drastic boost, but that advantage was soon removed when the suits were banned, leaving the original moderate improvement trend without the spike from equipment. Furthermore, improving competition may obscure greatness, as an outlier in an earlier era may be merely excellent in a later one. On a podcast called *The Hoopaholics", Brooklyn Nets guard Spencer Dinwiddie said that he would be "God" if he were dropped in the 1960's and played with NBA players from then.  
 
-KEEP EDITING / ADDING
+Let’s examine this simple model. Imagine that each year for 100 years, $n$ new athletes turn professional. Each one of those $n$ new professionals has the same probability of exceeding all values observed in prior years, given by:
 
------
+$P_{i1} = \int_{-\infty}^{\infty}\prod_{j=1}^{i-1}\prod_{k=1}^{n}F_{x_{jk}}(a)f_{x_{i1}}(a)da$
 
-This linear variant of Moore’s law might describe the progress of professional athletes. Over time, sports has become a bigger business, and training methods have improved. J.J. Reddick caused a bit of a stir when he said Bob Cousy played against “plumbers and firemen.” As a stylized model, let’s imagine the first year, players are drawn from a N(0, 1). In any subsequent year i, the players are drawn from a N(c(i-1), 1). This means that the expected average ability increases by c units each year. If c is very large, we’d expect each year to be much better than every previous year. This is still a very simple model, that assumes a constant linear increase in skill, when in fact, skill growth may accelerate or decelerate. Maybe rule changes, or new equipment, or revolutionary strategies represent a larger one-time spike.  It seems plausible that new swimsuits in 2008-2009 represented a one-time drastic boost, but that advantage was soon removed when the suits were banned, leaving the original moderate improvement trend without the spike from equipment. Furthermore, improving competition may obscure greatness, as an outlier in an earlier era may be merely excellent in a later one.     
+Where $F_(X_jk)$ represents the CDF of a value in year j, and $f_(X_i1)$ represents the pdf of a value in year $i$. The probability that no value in year $i$ is greater than all values observed in previous years is therefore $(1-P_{i1})^n$ , so the probability the greatest year appears in year $i$ is $1-(1-P_{i1})n$.
 
-Let’s examine this simple model. Imagine that each year for 100 years, n new athletes turn professional. Each one of those n new professionals has the same probability of exceeding all values observed in prior years, given by:
-
-\textcolor{red}{$P_{i1} = \int_{-\infty}^{\infty}\prod_{j=1}^{i-1}\prod_{k=1}^{n}F_{x_{jk}}(a)f_{x_{i1}}(a)da$}
-
-Where F_(X_jk ) represents the CDF of a value in year j, and f_(X_i1 )represents the pdf of a value in year i. The probability that no value in year i is greater than all values observed in previous years is therefore (1- Pi1)n , so the probability the greatest year appears in year i is 1- (1- Pi1)n.
-
- Chart 1 shows the probability that under different values of c and n, an athlete debuting each year will have the highest value observed so far. 
-
-n = 10, 100, 1000
-c = .01, .05, .1, 1 
-
-
-Competition greatly complicates our question at hand. 
-
+Chart 1 shows the probability that an athlete debuting each year will have the highest value observed so far under different values of $c$ and $n$. 
 
 ```{r}
 
@@ -325,7 +313,7 @@ results_n_1000_c_50[i] = 1-((1-result_1000_50)^1000)
 # at that point, it's only really a (weighted by recency) competition of the past G generations. Think about it, a N(-5, 1) will almost never exceed a N(0, 1), but a N(-.1, 1) may occasionally
 
 wp = wes_palette("Darjeeling1", 5)
-plot(results_n_1000_c_50[1:30], ylim=0:1, type='l', col=wp[1], xlab ="generation", ylab ="GOAT probability", main = "GOAT Probability with different N and C" )
+plot(results_n_1000_c_50[1:30], ylim=0:1, type='l', col=wp[1], xlab ="Generation", ylab ="GOAT Probability", main = "GOAT Probability with Different N and C" )
 lines(1:30, results_n_1000_c_10[1:30], col=wp[2] )
 lines(1:30, results_n_1000_c_05[1:30], col=wp[3] )
 lines(1:30, results_n_1000_c_01[1:30], col=wp[5] )
@@ -361,10 +349,11 @@ for(i in 0:100){
 }  
 
 #rate of improvement vs Goat probability - note that this is probably dependent on a ratio of c/sigma, but since sigma=1, we can use the rate itself here 
-plot((0:100)/100, results_n_1000_c_i, xlab = "Average improvement per generation",  ylab ="probability of GOAT in 100th generation", main = "Long Term GOAT probability (N=1000)", cex=.8)
+plot((0:100)/100, results_n_1000_c_i, xlab = "Average Improvement per Generation",  ylab ="Probability of GOAT in 100th Generation", main = "Long Term GOAT Probability (N=1000)", cex=.8)
 
 ```
 
+[\textcolor{red}{Add commentary as needed}]
 
 \newpage
 
@@ -378,7 +367,7 @@ Various changes in rule, equipment, and technique have enabled athletes to gain 
 
 The Fosbury flop is the most predominant technique used in the track and field event high jump. It was introduced by US Olympian and gold medalist Dick Fosbury, who first used the technique at the 1968 Summer Olympics in Mexico City. The technique was revolutionary in the sense that it consists of jumping backwards off the "wrong" foot. While Fosbury was the first athlete to use this technique in 1968, it was quickly adopted, as 28 of the 40 high jumpers used it in the 1972 Munich Olympics. Furthermore, the technique was quickly deemed to be the most effective and efficient way to perform a high jump. Today, the Fosbury flop is the only technique used by Olympic level high jumpers.
 
-The Fosbury flop is a prime example of how advancements in technique and strategy can give athletes advantages over their predecessors. The advent and introduction of the technique has been linked to the rapid world record progression of the high jump in the 1970's and 80's. More information about it can be found [\textcolor{blue}{here}] (https://worldathletics.org/news/feature/dick-fosbury-flop)[@Flop].
+The Fosbury flop is a prime example of how advancements in technique and strategy can give athletes advantages over their predecessors. The advent and introduction of the technique has been linked to the rapid world record progression of the high jump in the 1970's and 80's. More information about it can be found [\textcolor{blue}{here}](https://worldathletics.org/news/feature/dick-fosbury-flop)[@Flop].
 
 
 ### 2. Tech Suits
