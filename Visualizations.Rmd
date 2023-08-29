@@ -274,6 +274,29 @@ ggplot(data = golf.filter,
 
 \newpage
 
+## Chess
+
+```{r figure-11}
+
+golf.filter = data[data$Sport == "Chess",]
+
+ggplot(data = golf.filter, 
+       aes(x = as.numeric(Year), y = as.integer(N))) + 
+       scale_y_continuous(limits = c(0, 4), breaks = seq(0, 4, by = 1))+
+  geom_line() +
+  labs(x = "Year", 
+       y = "Number of Potential GOATs", 
+       title = "Number of Potential Chess GOATs by Year",
+       caption = "Figure 11") + 
+  theme_bw() +
+  theme(text = element_text(family = "serif")) +
+  theme(plot.title=element_text(family = "serif", face = "bold", hjust = 0.5, size = 12))
+
+
+```
+
+\newpage
+
 ## Commentary & Notes
 
 ***Cricket***
@@ -294,20 +317,9 @@ ggplot(data = golf.filter,
 
 * An interesting note about football is that there were **4** GOAT candidates playing from 2000-2004. I personally wonder if this increase in GOAT candidates can be attributed to the inflation of the importance of the quarterback position, as 3 of the 4 candidates were quarterbacks (Brett Farve, Peyton Manning, and Tom Brady). Of course, the presence of 4 GOAT candidates can also be chalked up to mere coincidence, or simply the fact that we have multiple (2) lists of GOATs for football. 
 
-\newpage
+***Chess***
 
-### Average Career Length by Sport (in Years)
-
-* Cricket
-* Hockey
-* Soccer
-* Baseball
-* Tennis
-* Golf
-* Basketball: 4.5
-  * https://dunkorthree.com/nba-player-career-length/
-* Football: 3.3
-  * https://www.statista.com/statistics/240102/average-player-career-length-in-the-national-football-league/
+* Nothing in particular stands out
 
 \newpage
 
@@ -315,10 +327,12 @@ ggplot(data = golf.filter,
 
 ```{r tbl-1}
 
-tbl.1 <- as.data.frame(data.2)%>%
+tbl.1.data <- as.data.frame(data.2)%>%
   arrange(., desc(avg.length)) %>%
   mutate (avg.length = round(avg.length, 1)) %>%
-  rename("Average Career Length" = avg.length)%>%
+  rename("Average Career Length" = avg.length)
+
+tbl.1 <- tbl.1.data %>%
   kable(format = "markdown", align = "cc", caption = "Average Career Length by Sport for GOAT Candidates") %>%
   kable_styling(font_size = 8.5, latex_options = c("hold_position"),
                 full_width = FALSE, position = "float_left")
@@ -331,7 +345,7 @@ tbl.1
 
 # data
 lengths <- c(5.6, 4.8, 12.5, 3.3, 5.95, 5.72, 8.6, 6.12)
-tbl.2.data <- cbind(data.2[, 1], lengths)
+tbl.2.data <- cbind(data.2[-3, 1], lengths)
 colnames(tbl.2.data) <- colnames(data.2)
 
 # figure 
@@ -390,7 +404,7 @@ data.combined.2 <- data.combined %>%
 
 # add new indicator variable for contact sports
 data.combined.2$Contact <- "No"
-data.combined.2[c(2, 4, 6, 7), 4] <- "Yes"
+data.combined.2[c(2, 5, 7, 8), 4] <- "Yes"
 
 ```
 
@@ -409,19 +423,19 @@ tbl.4
 ```
 
 
-```{r figure-11}
+```{r figure-12}
 
 ggplot(data = data.combined.2, 
        aes(x = avg.length, y = as.integer(N),
            shape = Sport, color = Contact)) +
-  scale_shape_manual(values = seq(8)) + 
+  scale_shape_manual(values = seq(9)) + 
   scale_x_continuous(expand = c(0, 0), limits = c(0, 25)) +
   scale_y_continuous(expand = c(0, 0), limits = c(0, 80)) +
   geom_point() +
   labs(x = "Average Career Length in Years", 
        y = "# Years with no GOAT Candidates", 
        title = "# Years with No Potential GOATs vs. Average Career Length for GOAT Candidates",
-       caption = "Figure 11") + 
+       caption = "Figure 12") + 
   theme_bw() +
   theme(text = element_text(family = "serif")) +
   theme(plot.title=element_text(family = "serif", face = "bold", hjust = 0.5, size = 12)) +
@@ -429,9 +443,10 @@ ggplot(data = data.combined.2,
 
 ```
 
-```{r figure-12}
+```{r figure-13}
 
-data.combined.3 <- data.combined.2
+data.combined.3 <- data.combined.2[-3,]
+data.combined.3[, 3] <- c(5.6, 4.8, 12.5, 3.3, 5.95, 5.72, 8.6, 6.12)
 data.combined.3[, 3] <- as.data.frame(tbl.2.data)%>%
   arrange(., Sport) %>%
   select("avg.length")

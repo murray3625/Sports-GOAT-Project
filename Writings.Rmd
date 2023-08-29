@@ -67,17 +67,17 @@ data.combined.2[c(2, 4, 6, 7), 4] <- "Yes"
 ###
 
 
-fig.11 <- ggplot(data = data.combined.2, 
+fig.12 <- ggplot(data = data.combined.2, 
        aes(x = avg.length, y = as.integer(N),
            shape = Sport, color = Contact)) +
-  scale_shape_manual(values = seq(8)) + 
+  scale_shape_manual(values = seq(9)) + 
   scale_x_continuous(expand = c(0, 0), limits = c(0, 25)) +
   scale_y_continuous(expand = c(0, 0), limits = c(0, 80)) +
   geom_point() +
   labs(x = "Average Career Length in Years", 
        y = "# Years with no GOAT Candidates", 
        title = "# Years with No Potential GOATs vs. Average Career Length for GOAT Candidates",
-       caption = "Figure 11") + 
+       caption = "Figure 12") + 
   theme_bw() +
   theme(text = element_text(family = "serif")) +
   theme(plot.title=element_text(family = "serif", face = "bold", hjust = 0.5, size = 12)) +
@@ -95,7 +95,7 @@ fig.11 <- ggplot(data = data.combined.2,
 
 ## 1.1 Background
 
-A common phrase that is emphasized among sports fans and expert calls to not take greatness for granted. While the sports themselves are (hopefully) lasting, the athletes come and go, with their careers seeming like a brief blip in time when it is all said and done. Baseball fans listen to stories of the Great Bambino from their elders, wondering if they will ever see a player or a talent burst on to the scene again. Meanwhile, basketball fans seem to engage in a persistent dispute between Michael Jordan and Lebron James. 
+A common phrase that is emphasized among sports fans and expert calls to not take greatness for granted. While the sports themselves are (hopefully) lasting, the athletes come and go, with their careers seeming like a brief blip in time when it is all said and done. Baseball fans listen to stories of the Great Bambino from their elders, wondering if they will ever see a player or a talent burst on to the scene again. Meanwhile, basketball fans seem to engage in an everlasting debate between Michael Jordan and Lebron James. 
 
 Nonetheless, with the seemingly endless abundance of talent on display today, coupled with the advances being made in athlete performance and recovery that have athletes performing at the highest levels ever, one has to call to question: can we take greatness for granted? Are there more greatest of all time (GOAT) candidates than one may intuitively believe there to be? Are there patterns in which greatness occurs in one sport, and a lack thereof in another? Do certainly qualities (e.g: contact vs. non-contact) tend to attract more GOAT candidates to a sport than to another. In this paper, we seek to provide the answers to these questions. 
 
@@ -114,12 +114,13 @@ Due to the unique nature of this project, we had to impute our own datasets. We 
 6. Football
 7. Ice Hockey
 8. Golf
+9. Chess
 
 The inclusion of football, baseball, basketball, and ice hockey can be attributed to the fact that they are the 4 of the 5 most popular sports in the United States [@Gallup]. Golf and tennis were included because professionals in both sports compete in four "major" tournaments each year. Soccer and cricket were included due to their immense popularity and following worldwide [@SFB]. 
 
 ### 1.2.2 GOAT Sources and Rationale
 
-For each sport, we imputed two lists that rank the best players of all time. One list would be a subjective ranking of the players from a reputable, respected source. While the reputability of a source is inherently subjective, we tried as much as possible to include sources that are mainstream and whose respectability would be difficult to refute. The sources of the subjective ranking lists for each sport are as follows:
+For each "subjective" sport, except golf, we imputed two lists that rank the best players of all time. One list would be a subjective ranking of the players from a reputable, respected source. While the reputability of a source is inherently subjective, we tried as much as possible to include sources that are mainstream and whose respectability would be difficult to refute. The sources of the subjective ranking lists for each sport are as follows:
 
 * Soccer - *Sports Illustrated*
 * Cricket - *British Broadcasting Company (BBC)*
@@ -130,9 +131,9 @@ For each sport, we imputed two lists that rank the best players of all time. One
 * Ice Hockey - *Bleacher Report*
 * Golf - None
 
-The other list would be based on an objective metric, such as the number of MVP's won throughout one's career or a comprehensive statistic that aptly captures a players value. We tried to use metrics that are both fair and comprehensive in that they thoroughly and aptly capture a player's greatness. The criteria/measures used for each sport - as well as the inevitable limitation(s) of each criteria - are noted below:
+The other list would be based on an objective metric, such as the number of MVP's won throughout one's career or a comprehensive statistic that aptly captures a players value. We tried to use metrics that are fair, comprehensive, and holistic in that they thoroughly and aptly capture a player's greatness. The criteria/measures used for each sport - as well as the inevitable limitation(s) of each criteria - are noted below:
 
-* Soccer - players were ranked by the number of Ballon d'Ors they won. More specifically, the list includes the number of Ballon d'Ors won by each player *since 2007*. The Ballon d'Or was chosen because it is widely recognized as the most prestigious award in soccer. Nonetheless, this award does have a few limitations. From 1956 (the first year the award was given out) to 1995, the Ballon d'Or was only given to the best soccer player of European origin. In 1995, the award was expanded to consider soccer players from any European club. It was not until 2007 that the award was expanded to consider all soccer players worldwide [@CBC]. 
+* Soccer - Players were ranked by the number of Ballon d'Ors they won. More specifically, the list includes the number of Ballon d'Ors won by each player *since 2007*. The Ballon d'Or was chosen because it is widely recognized as the most prestigious award in soccer. Nonetheless, this award does have a few limitations. From 1956 (the first year the award was given out) to 1995, the Ballon d'Or was only given to the best soccer player of European origin. In 1995, the award was expanded to consider soccer players from any European club. It was not until 2007 that the award was expanded to consider all soccer players worldwide [@CBC]. 
 
 * Cricket - Players were ranked based on their batting average. It is equal to the number of runs a player has scored divided by the number of time he has gotten out; in other words, it is the average number of runs a player scores at bat before getting out. We arbitrarily chose batting average because it is one of the most commonly cited offensive statistics for cricket. (For instance, Donald Bradman is often noted as the greatest cricketers of all time *because* of his ridiculously high batting average.) Nonetheless, a limitation of using this metric is that it does not account for great cricket bowlers. 
 
@@ -147,6 +148,10 @@ The other list would be based on an objective metric, such as the number of MVP'
 * Ice Hockey - Players were ranked based on their points. A player earns 1 point every time he either scores or assists a goal. We arbitrarily chose chose points because it is one of the most commonly cited offensive statistics in hockey. (For instance, Wayne Gretzky is often noted as the greatest hockey player of all time *because* he has the most points among all players even if one were to take away his goals scored.) Nonetheless, a limitation of using this metric is that it does not account for defencemen and goalies, whose values cannot necessarily be deciphered through points. 
 
 * Golf - Players were ranked based on the number of majors (Masters, PGA Championship, U.S. Open, and The Open) they won. More specifically, we included players who have won at least 5 majors. Additionally, we ranked players based on PGA tournament victories.
+
+Additionally, we decided to impute data for three "objective" sports. Put simply, these sports have very well-accepted, objective metrics that are more-than-often referred to when discussing the best player in that sport. The objective sports and corresponding metrics are as follows:
+
+* Chess - Players were ranked based on their ELO rating. Like any metric, the ELO rating quantifies the relative strength and skill of a chess players based on his or her previous matches. More information about the metric, including its formula, can be found [here](https://chessklub.com/elo-rating-system/). We included players who have held the all-time record for the ELO rating at a point in time. While the ELO rating system is widely used today, the main limitation of this metric is that it was not adopted by the Federation International des Echecs (FIDE) until 1970 [@ChessKlub]. In other words, there were no "official" chess ratings before 1970. Consequently, to include chess greats from 1945 to 1970, we also decided to include and based on their Chessmetrics performance rating. More specifically, as with the ELO rating, we included players who have held the all-time record for the Chessmetrics rating at a point in time. Designed by Jeff Sonas, the Chessmetrics rating system was created with the intention of improving upon the slow and conservative nature of the ELO rating system [@ChessMetrics]. The rating system has also been used to retroactively rate players who played before 1970 (before the adoption of ELO by the FIDE). More information about the rating can be found [here](http://www.chessmetrics.com/cm/CM2/Formulas.asp?Params=).
 
 
 ### 1.2.3 Time Span
@@ -171,7 +176,9 @@ Another challenge that we encountered during the data imputation process was pro
 
 * Ice Hockey - We imputed a player's active years as all years that he played in the NHL.
 
-* Golf - We imputed a player's active years as the first and last calendar years that he won a major, and all years in between. For example, since Tiger Woods won his first major in 1997 and his last major in 2019, his active years are listed as 1997-2019, even though he is still playing in professional golf tournaments (in fact I know he most recently played in the Genesis Open). The reason why we used this logic is that professional golfers can play for a longer (compared to atheletes in other sports) period of time due to the presence of the PGA Tour Champions (formerly known as the Senior PGA Tour) as well as the nature of the sport itself (more specifically, the fact that players can sit out certain tournaments and the less violent nature of the sport). For example, Jack Nicklaus, whom many consider to be the greatest golfer of all time, played at his last U.S. Open in 2000, but did not play his last Masters, PGA Championship, and Open Championship until 2005 (add source here). 
+* Golf - We imputed a player's active years as the first and last calendar years that he won a major, and all years in between. For example, since Tiger Woods won his first major in 1997 and his last major in 2019, his active years are listed as 1997-2019, even though he is still playing in professional golf tournaments (in fact I know he most recently played in the Genesis Open). The reason why we used this logic is that professional golfers can play for a longer (compared to athletes in other sports) period of time due to the presence of the PGA Tour Champions (formerly known as the Senior PGA Tour) as well as the nature of the sport itself (more specifically, the fact that players can sit out certain tournaments and the less violent nature of the sport). For example, Jack Nicklaus, whom many consider to be the greatest golfer of all time, played at his last U.S. Open in 2000, but did not play his last Masters, PGA Championship, and Open Championship until 2005 (add source here). 
+
+* Chess - We imputed a player's active years as the first and last years that he played in a competitive tournament. 
 
 \textcolor{red}{Another limitation to take into account is the fact that we imputed data year-by-year for athletes in some sports, but not in others. A potential result of this limitation is that said years may have an inflated number of active GOAT candidates.}
 
@@ -190,7 +197,7 @@ Using the criteria noted above, we decided to classify **basketball, football, h
 
 ```{r}
 
-fig.11
+fig.12
 
 ```
 
@@ -372,7 +379,7 @@ The Fosbury flop is a prime example of how advancements in technique and strateg
 
 ### 2. Tech Suits
 
-Tech suits burst onto the professional swim scene shortly thereafter the 2004 Summer Olympics in Athens when Speedo asked NASA to help it design swim suits will less drag. In the subsequent yeats, Speedo released the LZR Racer, which furthermore led to the release of various other aerodynamic tech suits - or "susper-suits" - from prominent swimwear companies. During this period - known as the "shiny suit era" - swimming world records were broken at an unprecedented pace. More specifically, *74* world records were broken by swimmers wearing the LZR Racer suit. Consequently, World Aquatics, formerly known as the Federation Internationale de Natation (FINA), controversially banned tech suits in 2009, which has led a noticeable drop-off in the pace at which world records have been broken [@Tech]. 
+Tech suits burst onto the professional swim scene shortly thereafter the 2004 Summer Olympics in Athens when Speedo asked NASA to help it design swim suits will less drag. In the subsequent years, Speedo released the LZR Racer, which furthermore led to the release of various other aerodynamic tech suits - or "susper-suits" - from prominent swimwear companies. During this period - known as the "shiny suit era" - swimming world records were broken at an unprecedented pace. More specifically, *74* world records were broken by swimmers wearing the LZR Racer suit. Consequently, World Aquatics, formerly known as the Federation Internationale de Natation (FINA), controversially banned tech suits in 2009, which has led a noticeable drop-off in the pace at which world records have been broken [@Tech]. 
 
 Tech suits are a prime example of how advancements in equipment can give athletes advantages over their predecessors. More information about them and their impact(s) on world records can be found [\textcolor{blue}{here}](https://www.swimmingworldmagazine.com/news/can-world-records-supersede-the-super-suit-era/) [@Tech2].
 

@@ -429,7 +429,6 @@ football.2[7:9, 3] = 4
 
 ```
 
-
 ## Ice Hockey 
 
 ```{r ice-hockey}
@@ -515,7 +514,6 @@ Winning.Span <- c("1962-1986", "1997-2019", "1914-1929", "1946-1953",
 
 golf <- create.df(Players, Winning.Span)
 
-
 ```
 
 ## Golf 2
@@ -540,27 +538,52 @@ golf.2[11,3] = 10
 
 ```
 
-
 ## Chess
 
 ```{r chess}
 
+# https://en.wikipedia.org/wiki/List_of_chess_players_by_peak_FIDE_rating
+# included ELO rating record holders
+# I imputed the years based on the first and last years that the player played in a tournament 
+
+Players <- c("Magnus Carlson", "Garry Kasparov", "Bobby Fischer")
+Years.Active <- c("2004-present", "1978-2005", "1957-1972, 1992-1992")
+chess <- create.df(Players, Years.Active)
+
+```
+
+## Chess 2
+
+```{r chess-2}
+
+# https://en.wikipedia.org/wiki/List_of_chess_players_by_peak_FIDE_rating
+# included Chess Metrics record holders
+# I imputed the years based on the first and last years that the player played in a tournament 
+
+Players <- c("Bobby Fischer", "Mikhail Botvinnik")
+Years.Active <- c("1957-1972, 1992-1992", "1923-1970")
+chess.2 <- create.df(Players, Years.Active)
+
+```
+
+```{r chess-dont use}
+
 # players who had a peak ELO rating of 2775 +
 # taken from https://en.wikipedia.org/wiki/List_of_chess_players_by_peak_FIDE_rating#2800+
 
-Players <- c("Magnus Carlsen", "Garry Kasparov", "Fabiano Caruana", "Levon Aronian",
-             "Wesley So", "Shakhriyar Mamedyarov", "Maxime Vachier-Lagrave", "Viswanathan Anand",
-             "Vladimir Kramnik", "Veselin Topalov", "Hikaru Nakamura", "Ding Liren",
-             "Alexander Grischuk", "Alireza Firouzja", "Anish Giri", "Teimour Radjabov",
-             "Ian Nepomniachtchi", "Alexander Morozevich", "Sergey Karjakin", "Vassily Ivanchuk",
-             "Bobby Fischer", "Anatoly Karpov", "Boris Gelfand", "Richard Rapport")
-
-Peak.Rating <- c(2881, 2851, 2844, 2830,
-                 2822, 2820, 2819, 2817,
-                 2817, 2816, 2816, 2816,
-                 2810, 2804, 2798, 2793,
-                 2793, 2788, 2788, 2787,
-                 2785, 2780, 2777, 2776)
+# Players <- c("Magnus Carlsen", "Garry Kasparov", "Fabiano Caruana", "Levon Aronian",
+#              "Wesley So", "Shakhriyar Mamedyarov", "Maxime Vachier-Lagrave", "Viswanathan Anand",
+#              "Vladimir Kramnik", "Veselin Topalov", "Hikaru Nakamura", "Ding Liren",
+#              "Alexander Grischuk", "Alireza Firouzja", "Anish Giri", "Teimour Radjabov",
+#              "Ian Nepomniachtchi", "Alexander Morozevich", "Sergey Karjakin", "Vassily Ivanchuk",
+#              "Bobby Fischer", "Anatoly Karpov", "Boris Gelfand", "Richard Rapport")
+# 
+# Peak.Rating <- c(2881, 2851, 2844, 2830,
+#                  2822, 2820, 2819, 2817,
+#                  2817, 2816, 2816, 2816,
+#                  2810, 2804, 2798, 2793,
+#                  2793, 2788, 2788, 2787,
+#                  2785, 2780, 2777, 2776)
 
 ```
 
@@ -570,7 +593,7 @@ Peak.Rating <- c(2881, 2851, 2844, 2830,
 
 ```{r}
 
-df.list <- list(soccer, soccer.2, cricket, cricket.2, tennis, tennis.2, basketball, basketball.2, baseball, baseball.2, football, football.2, hockey, hockey.2, golf, golf.2)
+df.list <- list(soccer, soccer.2, cricket, cricket.2, tennis, tennis.2, basketball, basketball.2, baseball, baseball.2, football, football.2, hockey, hockey.2, golf, golf.2, chess, chess.2)
 df.list <- lapply(df.list, presentto2023)
 
 ```
@@ -588,7 +611,8 @@ rownum = 0
 # names of sports and iterator for the list
 strings = list("Soccer", "Soccer 2", "Cricket", "Cricket 2", "Tennis", "Tennis 2",
                "Basketball 2", "Basketball 3", "Baseball", "Baseball 2",
-               "Football", "Football 2", "Hockey", "Hockey 2", "Golf", "Golf 2")
+               "Football", "Football 2", "Hockey", "Hockey 2", "Golf",
+               "Golf 2", "Chess", "Chess 2")
 iterator = 0
 
 new.list <- list()
@@ -626,7 +650,8 @@ rownum = 0
 # names of sports and iterator for the list
 strings = list("Soccer", "Soccer 2", "Cricket", "Cricket 2", "Tennis", "Tennis 2",
                "Basketball", "Basketball 2", "Baseball", "Baseball 2",
-               "Football", "Football 2", "Hockey", "Hockey 2", "Golf", "Golf 2")
+               "Football", "Football 2", "Hockey", "Hockey 2", "Golf", "Golf 2",
+               "Chess", "Chess 2")
 iterator = 0
 
 goat.list <- list()
@@ -651,6 +676,7 @@ df.goats$Sport <- str_replace(df.goats$Sport, "Baseball 2", "Baseball")
 df.goats$Sport <- str_replace(df.goats$Sport, "Football 2", "Football")
 df.goats$Sport <- str_replace(df.goats$Sport, "Hockey 2", "Hockey")
 df.goats$Sport <- str_replace(df.goats$Sport, "Golf 2", "Golf")
+df.goats$Sport <- str_replace(df.goats$Sport, "Chess 2", "Chess")
 
 # eliminate identical rows
 df.goats$Rank <- NULL
