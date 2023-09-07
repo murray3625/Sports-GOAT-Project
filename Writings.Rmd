@@ -70,7 +70,7 @@ data.combined.2[c(2, 4, 6, 7), 4] <- "Yes"
 fig.12 <- ggplot(data = data.combined.2, 
        aes(x = avg.length, y = as.integer(N),
            shape = Sport, color = Contact)) +
-  scale_shape_manual(values = seq(9)) + 
+  scale_shape_manual(values = seq(10)) + 
   scale_x_continuous(expand = c(0, 0), limits = c(0, 25)) +
   scale_y_continuous(expand = c(0, 0), limits = c(0, 80)) +
   geom_point() +

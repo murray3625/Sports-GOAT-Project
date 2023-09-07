@@ -587,13 +587,61 @@ chess.2 <- create.df(Players, Years.Active)
 
 ```
 
+# Swimming
+
+```{r swimming}
+
+# included record holders of the 100 M Freestyle race, which is 
+# considered to be the highlight, blue-ribbon event of the sport of
+# swimming
+# https://www.usaswimming.org/times/data-hub/record-progressions
+
+# # I imputed the active years based on the first and last years
+# that the swimmer player competed in a "major" tournament
+
+Players <- c("David Popovici", "Cesar Cielo", "Alain Bernard",
+             "Eamon Sullivan", "Alain Bernard", "Eamon Sullivan",
+             "Alain Benard", "Alain Bernard", "Pieter Van Den Hoogenband",
+             "Michael Klim", "Alexander Popov", "Matt Biondi",
+             "Matt Biondi", "Matt Biondi", "Matt Biondi",
+             "Rowdy Gaines", "Jonty Skinner", "Jim Montgomery",
+             "Jim Montgomery", "Jim Montgomery", "Andrew Coan",
+             "Jim Montgomery", "Mark Spitz", "Mark Spitz",
+             "Mark Spitz", "Michael Wenden", "Kenneth Walsh",
+             "Zac Zorn", "Alain Gottvalles", "Manuel Dos Santos",
+             "Steve Clark", "John Devitt", "John Devitt",
+             "Jon Henricks")
+
+Years.Active <- c("2021-present", "2004-present", "2008-2012",
+                  "2002-2008", "2008-2012", "2002-2008",
+                  "2008-2012", "2008-2012", "1993-2008",
+                  "1994-2007", "1990-2005", "1984-1992",
+                  "1984-1992", "1984-1992", "1984-1992",
+                  "1978-1984", "1973-1976", "1973-1976",
+                  "1973-1976", "1973-1976", "1975-1981",
+                  "1973-1976", "1965-1972", "1965-1972",
+                  "1965-1972", "1968-1974", "1965-1968",
+                  "1967-1968", "1960-1964", "1955-1969",
+                  "1960-1964", "1952-1960", "1952-1960",
+                  "1952-1960"
+                  )
+
+swimming <- create.df(Players, Years.Active)
+
+```
+
+
+
 \newpage 
 
 # Data Wrangling
 
 ```{r}
 
-df.list <- list(soccer, soccer.2, cricket, cricket.2, tennis, tennis.2, basketball, basketball.2, baseball, baseball.2, football, football.2, hockey, hockey.2, golf, golf.2, chess, chess.2)
+df.list <- list(soccer, soccer.2, cricket, cricket.2, tennis, tennis.2,
+                basketball, basketball.2, baseball, baseball.2, football,
+                football.2, hockey, hockey.2, golf, golf.2, chess, chess.2,
+                swimming)
 df.list <- lapply(df.list, presentto2023)
 
 ```
@@ -612,7 +660,7 @@ rownum = 0
 strings = list("Soccer", "Soccer 2", "Cricket", "Cricket 2", "Tennis", "Tennis 2",
                "Basketball 2", "Basketball 3", "Baseball", "Baseball 2",
                "Football", "Football 2", "Hockey", "Hockey 2", "Golf",
-               "Golf 2", "Chess", "Chess 2")
+               "Golf 2", "Chess", "Chess 2", "Swimming")
 iterator = 0
 
 new.list <- list()
@@ -651,7 +699,7 @@ rownum = 0
 strings = list("Soccer", "Soccer 2", "Cricket", "Cricket 2", "Tennis", "Tennis 2",
                "Basketball", "Basketball 2", "Baseball", "Baseball 2",
                "Football", "Football 2", "Hockey", "Hockey 2", "Golf", "Golf 2",
-               "Chess", "Chess 2")
+               "Chess", "Chess 2", "Swimming")
 iterator = 0
 
 goat.list <- list()

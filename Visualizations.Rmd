@@ -278,9 +278,9 @@ ggplot(data = golf.filter,
 
 ```{r figure-11}
 
-golf.filter = data[data$Sport == "Chess",]
+chess.filter = data[data$Sport == "Chess",]
 
-ggplot(data = golf.filter, 
+ggplot(data = chess.filter, 
        aes(x = as.numeric(Year), y = as.integer(N))) + 
        scale_y_continuous(limits = c(0, 4), breaks = seq(0, 4, by = 1))+
   geom_line() +
@@ -288,6 +288,29 @@ ggplot(data = golf.filter,
        y = "Number of Potential GOATs", 
        title = "Number of Potential Chess GOATs by Year",
        caption = "Figure 11") + 
+  theme_bw() +
+  theme(text = element_text(family = "serif")) +
+  theme(plot.title=element_text(family = "serif", face = "bold", hjust = 0.5, size = 12))
+
+
+```
+
+\newpage
+
+## Swimming
+
+```{r figure-12}
+
+swimming.filter = data[data$Sport == "Swimming",]
+
+ggplot(data = golf.filter, 
+       aes(x = as.numeric(Year), y = as.integer(N))) + 
+       scale_y_continuous(limits = c(0, 4), breaks = seq(0, 4, by = 1))+
+  geom_line() +
+  labs(x = "Year", 
+       y = "Number of Potential GOATs", 
+       title = "Number of Potential Swimming GOATs by Year",
+       caption = "Figure 12") + 
   theme_bw() +
   theme(text = element_text(family = "serif")) +
   theme(plot.title=element_text(family = "serif", face = "bold", hjust = 0.5, size = 12))
@@ -321,6 +344,8 @@ ggplot(data = golf.filter,
 
 * Nothing in particular stands out
 
+***Swimming***
+
 \newpage
 
 # Tables and Visualizations Related to Career Longevity
@@ -345,7 +370,7 @@ tbl.1
 
 # data
 lengths <- c(5.6, 4.8, 12.5, 3.3, 5.95, 5.72, 8.6, 6.12)
-tbl.2.data <- cbind(data.2[-3, 1], lengths)
+tbl.2.data <- cbind(data.2[c(-3, -9), 1], lengths)
 colnames(tbl.2.data) <- colnames(data.2)
 
 # figure 
@@ -359,7 +384,7 @@ for (i in 1:nrow(dt_footnote)){
   dt_footnote[i,1] <- paste0(dt_footnote[i,1], footnote_marker_alphabet(i))
 }
 
-tbl.2 <- kable(dt_footnote, format = "markdown", align = "cc", caption = "Average Career Length by Sport") %>%
+tbl.2 <- kable(dt_footnote, format = "markdown", align = "cc", caption = "Average Career Length for Each Objective Sport") %>%
   kable_styling(font_size = 8.5, latex_options = c("hold_position"),
                 full_width = FALSE, position = "float_left") %>%
   add_footnote(c("https://jamanetwork.com/journals/jamaneurology/fullarticle/2782750",
@@ -422,20 +447,19 @@ tbl.4
 
 ```
 
-
-```{r figure-12}
+```{r figure-13}
 
 ggplot(data = data.combined.2, 
        aes(x = avg.length, y = as.integer(N),
            shape = Sport, color = Contact)) +
-  scale_shape_manual(values = seq(9)) + 
+  scale_shape_manual(values = seq(10)) + 
   scale_x_continuous(expand = c(0, 0), limits = c(0, 25)) +
   scale_y_continuous(expand = c(0, 0), limits = c(0, 80)) +
   geom_point() +
   labs(x = "Average Career Length in Years", 
        y = "# Years with no GOAT Candidates", 
        title = "# Years with No Potential GOATs vs. Average Career Length for GOAT Candidates",
-       caption = "Figure 12") + 
+       caption = "Figure 13") + 
   theme_bw() +
   theme(text = element_text(family = "serif")) +
   theme(plot.title=element_text(family = "serif", face = "bold", hjust = 0.5, size = 12)) +
@@ -443,9 +467,9 @@ ggplot(data = data.combined.2,
 
 ```
 
-```{r figure-13}
+```{r figure-14}
 
-data.combined.3 <- data.combined.2[-3,]
+data.combined.3 <- data.combined.2[c(-3, -9),]
 data.combined.3[, 3] <- c(5.6, 4.8, 12.5, 3.3, 5.95, 5.72, 8.6, 6.12)
 data.combined.3[, 3] <- as.data.frame(tbl.2.data)%>%
   arrange(., Sport) %>%
@@ -461,7 +485,7 @@ ggplot(data = data.combined.3,
   labs(x = "Average Career Length in Years", 
        y = "# Years with no GOAT Candidates", 
        title = "# Years with No Potential GOATs vs. Average Career Length",
-       caption = "Figure 11") + 
+       caption = "Figure 14") + 
   theme_bw() +
   theme(text = element_text(family = "serif")) +
   theme(plot.title=element_text(family = "serif", face = "bold", hjust = 0.5, size = 12))
