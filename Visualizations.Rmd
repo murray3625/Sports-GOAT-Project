@@ -303,9 +303,9 @@ ggplot(data = chess.filter,
 
 swimming.filter = data[data$Sport == "Swimming",]
 
-ggplot(data = golf.filter, 
+ggplot(data = swimming.filter, 
        aes(x = as.numeric(Year), y = as.integer(N))) + 
-       scale_y_continuous(limits = c(0, 4), breaks = seq(0, 4, by = 1))+
+       scale_y_continuous(limits = c(0, 6), breaks = seq(0, 6, by = 1))+
   geom_line() +
   labs(x = "Year", 
        y = "Number of Potential GOATs", 
