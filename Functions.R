@@ -60,8 +60,8 @@ sportgoats <- function(df, string){
   goats <- data.frame(matrix(nrow = 0, ncol = 4))
   
   for (i in 1:nrow(filter)){
-    filter.2 <- filter[filter$Year <= as.numeric(filter[i, 2])[[1]], ]
-    if(as.numeric(min(filter.2$Rank)) == as.numeric(filter[i, 3][[1,1]])){
+    filter.2 <- filter[filter$Year < as.numeric(filter[i, 2])[[1]], ]
+    if(as.numeric(min(filter.2$Rank)) >= as.numeric(filter[i, 3][[1,1]])){
       goats <- rbind(goats, filter[i,])
     }
   }

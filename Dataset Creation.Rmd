@@ -630,7 +630,14 @@ swimming <- create.df(Players, Years.Active)
 
 ```
 
+# Swimming 2
 
+```{r swimming-2}
+
+# manually input Michael Phelps
+swimming.2 = data.frame(Player = "Michael Phelps", Years = "2000-2016", Rank = 1)
+
+```
 
 \newpage 
 
@@ -641,7 +648,7 @@ swimming <- create.df(Players, Years.Active)
 df.list <- list(soccer, soccer.2, cricket, cricket.2, tennis, tennis.2,
                 basketball, basketball.2, baseball, baseball.2, football,
                 football.2, hockey, hockey.2, golf, golf.2, chess, chess.2,
-                swimming)
+                swimming, swimming.2)
 df.list <- lapply(df.list, presentto2023)
 
 ```
@@ -660,7 +667,7 @@ rownum = 0
 strings = list("Soccer", "Soccer 2", "Cricket", "Cricket 2", "Tennis", "Tennis 2",
                "Basketball 2", "Basketball 3", "Baseball", "Baseball 2",
                "Football", "Football 2", "Hockey", "Hockey 2", "Golf",
-               "Golf 2", "Chess", "Chess 2", "Swimming")
+               "Golf 2", "Chess", "Chess 2", "Swimming", "Swimming 2")
 iterator = 0
 
 new.list <- list()
@@ -699,7 +706,7 @@ rownum = 0
 strings = list("Soccer", "Soccer 2", "Cricket", "Cricket 2", "Tennis", "Tennis 2",
                "Basketball", "Basketball 2", "Baseball", "Baseball 2",
                "Football", "Football 2", "Hockey", "Hockey 2", "Golf", "Golf 2",
-               "Chess", "Chess 2", "Swimming")
+               "Chess", "Chess 2", "Swimming", "Swimming 2")
 iterator = 0
 
 goat.list <- list()
@@ -725,6 +732,7 @@ df.goats$Sport <- str_replace(df.goats$Sport, "Football 2", "Football")
 df.goats$Sport <- str_replace(df.goats$Sport, "Hockey 2", "Hockey")
 df.goats$Sport <- str_replace(df.goats$Sport, "Golf 2", "Golf")
 df.goats$Sport <- str_replace(df.goats$Sport, "Chess 2", "Chess")
+df.goats$Sport <- str_replace(df.goats$Sport, "Swimming 2", "Swimming")
 
 # eliminate identical rows
 df.goats$Rank <- NULL
@@ -762,27 +770,6 @@ write.csv(df.goats.subset, "data.csv", row.names=FALSE)
 
 # write career length data to csv
 write.csv(data.2, "data.2.csv", row.names=FALSE)
-
-```
-
-
-```{r}
-
-# f1.data.dummy <- data.frame(matrix(nrow = 0, ncol = length(unique(df.goats.subset$Year))))
-# colnames(f1.data.dummy) <- unique(df.goats.subset$Year)
-
-# 
-# for (i in 1:nrow(df.goats.subset)){
-#   for (j in 1:length(unique(df.goats.subset$Year))){
-#     if (df.goats.subset[i, 1] == unique(df.goats.subset$Year[j])){
-#       f1.data.dummy[i, j] = 1
-#     }
-#     else{
-#       f1.data.dummy[i, j] = 0
-#     }
-#     f1.data.dummy[i, "Sport"] = df.goats.subset[i, 2]
-#   }
-# }
 
 ```
 

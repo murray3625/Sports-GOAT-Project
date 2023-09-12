@@ -104,8 +104,9 @@ Nonetheless, with the seemingly endless abundance of talent on display today, co
 
 ### 1.2.1 Sports 
 
-Due to the unique nature of this project, we had to impute our own datasets. We decided to compile lists of mens GOAT candidates from the following sports:
+Due to the unique nature of this project, we had to impute our own datasets. We decided to compile lists of men's GOAT candidates from the following sports:
 
+***"Subjective" Sports***
 1. Soccer
 2. Cricket
 3. Tennis
@@ -114,9 +115,15 @@ Due to the unique nature of this project, we had to impute our own datasets. We 
 6. Football
 7. Ice Hockey
 8. Golf
+
+***"Objective" Sports***
 9. Chess
+10. Swimming
+11. Running 
 
 The inclusion of football, baseball, basketball, and ice hockey can be attributed to the fact that they are the 4 of the 5 most popular sports in the United States [@Gallup]. Golf and tennis were included because professionals in both sports compete in four "major" tournaments each year. Soccer and cricket were included due to their immense popularity and following worldwide [@SFB]. 
+
+Additionally, we decided to impute data for three "objective" sports - chess, swimmming, and running. Put simply, these sports have very well-accepted, objective metrics that are more-than-often referred to when discussing the best player in that sport.
 
 ### 1.2.2 GOAT Sources and Rationale
 
@@ -131,7 +138,7 @@ For each "subjective" sport, except golf, we imputed two lists that rank the bes
 * Ice Hockey - *Bleacher Report*
 * Golf - None
 
-The other list would be based on an objective metric, such as the number of MVP's won throughout one's career or a comprehensive statistic that aptly captures a players value. We tried to use metrics that are fair, comprehensive, and holistic in that they thoroughly and aptly capture a player's greatness. The criteria/measures used for each sport - as well as the inevitable limitation(s) of each criteria - are noted below:
+The other list would be based on an objective metric, such as the number of MVPs won throughout one's career or a comprehensive statistic that aptly captures a players value. We tried to use metrics that are fair, comprehensive, and holistic in that they thoroughly and aptly capture a player's greatness. The criteria/measures used for all sports - both subjective and objective- as well as the inevitable limitation(s) of each criteria - are noted below:
 
 * Soccer - Players were ranked by the number of Ballon d'Ors they won. More specifically, the list includes the number of Ballon d'Ors won by each player *since 2007*. The Ballon d'Or was chosen because it is widely recognized as the most prestigious award in soccer. Nonetheless, this award does have a few limitations. From 1956 (the first year the award was given out) to 1995, the Ballon d'Or was only given to the best soccer player of European origin. In 1995, the award was expanded to consider soccer players from any European club. It was not until 2007 that the award was expanded to consider all soccer players worldwide [@CBC]. 
 
@@ -153,6 +160,7 @@ Additionally, we decided to impute data for three "objective" sports. Put simply
 
 * Chess - Players were ranked based on their ELO rating. Like any metric, the ELO rating quantifies the relative strength and skill of a chess players based on his or her previous matches. More information about the metric, including its formula, can be found [here](https://chessklub.com/elo-rating-system/). We included players who have held the all-time record for the ELO rating at a point in time. While the ELO rating system is widely used today, the main limitation of this metric is that it was not adopted by the Federation International des Echecs (FIDE) until 1970 [@ChessKlub]. In other words, there were no "official" chess ratings before 1970. Consequently, to include chess greats from 1945 to 1970, we also decided to include and based on their Chessmetrics performance rating. More specifically, as with the ELO rating, we included players who have held the all-time record for the Chessmetrics rating at a point in time. Designed by Jeff Sonas, the Chessmetrics rating system was created with the intention of improving upon the slow and conservative nature of the ELO rating system [@ChessMetrics]. The rating system has also been used to retroactively rate players who played before 1970 (before the adoption of ELO by the FIDE). More information about the rating can be found [here](http://www.chessmetrics.com/cm/CM2/Formulas.asp?Params=).
 
+* Swimming - Swimmers who have held the record for the 100 Meter Freestyle race at a point in time were included in the dataset. While there are many swimming races and events to choose from, this event was chosen because it is often considered to be the most prominent, blue-ribbon event in the sport of swimming. We also decided to include Michael Phelps due to the fact that he has 23 Olympic gold medals, which is more than twice that of the Olympic swimmer with the second most Olympic gold medals (Mark Spitz).
 
 ### 1.2.3 Time Span
 
@@ -179,6 +187,8 @@ Another challenge that we encountered during the data imputation process was pro
 * Golf - We imputed a player's active years as the first and last calendar years that he won a major, and all years in between. For example, since Tiger Woods won his first major in 1997 and his last major in 2019, his active years are listed as 1997-2019, even though he is still playing in professional golf tournaments (in fact I know he most recently played in the Genesis Open). The reason why we used this logic is that professional golfers can play for a longer (compared to athletes in other sports) period of time due to the presence of the PGA Tour Champions (formerly known as the Senior PGA Tour) as well as the nature of the sport itself (more specifically, the fact that players can sit out certain tournaments and the less violent nature of the sport). For example, Jack Nicklaus, whom many consider to be the greatest golfer of all time, played at his last U.S. Open in 2000, but did not play his last Masters, PGA Championship, and Open Championship until 2005 (add source here). 
 
 * Chess - We imputed a player's active years as the first and last years that he played in a competitive tournament. 
+
+* Swimming - We imputed an athlete's active years as the first and last years that he computed in a major swimming tournament. While their is inherent subjectivity in what is considered a "major" tournament and what is not, we counted major swimming events such as the Olympics, European Aquatics Championships, World Short Course Championships, and FINA Swimming World Cup, to name a few. Put simply, tournaments in which results and data are readily available are presumed to be "major". 
 
 \textcolor{red}{Another limitation to take into account is the fact that we imputed data year-by-year for athletes in some sports, but not in others. A potential result of this limitation is that said years may have an inflated number of active GOAT candidates.}
 
