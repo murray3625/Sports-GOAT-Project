@@ -26,6 +26,7 @@ library(purrr)
 library(scales)
 library(broom)
 library(kableExtra)
+library(gridExtra)
 
 ```
 
@@ -47,10 +48,9 @@ data.agg <- data %>% group_by(Year) %>% summarise(N = sum(N))
 
 # Visualizations
 
-## All Subjective Sports
+```{r figures-1-and-2}
 
-```{r figure-1}
-
+# figure 1
 f1 <- ggplot(data = data, 
        aes(x = as.numeric(Year), y = as.integer(N), group = Sport, color = Sport)) + 
   scale_y_continuous(breaks = function(y) seq(floor(min(y, digits = 1)), 
@@ -59,7 +59,7 @@ f1 <- ggplot(data = data,
   geom_line() +
   labs(x = "Year", 
        y = "Number of Potential GOATs", 
-       title = "Number of Potential GOATs by Year (Version 8.0)",
+       title = "Number of Potential GOATs by Year (Version 8.0) - Subjective Sports",
        caption = "Figure 1") + 
   theme_bw() +
   theme(text = element_text(family = "serif")) +
@@ -67,19 +67,14 @@ f1 <- ggplot(data = data,
 
 f1
 
-```
-
-\newpage
-
-```{r figure-2}
-
+# figure 2
 f2 <- ggplot(data = data.agg, 
        aes(x = as.numeric(Year), y = as.integer(N))) + 
   scale_y_continuous(limits = c(0, 20), breaks = seq(0, 20, by = 1))+
   geom_line() +
   labs(x = "Year", 
        y = "Number of Potential GOATs", 
-       title = "Number of Potential GOATs by Year",
+       title = "Number of Potential GOATs by Year - All Sports",
        caption = "Figure 2") + 
   theme_bw() +
   theme(text = element_text(family = "serif")) +
@@ -87,7 +82,10 @@ f2 <- ggplot(data = data.agg,
 
 f2
 
+
 ```
+
+Figures 3-13 shed light onto the following question: **In a given sport, for a given year (from 1945 to the present), how many legitimate GOAT candidates are playing?**
 
 \newpage
 
@@ -274,6 +272,10 @@ ggplot(data = golf.filter,
 
 \newpage
 
+# Objective Sports
+
+\newpage
+
 ## Chess
 
 ```{r figure-11}
@@ -315,6 +317,27 @@ ggplot(data = swimming.filter,
   theme(text = element_text(family = "serif")) +
   theme(plot.title=element_text(family = "serif", face = "bold", hjust = 0.5, size = 12))
 
+```
+
+\newpage
+
+## Running
+
+```{r figure-13}
+# 
+# running.filter = data[data$Sport == "Running",]
+# 
+# ggplot(data = swimming.filter, 
+#        aes(x = as.numeric(Year), y = as.integer(N))) + 
+#        scale_y_continuous(limits = c(0, 6), breaks = seq(0, 6, by = 1))+
+#   geom_line() +
+#   labs(x = "Year", 
+#        y = "Number of Potential GOATs", 
+#        title = "Number of Potential Running GOATs by Year",
+#        caption = "Figure 13") + 
+#   theme_bw() +
+#   theme(text = element_text(family = "serif")) +
+#   theme(plot.title=element_text(family = "serif", face = "bold", hjust = 0.5, size = 12))
 
 ```
 
@@ -345,7 +368,15 @@ ggplot(data = swimming.filter,
 
 ***Swimming***
 
-* One observation about swimming is that the career lengths are very short compared to other sports. 
+* One observation about swimming is that the career lengths are very short compared to other sports. We also see an uptick in greats in the early 2000's. 
+
+***Running***
+
+
+\newpage
+
+We also wanted to include visualizations that answer a different question: what is the cadence at which a sport's record is broken?
+
 
 \newpage
 
@@ -461,7 +492,7 @@ tbl.4
 
 ```
 
-```{r figure-13}
+```{r figure-14}
 
 ggplot(data = data.combined.2, 
        aes(x = avg.length, y = as.integer(N),
@@ -473,7 +504,7 @@ ggplot(data = data.combined.2,
   labs(x = "Average Career Length in Years", 
        y = "# Years with no GOAT Candidates", 
        title = "# Years with No Potential GOATs vs. Average Career Length for GOAT Candidates",
-       caption = "Figure 13") + 
+       caption = "Figure 14") + 
   theme_bw() +
   theme(text = element_text(family = "serif")) +
   theme(plot.title=element_text(family = "serif", face = "bold", hjust = 0.5, size = 12)) +
@@ -481,7 +512,7 @@ ggplot(data = data.combined.2,
 
 ```
 
-```{r figure-14}
+```{r figure-15}
 
 data.combined.3 <- data.combined.2[c(-3, -9),]
 data.combined.3[, 3] <- c(5.6, 4.8, 12.5, 3.3, 5.95, 5.72, 8.6, 6.12)
@@ -499,7 +530,7 @@ ggplot(data = data.combined.3,
   labs(x = "Average Career Length in Years", 
        y = "# Years with no GOAT Candidates", 
        title = "# Years with No Potential GOATs vs. Average Career Length",
-       caption = "Figure 14") + 
+       caption = "Figure 15") + 
   theme_bw() +
   theme(text = element_text(family = "serif")) +
   theme(plot.title=element_text(family = "serif", face = "bold", hjust = 0.5, size = 12))
@@ -510,7 +541,7 @@ ggplot(data = data.combined.3,
 
 ## Commentary and Notes
 
-***Figure 14*** - One would expect to see a **negative** relationship between the average career length and the number of years with ZERO potential GOATs. 
+***Figure 15*** - One would expect to see a **negative** relationship between the average career length and the number of years with ZERO potential GOATs. 
 
   * "Medical Conditions Affecting Sports Participation" published by *The American Academy of Pediatrics*
   * Link to article: https://publications.aap.org/pediatrics/article/121/4/841/70953/Medical-Conditions-Affecting-Sports-Participation?autologincheck=redirected

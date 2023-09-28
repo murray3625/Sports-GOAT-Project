@@ -641,6 +641,63 @@ swimming.2 = data.frame(Player = "Michael Phelps", Years = "2000-2016", Rank = 1
 
 \newpage 
 
+# Running
+
+```{r-running}
+
+# included record holders of the 100 M Dash
+# https://en.wikipedia.org/wiki/Men%27s_100_metres_world_record_progression
+
+# look at Willie Williams - he literally has a career span of 1 year
+# https://en.wikipedia.org/wiki/Willie_Williams_(athlete)
+# reverse this list 
+
+# plot how often the record was broken instead of the career span - and does that map to the same results we saw before
+
+Players <- c("Harold Davis", "Llyod LaBeach", "Barney Ewell",
+             "McDonald Bailey", "Heinz Futterer", "Bobby Morrow",
+             "Ira Murchison", "Bobby Morrow", "Ira Murchison",
+             "Bobby Morrow", "Willie Williams", "Ira Murchison",
+             "Leamon King", "Ray Norton", "Armin Hary",
+             "Harry Jerome", "Horacio Esteves", "Bob Hayes",
+             "Jim Hines", "Enrique Figuerola", "Paul Nash",
+             
+             "Oliver Ford", "Charles Greene", "Roger Bambuck",
+             "Jim Hines", "Ronnie Ray Smith", "Charles Greene",
+             "Jim Hines", "Eddie Hart", "Rey Robinson",
+             "Steve Williams", "Silvio Leonard", "Steve Williams",
+             "Harvey Glance", "Don Quarrie", "Calvin Smith",
+             "Ben Johnson", "Carl Lewis", "Ben Johnson",
+             "Carl Lewis", "Leroy Burrell", "Carl Lewis",
+             "Leroy Burrell", "Donovan Bailey", "Maurice Greene",
+             "Tim Montgomery", "Asafa Powell", "Justin Gatlin")
+
+
+Players <- c()
+
+
+
+
+
+
+Years.Active <- ("1940-1943", "1946-1950", "1939-1948",
+                 "1946-1952", "1954-1956", "1955-1958",
+                 "1956-1963", "1955-1958", "1956-1963",
+                 "1955-1958", "1956-1956", "1956-1963", 
+                 "1956-1957", "1958-1960", "1958-1961",
+                 "1960-1969", "1960-1968", "1962-1964",
+                 "1964-1968", "1960-1968", "1967-1968"
+               
+                       
+             
+                 )
+
+running <- create.df(Players, Years.Active)
+
+```
+
+\newpage
+
 # Data Wrangling
 
 ```{r}
@@ -740,7 +797,6 @@ df.goats$Interval <- NULL
 df.goats <- distinct(df.goats)
 
 ```
-
 
 \newpage
 
