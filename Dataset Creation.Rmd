@@ -676,23 +676,16 @@ Players <- c("Harold Davis", "Llyod LaBeach", "Barney Ewell",
 Players <- c()
 
 
+Years.Active <- "1967-1968", "1960-1968", "1964-1968",
+                "1962-1964", "1960-1968", "1960-1969",
+                "1958-1961", "1958-1960", "1956-1957"
+                "1956-1963", "1956-1956", "1955-1958",
+                "1956-1963", "1955-1958", "1956-1963",
+                "1955-1958", "1954-1956", "1946-1952",
+                "1939-1948", "1946-1950", "1940-1943")
 
 
-
-
-Years.Active <- ("1940-1943", "1946-1950", "1939-1948",
-                 "1946-1952", "1954-1956", "1955-1958",
-                 "1956-1963", "1955-1958", "1956-1963",
-                 "1955-1958", "1956-1956", "1956-1963", 
-                 "1956-1957", "1958-1960", "1958-1961",
-                 "1960-1969", "1960-1968", "1962-1964",
-                 "1964-1968", "1960-1968", "1967-1968"
-               
-                       
-             
-                 )
-
-running <- create.df(Players, Years.Active)
+# running <- create.df(Players, Years.Active)
 
 ```
 
@@ -805,7 +798,6 @@ df.goats <- distinct(df.goats)
 ```{r}
 
 # group by and count number of players in each sport for each year
-
 df.goats.subset <- df.goats %>%
   group_by(Year, Sport) %>%
   summarize(N = n()) %>%
@@ -813,6 +805,24 @@ df.goats.subset <- df.goats %>%
     complete(Year, Sport,
              fill = list(N = 0))
 
+###
+
+# same as dataframe above, but add a column that lists the players in a given year
+df.goats.subset.2 <- df.goats %>%
+  group_by(Year, Sport) %>%
+  summarize(N = n(), Players = paste(sort(unique(Player)),collapse=", ")) %>%
+    ungroup() %>%
+    complete(Year, Sport,
+             fill = list(N = 0))
+
+###
+
+# filter above dataframe
+df.goats.subset.2 <- df.goats.subset.2[df.goats.subset.2$Year >= 1945, ]
+
+###
+
+# dataframe with the mean career length for each sports
 data.2 <- df.goats %>%
   group_by(Player, Sport) %>%
   summarize(Length = n())
@@ -821,11 +831,27 @@ data.2 <- data.2 %>%
   group_by(Sport) %>%
   summarize(avg.length = mean(Length))
 
+###
+
+# no. of GOATS for each sport
+data.4 <- df.goats %>% 
+  group_by(Player) %>% filter(row_number() == 1) %>%
+  group_by(Sport) %>%
+  summarize (N = n())
+
+###
+
 # write visualization data to csv 
-write.csv(df.goats.subset, "data.csv", row.names=FALSE)
+write.csv(df.goats.subset, "Data/data.csv", row.names=FALSE)
 
 # write career length data to csv
-write.csv(data.2, "data.2.csv", row.names=FALSE)
+write.csv(data.2, "Data/data.2.csv", row.names=FALSE)
+
+# write data for Benjamin to csv
+write.csv(df.goats.subset.2, "Data/data.3.csv", row.names=FALSE)
+
+# write data for # GOATS for each sport to csv
+write.csv(data.4, "Data/data.4.csv", row.names=FALSE)
 
 ```
 

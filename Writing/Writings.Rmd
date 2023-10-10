@@ -382,7 +382,7 @@ plot((0:100)/100, results_n_1000_c_i, xlab = "Average Improvement per Generation
 
 ### Background
 
-Various changes in rule, equipment, and technique have enabled athletes to gain competitive advantages over their predecessors in a plethora of ways. We now elucidate on some of the most prominent ones in the sports that we have covered. 
+Various changes in rules, equipment, and technique have enabled athletes to gain competitive advantages over their predecessors in a plethora of ways. We now elucidate on some of the most prominent ones in the sports that we have covered. 
 
 ### 1. Fosbury Flop 
 

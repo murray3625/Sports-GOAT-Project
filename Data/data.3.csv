@@ -1,0 +1,791 @@
+"Year","Sport","N","Players"
+1945,"Baseball",2,"Joe DiMaggio, Stan Musial"
+1945,"Basketball",0,NA
+1945,"Chess",1,"Mikhail Botvinnik"
+1945,"Cricket",1,"Donald Bradman"
+1945,"Football",1,"Don Hutson"
+1945,"Golf",2,"Byron Nelson, Sam Snead"
+1945,"Hockey",1,"Maurice Richard"
+1945,"Soccer",4,"Alfredo di Stefano, Ferenc Puskas, Giuseppe Meazza, Hugo Sanchez"
+1945,"Swimming",0,NA
+1945,"Tennis",2,"Bill Tilden, Don Budge"
+1946,"Baseball",3,"Joe DiMaggio, Stan Musial, Ted Williams"
+1946,"Basketball",0,NA
+1946,"Chess",1,"Mikhail Botvinnik"
+1946,"Cricket",1,"Donald Bradman"
+1946,"Football",1,"Otto Graham"
+1946,"Golf",1,"Sam Snead"
+1946,"Hockey",2,"Gordie Howe, Maurice Richard"
+1946,"Soccer",4,"Alfredo di Stefano, Ferenc Puskas, Giuseppe Meazza, Hugo Sanchez"
+1946,"Swimming",0,NA
+1946,"Tennis",2,"Bill Tilden, Don Budge"
+1947,"Baseball",3,"Joe DiMaggio, Stan Musial, Ted Williams"
+1947,"Basketball",0,NA
+1947,"Chess",1,"Mikhail Botvinnik"
+1947,"Cricket",1,"Donald Bradman"
+1947,"Football",1,"Otto Graham"
+1947,"Golf",1,"Sam Snead"
+1947,"Hockey",2,"Gordie Howe, Maurice Richard"
+1947,"Soccer",4,"Alfredo di Stefano, Ferenc Puskas, Giuseppe Meazza, Hugo Sanchez"
+1947,"Swimming",0,NA
+1947,"Tennis",1,"Don Budge"
+1948,"Baseball",3,"Joe DiMaggio, Stan Musial, Ted Williams"
+1948,"Basketball",1,"George Mikan"
+1948,"Chess",1,"Mikhail Botvinnik"
+1948,"Cricket",1,"Donald Bradman"
+1948,"Football",1,"Otto Graham"
+1948,"Golf",1,"Sam Snead"
+1948,"Hockey",2,"Gordie Howe, Maurice Richard"
+1948,"Soccer",2,"Alfredo di Stefano, Ferenc Puskas"
+1948,"Swimming",0,NA
+1948,"Tennis",1,"Don Budge"
+1949,"Baseball",3,"Joe DiMaggio, Stan Musial, Ted Williams"
+1949,"Basketball",1,"George Mikan"
+1949,"Chess",1,"Mikhail Botvinnik"
+1949,"Cricket",1,"Donald Bradman"
+1949,"Football",1,"Otto Graham"
+1949,"Golf",1,"Sam Snead"
+1949,"Hockey",2,"Gordie Howe, Maurice Richard"
+1949,"Soccer",2,"Alfredo di Stefano, Ferenc Puskas"
+1949,"Swimming",0,NA
+1949,"Tennis",1,"Don Budge"
+1950,"Baseball",3,"Joe DiMaggio, Stan Musial, Ted Williams"
+1950,"Basketball",1,"George Mikan"
+1950,"Chess",1,"Mikhail Botvinnik"
+1950,"Cricket",0,NA
+1950,"Football",1,"Otto Graham"
+1950,"Golf",1,"Sam Snead"
+1950,"Hockey",2,"Gordie Howe, Maurice Richard"
+1950,"Soccer",2,"Alfredo di Stefano, Ferenc Puskas"
+1950,"Swimming",0,NA
+1950,"Tennis",1,"Don Budge"
+1951,"Baseball",3,"Joe DiMaggio, Stan Musial, Ted Williams"
+1951,"Basketball",1,"George Mikan"
+1951,"Chess",1,"Mikhail Botvinnik"
+1951,"Cricket",0,NA
+1951,"Football",1,"Otto Graham"
+1951,"Golf",1,"Sam Snead"
+1951,"Hockey",2,"Gordie Howe, Maurice Richard"
+1951,"Soccer",2,"Alfredo di Stefano, Ferenc Puskas"
+1951,"Swimming",0,NA
+1951,"Tennis",1,"Don Budge"
+1952,"Baseball",2,"Stan Musial, Ted Williams"
+1952,"Basketball",1,"George Mikan"
+1952,"Chess",1,"Mikhail Botvinnik"
+1952,"Cricket",0,NA
+1952,"Football",1,"Otto Graham"
+1952,"Golf",1,"Sam Snead"
+1952,"Hockey",2,"Gordie Howe, Maurice Richard"
+1952,"Soccer",2,"Alfredo di Stefano, Ferenc Puskas"
+1952,"Swimming",2,"John Devitt, Jon Henricks"
+1952,"Tennis",1,"Don Budge"
+1953,"Baseball",2,"Stan Musial, Ted Williams"
+1953,"Basketball",1,"George Mikan"
+1953,"Chess",1,"Mikhail Botvinnik"
+1953,"Cricket",0,NA
+1953,"Football",1,"Otto Graham"
+1953,"Golf",1,"Sam Snead"
+1953,"Hockey",2,"Gordie Howe, Maurice Richard"
+1953,"Soccer",2,"Alfredo di Stefano, Ferenc Puskas"
+1953,"Swimming",2,"John Devitt, Jon Henricks"
+1953,"Tennis",2,"Don Budge, Roy Emerson"
+1954,"Baseball",2,"Stan Musial, Ted Williams"
+1954,"Basketball",1,"George Mikan"
+1954,"Chess",1,"Mikhail Botvinnik"
+1954,"Cricket",0,NA
+1954,"Football",1,"Otto Graham"
+1954,"Golf",1,"Sam Snead"
+1954,"Hockey",2,"Gordie Howe, Maurice Richard"
+1954,"Soccer",2,"Alfredo di Stefano, Ferenc Puskas"
+1954,"Swimming",2,"John Devitt, Jon Henricks"
+1954,"Tennis",2,"Don Budge, Roy Emerson"
+1955,"Baseball",2,"Stan Musial, Ted Williams"
+1955,"Basketball",1,"George Mikan"
+1955,"Chess",1,"Mikhail Botvinnik"
+1955,"Cricket",0,NA
+1955,"Football",2,"Johnny Unitas, Otto Graham"
+1955,"Golf",0,NA
+1955,"Hockey",2,"Gordie Howe, Maurice Richard"
+1955,"Soccer",2,"Alfredo di Stefano, Ferenc Puskas"
+1955,"Swimming",3,"John Devitt, Jon Henricks, Manuel Dos Santos"
+1955,"Tennis",2,"Don Budge, Roy Emerson"
+1956,"Baseball",2,"Stan Musial, Ted Williams"
+1956,"Basketball",2,"Bill Russell, George Mikan"
+1956,"Chess",1,"Mikhail Botvinnik"
+1956,"Cricket",0,NA
+1956,"Football",1,"Johnny Unitas"
+1956,"Golf",0,NA
+1956,"Hockey",2,"Gordie Howe, Maurice Richard"
+1956,"Soccer",3,"Alfredo di Stefano, Ferenc Puskas, Pele"
+1956,"Swimming",3,"John Devitt, Jon Henricks, Manuel Dos Santos"
+1956,"Tennis",2,"Rod Laver, Roy Emerson"
+1957,"Baseball",2,"Stan Musial, Ted Williams"
+1957,"Basketball",1,"Bill Russell"
+1957,"Chess",2,"Bobby Fischer, Mikhail Botvinnik"
+1957,"Cricket",0,NA
+1957,"Football",2,"Jim Brown, Johnny Unitas"
+1957,"Golf",0,NA
+1957,"Hockey",2,"Gordie Howe, Maurice Richard"
+1957,"Soccer",3,"Alfredo di Stefano, Ferenc Puskas, Pele"
+1957,"Swimming",3,"John Devitt, Jon Henricks, Manuel Dos Santos"
+1957,"Tennis",2,"Rod Laver, Roy Emerson"
+1958,"Baseball",2,"Stan Musial, Ted Williams"
+1958,"Basketball",1,"Bill Russell"
+1958,"Chess",2,"Bobby Fischer, Mikhail Botvinnik"
+1958,"Cricket",0,NA
+1958,"Football",2,"Jim Brown, Johnny Unitas"
+1958,"Golf",0,NA
+1958,"Hockey",2,"Gordie Howe, Maurice Richard"
+1958,"Soccer",3,"Alfredo di Stefano, Ferenc Puskas, Pele"
+1958,"Swimming",3,"John Devitt, Jon Henricks, Manuel Dos Santos"
+1958,"Tennis",2,"Rod Laver, Roy Emerson"
+1959,"Baseball",2,"Stan Musial, Ted Williams"
+1959,"Basketball",2,"Bill Russell, Wilt Chamberlain"
+1959,"Chess",2,"Bobby Fischer, Mikhail Botvinnik"
+1959,"Cricket",0,NA
+1959,"Football",2,"Jim Brown, Johnny Unitas"
+1959,"Golf",0,NA
+1959,"Hockey",2,"Gordie Howe, Maurice Richard"
+1959,"Soccer",3,"Alfredo di Stefano, Ferenc Puskas, Pele"
+1959,"Swimming",3,"John Devitt, Jon Henricks, Manuel Dos Santos"
+1959,"Tennis",2,"Rod Laver, Roy Emerson"
+1960,"Baseball",2,"Stan Musial, Ted Williams"
+1960,"Basketball",2,"Bill Russell, Wilt Chamberlain"
+1960,"Chess",2,"Bobby Fischer, Mikhail Botvinnik"
+1960,"Cricket",0,NA
+1960,"Football",2,"Jim Brown, Johnny Unitas"
+1960,"Golf",0,NA
+1960,"Hockey",2,"Gordie Howe, Maurice Richard"
+1960,"Soccer",3,"Alfredo di Stefano, Ferenc Puskas, Pele"
+1960,"Swimming",4,"Alain Gottvalles, John Devitt, Jon Henricks, Manuel Dos Santos"
+1960,"Tennis",2,"Rod Laver, Roy Emerson"
+1961,"Baseball",1,"Stan Musial"
+1961,"Basketball",2,"Bill Russell, Wilt Chamberlain"
+1961,"Chess",2,"Bobby Fischer, Mikhail Botvinnik"
+1961,"Cricket",0,NA
+1961,"Football",2,"Jim Brown, Johnny Unitas"
+1961,"Golf",0,NA
+1961,"Hockey",1,"Gordie Howe"
+1961,"Soccer",3,"Alfredo di Stefano, Ferenc Puskas, Pele"
+1961,"Swimming",2,"Alain Gottvalles, Manuel Dos Santos"
+1961,"Tennis",2,"Rod Laver, Roy Emerson"
+1962,"Baseball",1,"Stan Musial"
+1962,"Basketball",2,"Bill Russell, Wilt Chamberlain"
+1962,"Chess",2,"Bobby Fischer, Mikhail Botvinnik"
+1962,"Cricket",0,NA
+1962,"Football",2,"Jim Brown, Johnny Unitas"
+1962,"Golf",1,"Jack Nicklaus"
+1962,"Hockey",1,"Gordie Howe"
+1962,"Soccer",3,"Alfredo di Stefano, Ferenc Puskas, Pele"
+1962,"Swimming",2,"Alain Gottvalles, Manuel Dos Santos"
+1962,"Tennis",2,"Rod Laver, Roy Emerson"
+1963,"Baseball",1,"Stan Musial"
+1963,"Basketball",2,"Bill Russell, Wilt Chamberlain"
+1963,"Chess",2,"Bobby Fischer, Mikhail Botvinnik"
+1963,"Cricket",0,NA
+1963,"Football",2,"Jim Brown, Johnny Unitas"
+1963,"Golf",1,"Jack Nicklaus"
+1963,"Hockey",1,"Gordie Howe"
+1963,"Soccer",3,"Alfredo di Stefano, Ferenc Puskas, Pele"
+1963,"Swimming",2,"Alain Gottvalles, Manuel Dos Santos"
+1963,"Tennis",2,"Rod Laver, Roy Emerson"
+1964,"Baseball",0,NA
+1964,"Basketball",2,"Bill Russell, Wilt Chamberlain"
+1964,"Chess",2,"Bobby Fischer, Mikhail Botvinnik"
+1964,"Cricket",0,NA
+1964,"Football",2,"Jim Brown, Johnny Unitas"
+1964,"Golf",1,"Jack Nicklaus"
+1964,"Hockey",1,"Gordie Howe"
+1964,"Soccer",3,"Alfredo di Stefano, Ferenc Puskas, Pele"
+1964,"Swimming",2,"Alain Gottvalles, Manuel Dos Santos"
+1964,"Tennis",2,"Rod Laver, Roy Emerson"
+1965,"Baseball",0,NA
+1965,"Basketball",2,"Bill Russell, Wilt Chamberlain"
+1965,"Chess",2,"Bobby Fischer, Mikhail Botvinnik"
+1965,"Cricket",0,NA
+1965,"Football",2,"Jim Brown, Johnny Unitas"
+1965,"Golf",1,"Jack Nicklaus"
+1965,"Hockey",1,"Gordie Howe"
+1965,"Soccer",3,"Alfredo di Stefano, Ferenc Puskas, Pele"
+1965,"Swimming",3,"Kenneth Walsh, Manuel Dos Santos, Mark Spitz"
+1965,"Tennis",2,"Rod Laver, Roy Emerson"
+1966,"Baseball",0,NA
+1966,"Basketball",2,"Bill Russell, Wilt Chamberlain"
+1966,"Chess",2,"Bobby Fischer, Mikhail Botvinnik"
+1966,"Cricket",0,NA
+1966,"Football",1,"Johnny Unitas"
+1966,"Golf",1,"Jack Nicklaus"
+1966,"Hockey",1,"Gordie Howe"
+1966,"Soccer",3,"Alfredo di Stefano, Ferenc Puskas, Pele"
+1966,"Swimming",3,"Kenneth Walsh, Manuel Dos Santos, Mark Spitz"
+1966,"Tennis",2,"Rod Laver, Roy Emerson"
+1967,"Baseball",0,NA
+1967,"Basketball",2,"Bill Russell, Wilt Chamberlain"
+1967,"Chess",2,"Bobby Fischer, Mikhail Botvinnik"
+1967,"Cricket",0,NA
+1967,"Football",1,"Johnny Unitas"
+1967,"Golf",1,"Jack Nicklaus"
+1967,"Hockey",1,"Gordie Howe"
+1967,"Soccer",1,"Pele"
+1967,"Swimming",3,"Kenneth Walsh, Manuel Dos Santos, Mark Spitz"
+1967,"Tennis",2,"Rod Laver, Roy Emerson"
+1968,"Baseball",0,NA
+1968,"Basketball",2,"Bill Russell, Wilt Chamberlain"
+1968,"Chess",2,"Bobby Fischer, Mikhail Botvinnik"
+1968,"Cricket",0,NA
+1968,"Football",1,"Johnny Unitas"
+1968,"Golf",1,"Jack Nicklaus"
+1968,"Hockey",1,"Gordie Howe"
+1968,"Soccer",1,"Pele"
+1968,"Swimming",3,"Kenneth Walsh, Manuel Dos Santos, Mark Spitz"
+1968,"Tennis",2,"Rod Laver, Roy Emerson"
+1969,"Baseball",0,NA
+1969,"Basketball",3,"Bill Russell, Kareem Abdul-Jabbar, Wilt Chamberlain"
+1969,"Chess",2,"Bobby Fischer, Mikhail Botvinnik"
+1969,"Cricket",0,NA
+1969,"Football",1,"Johnny Unitas"
+1969,"Golf",1,"Jack Nicklaus"
+1969,"Hockey",1,"Gordie Howe"
+1969,"Soccer",1,"Pele"
+1969,"Swimming",2,"Manuel Dos Santos, Mark Spitz"
+1969,"Tennis",2,"Rod Laver, Roy Emerson"
+1970,"Baseball",0,NA
+1970,"Basketball",2,"Kareem Abdul-Jabbar, Wilt Chamberlain"
+1970,"Chess",2,"Bobby Fischer, Mikhail Botvinnik"
+1970,"Cricket",0,NA
+1970,"Football",1,"Johnny Unitas"
+1970,"Golf",1,"Jack Nicklaus"
+1970,"Hockey",1,"Gordie Howe"
+1970,"Soccer",1,"Pele"
+1970,"Swimming",1,"Mark Spitz"
+1970,"Tennis",2,"Rod Laver, Roy Emerson"
+1971,"Baseball",0,NA
+1971,"Basketball",2,"Kareem Abdul-Jabbar, Wilt Chamberlain"
+1971,"Chess",1,"Bobby Fischer"
+1971,"Cricket",0,NA
+1971,"Football",1,"Johnny Unitas"
+1971,"Golf",1,"Jack Nicklaus"
+1971,"Hockey",1,"Gordie Howe"
+1971,"Soccer",1,"Pele"
+1971,"Swimming",1,"Mark Spitz"
+1971,"Tennis",2,"Rod Laver, Roy Emerson"
+1972,"Baseball",0,NA
+1972,"Basketball",2,"Kareem Abdul-Jabbar, Wilt Chamberlain"
+1972,"Chess",1,"Bobby Fischer"
+1972,"Cricket",0,NA
+1972,"Football",1,"Johnny Unitas"
+1972,"Golf",1,"Jack Nicklaus"
+1972,"Hockey",0,NA
+1972,"Soccer",1,"Pele"
+1972,"Swimming",1,"Mark Spitz"
+1972,"Tennis",2,"Rod Laver, Roy Emerson"
+1973,"Baseball",0,NA
+1973,"Basketball",2,"Kareem Abdul-Jabbar, Wilt Chamberlain"
+1973,"Chess",0,NA
+1973,"Cricket",0,NA
+1973,"Football",1,"Johnny Unitas"
+1973,"Golf",1,"Jack Nicklaus"
+1973,"Hockey",1,"Gordie Howe"
+1973,"Soccer",1,"Pele"
+1973,"Swimming",2,"Jim Montgomery, Jonty Skinner"
+1973,"Tennis",2,"Rod Laver, Roy Emerson"
+1974,"Baseball",0,NA
+1974,"Basketball",1,"Kareem Abdul-Jabbar"
+1974,"Chess",0,NA
+1974,"Cricket",0,NA
+1974,"Football",0,NA
+1974,"Golf",1,"Jack Nicklaus"
+1974,"Hockey",1,"Gordie Howe"
+1974,"Soccer",1,"Pele"
+1974,"Swimming",2,"Jim Montgomery, Jonty Skinner"
+1974,"Tennis",2,"Rod Laver, Roy Emerson"
+1975,"Baseball",0,NA
+1975,"Basketball",1,"Kareem Abdul-Jabbar"
+1975,"Chess",0,NA
+1975,"Cricket",0,NA
+1975,"Football",0,NA
+1975,"Golf",1,"Jack Nicklaus"
+1975,"Hockey",1,"Gordie Howe"
+1975,"Soccer",1,"Pele"
+1975,"Swimming",2,"Jim Montgomery, Jonty Skinner"
+1975,"Tennis",2,"Rod Laver, Roy Emerson"
+1976,"Baseball",0,NA
+1976,"Basketball",1,"Kareem Abdul-Jabbar"
+1976,"Chess",0,NA
+1976,"Cricket",0,NA
+1976,"Football",0,NA
+1976,"Golf",1,"Jack Nicklaus"
+1976,"Hockey",1,"Gordie Howe"
+1976,"Soccer",2,"Diego Maradona, Pele"
+1976,"Swimming",2,"Jim Montgomery, Jonty Skinner"
+1976,"Tennis",2,"Rod Laver, Roy Emerson"
+1977,"Baseball",0,NA
+1977,"Basketball",1,"Kareem Abdul-Jabbar"
+1977,"Chess",0,NA
+1977,"Cricket",0,NA
+1977,"Football",0,NA
+1977,"Golf",1,"Jack Nicklaus"
+1977,"Hockey",1,"Gordie Howe"
+1977,"Soccer",2,"Diego Maradona, Pele"
+1977,"Swimming",0,NA
+1977,"Tennis",2,"Rod Laver, Roy Emerson"
+1978,"Baseball",0,NA
+1978,"Basketball",1,"Kareem Abdul-Jabbar"
+1978,"Chess",1,"Garry Kasparov"
+1978,"Cricket",0,NA
+1978,"Football",0,NA
+1978,"Golf",1,"Jack Nicklaus"
+1978,"Hockey",3,"Gordie Howe, Mark Messier, Wayne Gretzky"
+1978,"Soccer",1,"Diego Maradona"
+1978,"Swimming",1,"Rowdy Gaines"
+1978,"Tennis",2,"Rod Laver, Roy Emerson"
+1979,"Baseball",0,NA
+1979,"Basketball",1,"Kareem Abdul-Jabbar"
+1979,"Chess",1,"Garry Kasparov"
+1979,"Cricket",0,NA
+1979,"Football",0,NA
+1979,"Golf",1,"Jack Nicklaus"
+1979,"Hockey",3,"Gordie Howe, Mark Messier, Wayne Gretzky"
+1979,"Soccer",1,"Diego Maradona"
+1979,"Swimming",1,"Rowdy Gaines"
+1979,"Tennis",2,"Rod Laver, Roy Emerson"
+1980,"Baseball",0,NA
+1980,"Basketball",1,"Kareem Abdul-Jabbar"
+1980,"Chess",1,"Garry Kasparov"
+1980,"Cricket",0,NA
+1980,"Football",0,NA
+1980,"Golf",1,"Jack Nicklaus"
+1980,"Hockey",3,"Gordie Howe, Mark Messier, Wayne Gretzky"
+1980,"Soccer",1,"Diego Maradona"
+1980,"Swimming",1,"Rowdy Gaines"
+1980,"Tennis",1,"Roy Emerson"
+1981,"Baseball",0,NA
+1981,"Basketball",1,"Kareem Abdul-Jabbar"
+1981,"Chess",1,"Garry Kasparov"
+1981,"Cricket",0,NA
+1981,"Football",1,"Lawrence Taylor"
+1981,"Golf",1,"Jack Nicklaus"
+1981,"Hockey",2,"Mark Messier, Wayne Gretzky"
+1981,"Soccer",1,"Diego Maradona"
+1981,"Swimming",1,"Rowdy Gaines"
+1981,"Tennis",1,"Roy Emerson"
+1982,"Baseball",0,NA
+1982,"Basketball",1,"Kareem Abdul-Jabbar"
+1982,"Chess",1,"Garry Kasparov"
+1982,"Cricket",0,NA
+1982,"Football",1,"Lawrence Taylor"
+1982,"Golf",1,"Jack Nicklaus"
+1982,"Hockey",2,"Mark Messier, Wayne Gretzky"
+1982,"Soccer",1,"Diego Maradona"
+1982,"Swimming",1,"Rowdy Gaines"
+1982,"Tennis",1,"Roy Emerson"
+1983,"Baseball",0,NA
+1983,"Basketball",1,"Kareem Abdul-Jabbar"
+1983,"Chess",1,"Garry Kasparov"
+1983,"Cricket",0,NA
+1983,"Football",1,"Lawrence Taylor"
+1983,"Golf",1,"Jack Nicklaus"
+1983,"Hockey",2,"Mark Messier, Wayne Gretzky"
+1983,"Soccer",1,"Diego Maradona"
+1983,"Swimming",1,"Rowdy Gaines"
+1983,"Tennis",1,"Roy Emerson"
+1984,"Baseball",0,NA
+1984,"Basketball",3,"John Stockton, Kareem Abdul-Jabbar, Michael Jordan"
+1984,"Chess",1,"Garry Kasparov"
+1984,"Cricket",0,NA
+1984,"Football",1,"Lawrence Taylor"
+1984,"Golf",1,"Jack Nicklaus"
+1984,"Hockey",2,"Mark Messier, Wayne Gretzky"
+1984,"Soccer",1,"Diego Maradona"
+1984,"Swimming",2,"Matt Biondi, Rowdy Gaines"
+1984,"Tennis",0,NA
+1985,"Baseball",0,NA
+1985,"Basketball",3,"John Stockton, Kareem Abdul-Jabbar, Michael Jordan"
+1985,"Chess",1,"Garry Kasparov"
+1985,"Cricket",0,NA
+1985,"Football",2,"Jerry Rice, Lawrence Taylor"
+1985,"Golf",1,"Jack Nicklaus"
+1985,"Hockey",2,"Mark Messier, Wayne Gretzky"
+1985,"Soccer",1,"Diego Maradona"
+1985,"Swimming",1,"Matt Biondi"
+1985,"Tennis",0,NA
+1986,"Baseball",1,"Barry Bonds"
+1986,"Basketball",3,"John Stockton, Kareem Abdul-Jabbar, Michael Jordan"
+1986,"Chess",1,"Garry Kasparov"
+1986,"Cricket",0,NA
+1986,"Football",2,"Jerry Rice, Lawrence Taylor"
+1986,"Golf",1,"Jack Nicklaus"
+1986,"Hockey",2,"Mark Messier, Wayne Gretzky"
+1986,"Soccer",1,"Diego Maradona"
+1986,"Swimming",1,"Matt Biondi"
+1986,"Tennis",0,NA
+1987,"Baseball",1,"Barry Bonds"
+1987,"Basketball",3,"John Stockton, Kareem Abdul-Jabbar, Michael Jordan"
+1987,"Chess",1,"Garry Kasparov"
+1987,"Cricket",0,NA
+1987,"Football",2,"Jerry Rice, Lawrence Taylor"
+1987,"Golf",0,NA
+1987,"Hockey",2,"Mark Messier, Wayne Gretzky"
+1987,"Soccer",1,"Diego Maradona"
+1987,"Swimming",1,"Matt Biondi"
+1987,"Tennis",0,NA
+1988,"Baseball",1,"Barry Bonds"
+1988,"Basketball",3,"John Stockton, Kareem Abdul-Jabbar, Michael Jordan"
+1988,"Chess",1,"Garry Kasparov"
+1988,"Cricket",0,NA
+1988,"Football",2,"Jerry Rice, Lawrence Taylor"
+1988,"Golf",0,NA
+1988,"Hockey",2,"Mark Messier, Wayne Gretzky"
+1988,"Soccer",1,"Diego Maradona"
+1988,"Swimming",1,"Matt Biondi"
+1988,"Tennis",1,"Pete Sampras"
+1989,"Baseball",1,"Barry Bonds"
+1989,"Basketball",3,"John Stockton, Kareem Abdul-Jabbar, Michael Jordan"
+1989,"Chess",1,"Garry Kasparov"
+1989,"Cricket",0,NA
+1989,"Football",2,"Jerry Rice, Lawrence Taylor"
+1989,"Golf",0,NA
+1989,"Hockey",2,"Mark Messier, Wayne Gretzky"
+1989,"Soccer",1,"Diego Maradona"
+1989,"Swimming",1,"Matt Biondi"
+1989,"Tennis",1,"Pete Sampras"
+1990,"Baseball",1,"Barry Bonds"
+1990,"Basketball",2,"John Stockton, Michael Jordan"
+1990,"Chess",1,"Garry Kasparov"
+1990,"Cricket",0,NA
+1990,"Football",2,"Jerry Rice, Lawrence Taylor"
+1990,"Golf",0,NA
+1990,"Hockey",2,"Mark Messier, Wayne Gretzky"
+1990,"Soccer",1,"Diego Maradona"
+1990,"Swimming",2,"Alexander Popov, Matt Biondi"
+1990,"Tennis",1,"Pete Sampras"
+1991,"Baseball",1,"Barry Bonds"
+1991,"Basketball",2,"John Stockton, Michael Jordan"
+1991,"Chess",1,"Garry Kasparov"
+1991,"Cricket",0,NA
+1991,"Football",3,"Brett Favre, Jerry Rice, Lawrence Taylor"
+1991,"Golf",0,NA
+1991,"Hockey",2,"Mark Messier, Wayne Gretzky"
+1991,"Soccer",1,"Diego Maradona"
+1991,"Swimming",2,"Alexander Popov, Matt Biondi"
+1991,"Tennis",1,"Pete Sampras"
+1992,"Baseball",1,"Barry Bonds"
+1992,"Basketball",2,"John Stockton, Michael Jordan"
+1992,"Chess",2,"Bobby Fischer, Garry Kasparov"
+1992,"Cricket",0,NA
+1992,"Football",3,"Brett Favre, Jerry Rice, Lawrence Taylor"
+1992,"Golf",0,NA
+1992,"Hockey",2,"Mark Messier, Wayne Gretzky"
+1992,"Soccer",1,"Diego Maradona"
+1992,"Swimming",2,"Alexander Popov, Matt Biondi"
+1992,"Tennis",1,"Pete Sampras"
+1993,"Baseball",1,"Barry Bonds"
+1993,"Basketball",2,"John Stockton, Michael Jordan"
+1993,"Chess",1,"Garry Kasparov"
+1993,"Cricket",0,NA
+1993,"Football",3,"Brett Favre, Jerry Rice, Lawrence Taylor"
+1993,"Golf",0,NA
+1993,"Hockey",2,"Mark Messier, Wayne Gretzky"
+1993,"Soccer",1,"Diego Maradona"
+1993,"Swimming",2,"Alexander Popov, Pieter Van Den Hoogenband"
+1993,"Tennis",1,"Pete Sampras"
+1994,"Baseball",1,"Barry Bonds"
+1994,"Basketball",1,"John Stockton"
+1994,"Chess",1,"Garry Kasparov"
+1994,"Cricket",0,NA
+1994,"Football",2,"Brett Favre, Jerry Rice"
+1994,"Golf",0,NA
+1994,"Hockey",2,"Mark Messier, Wayne Gretzky"
+1994,"Soccer",1,"Diego Maradona"
+1994,"Swimming",2,"Alexander Popov, Pieter Van Den Hoogenband"
+1994,"Tennis",1,"Pete Sampras"
+1995,"Baseball",1,"Barry Bonds"
+1995,"Basketball",2,"John Stockton, Michael Jordan"
+1995,"Chess",1,"Garry Kasparov"
+1995,"Cricket",0,NA
+1995,"Football",2,"Brett Favre, Jerry Rice"
+1995,"Golf",0,NA
+1995,"Hockey",2,"Mark Messier, Wayne Gretzky"
+1995,"Soccer",1,"Diego Maradona"
+1995,"Swimming",2,"Alexander Popov, Pieter Van Den Hoogenband"
+1995,"Tennis",1,"Pete Sampras"
+1996,"Baseball",1,"Barry Bonds"
+1996,"Basketball",2,"John Stockton, Michael Jordan"
+1996,"Chess",1,"Garry Kasparov"
+1996,"Cricket",0,NA
+1996,"Football",2,"Brett Favre, Jerry Rice"
+1996,"Golf",0,NA
+1996,"Hockey",2,"Mark Messier, Wayne Gretzky"
+1996,"Soccer",1,"Diego Maradona"
+1996,"Swimming",2,"Alexander Popov, Pieter Van Den Hoogenband"
+1996,"Tennis",1,"Pete Sampras"
+1997,"Baseball",1,"Barry Bonds"
+1997,"Basketball",2,"John Stockton, Michael Jordan"
+1997,"Chess",1,"Garry Kasparov"
+1997,"Cricket",0,NA
+1997,"Football",2,"Brett Favre, Jerry Rice"
+1997,"Golf",1,"Tiger Woods"
+1997,"Hockey",2,"Mark Messier, Wayne Gretzky"
+1997,"Soccer",1,"Diego Maradona"
+1997,"Swimming",2,"Alexander Popov, Pieter Van Den Hoogenband"
+1997,"Tennis",1,"Pete Sampras"
+1998,"Baseball",1,"Barry Bonds"
+1998,"Basketball",2,"John Stockton, Michael Jordan"
+1998,"Chess",1,"Garry Kasparov"
+1998,"Cricket",0,NA
+1998,"Football",3,"Brett Favre, Jerry Rice, Peyton Manning"
+1998,"Golf",1,"Tiger Woods"
+1998,"Hockey",2,"Mark Messier, Wayne Gretzky"
+1998,"Soccer",0,NA
+1998,"Swimming",2,"Alexander Popov, Pieter Van Den Hoogenband"
+1998,"Tennis",2,"Pete Sampras, Roger Federer"
+1999,"Baseball",1,"Barry Bonds"
+1999,"Basketball",1,"John Stockton"
+1999,"Chess",1,"Garry Kasparov"
+1999,"Cricket",0,NA
+1999,"Football",3,"Brett Favre, Jerry Rice, Peyton Manning"
+1999,"Golf",1,"Tiger Woods"
+1999,"Hockey",2,"Mark Messier, Wayne Gretzky"
+1999,"Soccer",0,NA
+1999,"Swimming",2,"Alexander Popov, Pieter Van Den Hoogenband"
+1999,"Tennis",2,"Pete Sampras, Roger Federer"
+2000,"Baseball",1,"Barry Bonds"
+2000,"Basketball",1,"John Stockton"
+2000,"Chess",1,"Garry Kasparov"
+2000,"Cricket",0,NA
+2000,"Football",4,"Brett Favre, Jerry Rice, Peyton Manning, Tom Brady"
+2000,"Golf",1,"Tiger Woods"
+2000,"Hockey",1,"Mark Messier"
+2000,"Soccer",0,NA
+2000,"Swimming",3,"Alexander Popov, Michael Phelps, Pieter Van Den Hoogenband"
+2000,"Tennis",2,"Pete Sampras, Roger Federer"
+2001,"Baseball",1,"Barry Bonds"
+2001,"Basketball",2,"John Stockton, Michael Jordan"
+2001,"Chess",1,"Garry Kasparov"
+2001,"Cricket",0,NA
+2001,"Football",4,"Brett Favre, Jerry Rice, Peyton Manning, Tom Brady"
+2001,"Golf",1,"Tiger Woods"
+2001,"Hockey",1,"Mark Messier"
+2001,"Soccer",0,NA
+2001,"Swimming",3,"Alexander Popov, Michael Phelps, Pieter Van Den Hoogenband"
+2001,"Tennis",3,"Pete Sampras, Rafael Nadal, Roger Federer"
+2002,"Baseball",1,"Barry Bonds"
+2002,"Basketball",2,"John Stockton, Michael Jordan"
+2002,"Chess",1,"Garry Kasparov"
+2002,"Cricket",0,NA
+2002,"Football",4,"Brett Favre, Jerry Rice, Peyton Manning, Tom Brady"
+2002,"Golf",1,"Tiger Woods"
+2002,"Hockey",1,"Mark Messier"
+2002,"Soccer",1,"Cristiano Ronaldo"
+2002,"Swimming",4,"Alexander Popov, Eamon Sullivan, Michael Phelps, Pieter Van Den Hoogenband"
+2002,"Tennis",3,"Pete Sampras, Rafael Nadal, Roger Federer"
+2003,"Baseball",1,"Barry Bonds"
+2003,"Basketball",3,"John Stockton, Lebron James, Michael Jordan"
+2003,"Chess",1,"Garry Kasparov"
+2003,"Cricket",0,NA
+2003,"Football",4,"Brett Favre, Jerry Rice, Peyton Manning, Tom Brady"
+2003,"Golf",1,"Tiger Woods"
+2003,"Hockey",1,"Mark Messier"
+2003,"Soccer",2,"Cristiano Ronaldo, Lionel Messi"
+2003,"Swimming",4,"Alexander Popov, Eamon Sullivan, Michael Phelps, Pieter Van Den Hoogenband"
+2003,"Tennis",3,"Novak Djokovic, Rafael Nadal, Roger Federer"
+2004,"Baseball",1,"Barry Bonds"
+2004,"Basketball",1,"Lebron James"
+2004,"Chess",2,"Garry Kasparov, Magnus Carlson"
+2004,"Cricket",0,NA
+2004,"Football",4,"Brett Favre, Jerry Rice, Peyton Manning, Tom Brady"
+2004,"Golf",1,"Tiger Woods"
+2004,"Hockey",1,"Mark Messier"
+2004,"Soccer",2,"Cristiano Ronaldo, Lionel Messi"
+2004,"Swimming",5,"Alexander Popov, Cesar Cielo, Eamon Sullivan, Michael Phelps, Pieter Van Den Hoogenband"
+2004,"Tennis",3,"Novak Djokovic, Rafael Nadal, Roger Federer"
+2005,"Baseball",1,"Barry Bonds"
+2005,"Basketball",1,"Lebron James"
+2005,"Chess",2,"Garry Kasparov, Magnus Carlson"
+2005,"Cricket",0,NA
+2005,"Football",3,"Brett Favre, Peyton Manning, Tom Brady"
+2005,"Golf",1,"Tiger Woods"
+2005,"Hockey",0,NA
+2005,"Soccer",2,"Cristiano Ronaldo, Lionel Messi"
+2005,"Swimming",5,"Alexander Popov, Cesar Cielo, Eamon Sullivan, Michael Phelps, Pieter Van Den Hoogenband"
+2005,"Tennis",3,"Novak Djokovic, Rafael Nadal, Roger Federer"
+2006,"Baseball",1,"Barry Bonds"
+2006,"Basketball",1,"Lebron James"
+2006,"Chess",1,"Magnus Carlson"
+2006,"Cricket",0,NA
+2006,"Football",3,"Brett Favre, Peyton Manning, Tom Brady"
+2006,"Golf",1,"Tiger Woods"
+2006,"Hockey",0,NA
+2006,"Soccer",2,"Cristiano Ronaldo, Lionel Messi"
+2006,"Swimming",4,"Cesar Cielo, Eamon Sullivan, Michael Phelps, Pieter Van Den Hoogenband"
+2006,"Tennis",3,"Novak Djokovic, Rafael Nadal, Roger Federer"
+2007,"Baseball",1,"Barry Bonds"
+2007,"Basketball",1,"Lebron James"
+2007,"Chess",1,"Magnus Carlson"
+2007,"Cricket",0,NA
+2007,"Football",3,"Brett Favre, Peyton Manning, Tom Brady"
+2007,"Golf",1,"Tiger Woods"
+2007,"Hockey",0,NA
+2007,"Soccer",2,"Cristiano Ronaldo, Lionel Messi"
+2007,"Swimming",4,"Cesar Cielo, Eamon Sullivan, Michael Phelps, Pieter Van Den Hoogenband"
+2007,"Tennis",3,"Novak Djokovic, Rafael Nadal, Roger Federer"
+2008,"Baseball",0,NA
+2008,"Basketball",1,"Lebron James"
+2008,"Chess",1,"Magnus Carlson"
+2008,"Cricket",0,NA
+2008,"Football",3,"Brett Favre, Peyton Manning, Tom Brady"
+2008,"Golf",1,"Tiger Woods"
+2008,"Hockey",0,NA
+2008,"Soccer",2,"Cristiano Ronaldo, Lionel Messi"
+2008,"Swimming",4,"Cesar Cielo, Eamon Sullivan, Michael Phelps, Pieter Van Den Hoogenband"
+2008,"Tennis",3,"Novak Djokovic, Rafael Nadal, Roger Federer"
+2009,"Baseball",0,NA
+2009,"Basketball",1,"Lebron James"
+2009,"Chess",1,"Magnus Carlson"
+2009,"Cricket",0,NA
+2009,"Football",3,"Brett Favre, Peyton Manning, Tom Brady"
+2009,"Golf",1,"Tiger Woods"
+2009,"Hockey",0,NA
+2009,"Soccer",2,"Cristiano Ronaldo, Lionel Messi"
+2009,"Swimming",2,"Cesar Cielo, Michael Phelps"
+2009,"Tennis",3,"Novak Djokovic, Rafael Nadal, Roger Federer"
+2010,"Baseball",0,NA
+2010,"Basketball",1,"Lebron James"
+2010,"Chess",1,"Magnus Carlson"
+2010,"Cricket",0,NA
+2010,"Football",3,"Brett Favre, Peyton Manning, Tom Brady"
+2010,"Golf",1,"Tiger Woods"
+2010,"Hockey",0,NA
+2010,"Soccer",2,"Cristiano Ronaldo, Lionel Messi"
+2010,"Swimming",2,"Cesar Cielo, Michael Phelps"
+2010,"Tennis",3,"Novak Djokovic, Rafael Nadal, Roger Federer"
+2011,"Baseball",0,NA
+2011,"Basketball",1,"Lebron James"
+2011,"Chess",1,"Magnus Carlson"
+2011,"Cricket",0,NA
+2011,"Football",2,"Peyton Manning, Tom Brady"
+2011,"Golf",1,"Tiger Woods"
+2011,"Hockey",0,NA
+2011,"Soccer",2,"Cristiano Ronaldo, Lionel Messi"
+2011,"Swimming",2,"Cesar Cielo, Michael Phelps"
+2011,"Tennis",3,"Novak Djokovic, Rafael Nadal, Roger Federer"
+2012,"Baseball",0,NA
+2012,"Basketball",1,"Lebron James"
+2012,"Chess",1,"Magnus Carlson"
+2012,"Cricket",0,NA
+2012,"Football",2,"Peyton Manning, Tom Brady"
+2012,"Golf",1,"Tiger Woods"
+2012,"Hockey",0,NA
+2012,"Soccer",2,"Cristiano Ronaldo, Lionel Messi"
+2012,"Swimming",2,"Cesar Cielo, Michael Phelps"
+2012,"Tennis",3,"Novak Djokovic, Rafael Nadal, Roger Federer"
+2013,"Baseball",0,NA
+2013,"Basketball",1,"Lebron James"
+2013,"Chess",1,"Magnus Carlson"
+2013,"Cricket",0,NA
+2013,"Football",2,"Peyton Manning, Tom Brady"
+2013,"Golf",1,"Tiger Woods"
+2013,"Hockey",0,NA
+2013,"Soccer",2,"Cristiano Ronaldo, Lionel Messi"
+2013,"Swimming",2,"Cesar Cielo, Michael Phelps"
+2013,"Tennis",3,"Novak Djokovic, Rafael Nadal, Roger Federer"
+2014,"Baseball",0,NA
+2014,"Basketball",1,"Lebron James"
+2014,"Chess",1,"Magnus Carlson"
+2014,"Cricket",0,NA
+2014,"Football",2,"Peyton Manning, Tom Brady"
+2014,"Golf",1,"Tiger Woods"
+2014,"Hockey",0,NA
+2014,"Soccer",2,"Cristiano Ronaldo, Lionel Messi"
+2014,"Swimming",2,"Cesar Cielo, Michael Phelps"
+2014,"Tennis",3,"Novak Djokovic, Rafael Nadal, Roger Federer"
+2015,"Baseball",0,NA
+2015,"Basketball",1,"Lebron James"
+2015,"Chess",1,"Magnus Carlson"
+2015,"Cricket",0,NA
+2015,"Football",2,"Peyton Manning, Tom Brady"
+2015,"Golf",1,"Tiger Woods"
+2015,"Hockey",0,NA
+2015,"Soccer",2,"Cristiano Ronaldo, Lionel Messi"
+2015,"Swimming",2,"Cesar Cielo, Michael Phelps"
+2015,"Tennis",3,"Novak Djokovic, Rafael Nadal, Roger Federer"
+2016,"Baseball",0,NA
+2016,"Basketball",1,"Lebron James"
+2016,"Chess",1,"Magnus Carlson"
+2016,"Cricket",0,NA
+2016,"Football",1,"Tom Brady"
+2016,"Golf",1,"Tiger Woods"
+2016,"Hockey",0,NA
+2016,"Soccer",2,"Cristiano Ronaldo, Lionel Messi"
+2016,"Swimming",2,"Cesar Cielo, Michael Phelps"
+2016,"Tennis",3,"Novak Djokovic, Rafael Nadal, Roger Federer"
+2017,"Baseball",0,NA
+2017,"Basketball",1,"Lebron James"
+2017,"Chess",1,"Magnus Carlson"
+2017,"Cricket",0,NA
+2017,"Football",1,"Tom Brady"
+2017,"Golf",1,"Tiger Woods"
+2017,"Hockey",0,NA
+2017,"Soccer",2,"Cristiano Ronaldo, Lionel Messi"
+2017,"Swimming",1,"Cesar Cielo"
+2017,"Tennis",3,"Novak Djokovic, Rafael Nadal, Roger Federer"
+2018,"Baseball",0,NA
+2018,"Basketball",1,"Lebron James"
+2018,"Chess",1,"Magnus Carlson"
+2018,"Cricket",0,NA
+2018,"Football",1,"Tom Brady"
+2018,"Golf",1,"Tiger Woods"
+2018,"Hockey",0,NA
+2018,"Soccer",2,"Cristiano Ronaldo, Lionel Messi"
+2018,"Swimming",1,"Cesar Cielo"
+2018,"Tennis",3,"Novak Djokovic, Rafael Nadal, Roger Federer"
+2019,"Baseball",0,NA
+2019,"Basketball",1,"Lebron James"
+2019,"Chess",1,"Magnus Carlson"
+2019,"Cricket",0,NA
+2019,"Football",1,"Tom Brady"
+2019,"Golf",1,"Tiger Woods"
+2019,"Hockey",0,NA
+2019,"Soccer",2,"Cristiano Ronaldo, Lionel Messi"
+2019,"Swimming",1,"Cesar Cielo"
+2019,"Tennis",3,"Novak Djokovic, Rafael Nadal, Roger Federer"
+2020,"Baseball",0,NA
+2020,"Basketball",1,"Lebron James"
+2020,"Chess",1,"Magnus Carlson"
+2020,"Cricket",0,NA
+2020,"Football",1,"Tom Brady"
+2020,"Golf",0,NA
+2020,"Hockey",0,NA
+2020,"Soccer",2,"Cristiano Ronaldo, Lionel Messi"
+2020,"Swimming",1,"Cesar Cielo"
+2020,"Tennis",3,"Novak Djokovic, Rafael Nadal, Roger Federer"
+2021,"Baseball",0,NA
+2021,"Basketball",1,"Lebron James"
+2021,"Chess",1,"Magnus Carlson"
+2021,"Cricket",0,NA
+2021,"Football",1,"Tom Brady"
+2021,"Golf",0,NA
+2021,"Hockey",0,NA
+2021,"Soccer",2,"Cristiano Ronaldo, Lionel Messi"
+2021,"Swimming",2,"Cesar Cielo, David Popovici"
+2021,"Tennis",3,"Novak Djokovic, Rafael Nadal, Roger Federer"
+2022,"Baseball",0,NA
+2022,"Basketball",1,"Lebron James"
+2022,"Chess",1,"Magnus Carlson"
+2022,"Cricket",0,NA
+2022,"Football",1,"Tom Brady"
+2022,"Golf",0,NA
+2022,"Hockey",0,NA
+2022,"Soccer",2,"Cristiano Ronaldo, Lionel Messi"
+2022,"Swimming",2,"Cesar Cielo, David Popovici"
+2022,"Tennis",3,"Novak Djokovic, Rafael Nadal, Roger Federer"
+2023,"Baseball",0,NA
+2023,"Basketball",1,"Lebron James"
+2023,"Chess",1,"Magnus Carlson"
+2023,"Cricket",0,NA
+2023,"Football",1,"Tom Brady"
+2023,"Golf",0,NA
+2023,"Hockey",0,NA
+2023,"Soccer",2,"Cristiano Ronaldo, Lionel Messi"
+2023,"Swimming",2,"Cesar Cielo, David Popovici"
+2023,"Tennis",2,"Novak Djokovic, Rafael Nadal"
