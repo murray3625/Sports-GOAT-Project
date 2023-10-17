@@ -1,0 +1,340 @@
+---
+title: |
+  <center> Greatness in Sports: </center>
+  <center> Understanding and Visualizing its Patterns </center>
+  <center> Article Draft, V3 </center>
+author: "Benjmamin Leinwand and Matthew Murray"
+geometry: "top = 2cm, bottom = 2cm, left = 2cm, right = 2cm"
+fontsize: 10 pt
+bibliography: references.bib
+output: 
+  pdf_document:
+    latex_engine: pdflatex
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, warning = FALSE, options(knitr.table.format = "markdown"))
+```
+
+# Introduction
+
+## Background
+
+DON'T TAKE GREATNESS FOR GRANTED. 
+
+It's a common phrase regurgitated by sports fanatics and enthusiasts alike. Intuitively, it makes sense.
+In life we cannot and should not take anything great for granted - love, family, friends, time, etc. But coming back to our topic at hand, sports themselves are (hopefully) lasting, the athletes come and go, with their careers seeming like a brief blip in time when it is all said and done. Baseball fans listen to stories of the Great Bambino from their elders, wondering if they will ever see a player or a talent burst on to the scene again. Meanwhile, basketball fans seem to engage in an everlasting debate between Michael Jordan and Lebron James. 
+
+Nonetheless, with the seemingly endless abundance of talent on display today, coupled with the advances being made in athlete performance and recovery that have athletes performing at the highest levels ever, one has to call to question: *can* we take greatness for granted? Are there more greatest of all time (GOAT) candidates than one may intuitively believe there to be? Are there patterns in which greatness occurs in one sport, and a lack thereof in another? Do sports with certain qualities (e.g: contact vs. non-contact) tend to attract more GOAT candidates than another? In this paper, we seek to provide the answers to these questions and test whether the people's perceptions of greatness are mostly misnomers. 
+
+## Disclaimer - What we are NOT Trying to Do
+
+One point that we would like to *avidly* emphasize before getting into the details of the paper is that we are *NOT* looking to answer the question of who is the GOAT in any sport. Said question - while incredibly interesting and thought provoking - has been discussed ad nauseam at every bar, barber shop, and online forum imaginable. In fact, the ubiquity of the question is a testament to the fact that it can almost never be answered objectively. We are instead looking to examine the frequency, patterns, and cadence in which legitimate GOAT candidates appear in the most prominent and popular sports. In doing so, we had to inevitably - find GOAT candidates and sought to do so by using very reputable and defensible sources and metrics. 
+
+Additionally, we are aware and cognizant of the fact that if a reader were to conduct a similar analysis, the results and data may be very different. However, our goal in this project is not to conduct an analysis that is extremely robust/resistant to sensitivity tests, but rather, one that is informative, insightful, and interesting. If 25 different researchers were to conduct this analysis, each dataset and approach may be very different, and we are okay with that fact. Like many statistical analyses, answering our questions of interest is an art, not a science. 
+
+## Data
+
+Due to the unique nature of this project, we had to impute our own data. While time consuming, doing so allows us to be fully transparent and elucidate on all the assumptions that we inevitably had to make while creating the datasets.
+
+We decided to compile lists of men's GOAT candidates from the following sports:
+
+**"Subjective" Sports**
+
+1. Baseball
+
+2. Basketball
+
+3. Cricket
+
+4. Football
+
+5. Golf
+
+6. Hockey (Ice)
+
+7. Soccer
+
+8. Tennis
+
+
+**"Objective" Sports**
+
+9. Chess
+
+10. Running
+
+11. Swimming
+
+
+The rationale for including these sports is as follows:
+
+* Baseball, Basketball, Football, Hockey (Ice) - They are the 4 of the 5 most popular sports in the United States [@Gallup]. 
+
+* Cricket, Soccer - Included due to their immense popularity and following worldwide [@SFB]. 
+
+* Golf, Tennis - Included because professionals in both sports compete in four "major" tournaments each year. 
+
+* Chess, Running, Swimming - We decided to include these more "objective" sports that have very well-accepted, objective metrics that are more-than-often referred to when discussing the best player in that sport. The inclusion of these sports serves as litmus test from the results of the "subjective" sports. 
+
+The data spans from 1945 to the present. The choice of 1945 can be attributed to the fact that at this time, the MLB (1876) and NFL (1920) were already founded, while the Basketball Association of America (which eventually became the NBA) was founded shortly thereafter in 1946. Therefore, one can argue that the three most popular sports in North America (in addition to soccer) were already up and running by that time period. Additionally, 1945 marked the end of World War II and the advent of a period of economic flourishing in the Western world.
+
+Out of our valid concern of bogging down - and slowly lulling to sleep - most readers, we have not included the full list of statistical liberties - including how we determined a player's active years, the different criteria we used for including players in our dataset, etc. - that we took while creating the dataset in this article. These can instead be found at our [\textcolor{blue}{GitHub repository}](https://github.com/murray3625/Sports-GOAT-Project). Please refer to the file "Data Collection Assumptions.pdf". 
+
+# Notable Findings
+
+
+```{r, include=FALSE, warning=FALSE}
+
+# libraries
+
+library(janitor)
+library(dplyr)
+library(tidyverse)
+library(lubridate)
+library(stringi)
+library(r2r)
+library(purrr)
+library(scales)
+library(broom)
+library(kableExtra)
+library(gridExtra)
+library(patchwork)
+
+```
+
+```{r}
+
+# read-in
+setwd('C:\\Users\\murra\\Documents\\Stevens\\Sports-GOAT-Project\\Data')
+df.goats <- read.csv('df.goats.csv')
+data <- read.csv('data.csv')
+data.2 <- read.csv("data.2.csv")
+data.4 <- read.csv("data.4.csv")
+
+# truncate
+data <- data[data$Year >= 1945, ]
+
+# aggregate
+data.agg <- data %>% group_by(Year) %>% summarise(N = sum(N))
+
+
+###
+
+
+# filter data for years, sports with no GOAT candidates
+data.0 <- data[data$N == 0,]
+
+# left merge
+data.combined <- merge(x = data.0, y = data.2, by = "Sport", all.x = TRUE)
+data.combined.2 <- data.combined %>%
+  group_by(Sport) %>%
+  summarize(N= n(), avg.length = unique(avg.length))
+
+# add new indicator variable for contact sports
+data.combined.2$Contact <- "No"
+data.combined.2[c(2, 4, 6, 7), 4] <- "Yes"
+
+```
+
+```{r figure-1}
+
+# figure 1
+f1 <- ggplot(data = data.agg, 
+       aes(x = as.numeric(Year), y = as.integer(N))) + 
+  scale_y_continuous(limits = c(0, 20), breaks = seq(0, 20, by = 1))+
+  geom_line() +
+  labs(x = "Year", 
+       y = "Number of Potential GOATs", 
+       title = "Number of Potential GOATs by Year - All Sports",
+       caption = "Figure 1") + 
+  theme_bw() +
+  theme(text = element_text(family = "serif")) +
+  theme(plot.title=element_text(family = "serif", face = "bold", hjust = 0.5, size = 12))
+
+f1
+
+```
+
+An interactive, non-static version of the graph can be found [\textcolor{blue}{here}](https://observablehq.com/d/b87face558304b63). When you hover over the lines, the graph tells you the sport, year, number of GOAT candidates, and their names. You can also play with the slider and filter the data. 
+
+## Subjective Sports
+
+### Main Finding 1
+
+**There are 3 main cadences at which GOAT candidates appear. They - as well as the sports that fall into each grouping - are described below:**
+
+**1. GOAT candidates are essentially one-offs, or statistical anomalies - Baseball, Cricket**
+
+```{r, baseball-and-cricket graph}
+
+# figure 2
+data.filter = data[data$Sport %in% c("Baseball", "Cricket"), ]
+f2 <- ggplot(data = data.filter) + 
+       scale_y_continuous(limits = c(0, 4), breaks = seq(0, 4, by = 1)) +
+       geom_line(aes(x = as.numeric(Year), y = as.integer(N), color = Sport)) +
+  labs(x = "Year", 
+       y = "Number of Potential GOATs", 
+       title = "Number of Potential GOATs by Year in Baseball and Cricket",
+       caption = "Figure 2") + 
+  theme_bw() +
+  theme(text = element_text(family = "serif")) +
+  theme(plot.title=element_text(family = "serif", face = "bold", hjust = 0.5, size = 12))
+
+f2
+
+```
+
+```{r baseball-and-cricket-table}
+
+df.goats.bc <- unique(df.goats %>%
+  filter(Year >= 1945, Sport %in% c("Baseball", "Cricket")) %>%
+  select(Player, Sport))
+
+df.goats.bc$Years.Active <- c("1927-1949", "1986-2007", "1936-1951", "1941-1963", "1939-1942, 1946-1960")
+
+knitr::kable(df.goats.bc,
+             col.names = c("Player", "Sport", "Years Active"),
+             row.names = FALSE,
+             caption = "Baseball and Cricket GOAT Candidates (1945 and Onwards)",
+             format = "markdown",
+             align = "ccc") %>%
+             kable_styling(font_size = 8.5,
+                           latex_options = c("hold_position"),
+                           full_width = FALSE,
+                           position = "right")
+
+```
+
+With cricket and baseball, GOAT candidates are aberrations. For cricket, the GOAT is - by general consensus - Sir Donald Bradman. The Australian cricketer - who played from 1929 to 1947 - infamously has a Test batting average of 99.94, which is considerably higher than the second highest Test batting average of all time. Given that our dataset starts at 1945, Bradman *just* makes the cut in our analysis. For baseball, we inevitably had Babe Ruth in our dataset, but he was cut out since his career ended *before* 1945. Since Ruth, only a handful of players have come close to his legendary status, with Barry Bonds being the most recent player to truly threaten the supremacy of the Great Bambino. 
+
+**2. GOAT candidates occur sporadically without any legitimate pattern, which aligns with our prior beliefs - Hockey, Golf**
+
+```{r golf-and-hockey graph}
+
+# figure 3
+data.filter = data[data$Sport %in% c("Golf", "Hockey"), ]
+f3 <- ggplot(data = data.filter) + 
+       scale_y_continuous(limits = c(0, 4), breaks = seq(0, 4, by = 1)) +
+       geom_line(aes(x = as.numeric(Year), y = as.integer(N), color = Sport)) +
+  labs(x = "Year", 
+       y = "Number of Potential GOATs", 
+       title = "Number of Potential GOATs by Year in Golf and Hockey",
+       caption = "Figure 3") + 
+  theme_bw() +
+  theme(text = element_text(family = "serif")) +
+  theme(plot.title=element_text(family = "serif", face = "bold", hjust = 0.5, size = 12))
+
+f3
+
+```
+
+With golf and hockey, GOAT candidates do not appear in any discernible cadence or pattern. While the sample size is not large enough to definitely say so, the appearance of GOATs in these sports appears to be stochastic. 
+
+```{r golf-and-hockey-table}
+
+df.goats.gh <- unique(df.goats %>%
+  filter(Year >= 1945, Sport %in% c("Golf", "Hockey")) %>%
+  select(Player, Sport))
+
+df.goats.gh$Years.Active <- c("1946-1971, 1973-1980", "1942-1960",
+                              "1978-1999", "1978-2004",
+                              "1962-1986", "1937-1945",
+                              "1942-1954", "1997-2019")
+              
+knitr::kable(df.goats.gh,
+             col.names = c("Player", "Sport", "Years Active"),
+             row.names = FALSE,
+             caption = "Golf and Hockey GOAT Candidates (1945 and Onwards)", digits = 3, format = "markdown", align = "cc") %>%
+  kable_styling(font_size = 8.5, latex_options = c("hold_position"), full_width = FALSE, position = "right")
+
+
+```
+
+**3. GOAT candidates either occur more frequently OR in larger quantities than we previously expected (corroborating our hypothesis that greatness can be taken for granted) - Basketball, Football, Soccer, Tennis**
+
+```{r basketball-football-soccer-and-tennis graph}
+
+
+# figure 4
+data.filter = data[data$Sport %in% c("Basketball", "Football", "Soccer", "Tennis"), ]
+f4 <- ggplot(data = data.filter) + 
+       scale_y_continuous(limits = c(0, 4), breaks = seq(0, 4, by = 1)) +
+       geom_line(aes(x = as.numeric(Year), y = as.integer(N), color = Sport)) +
+  labs(x = "Year", 
+       y = "Number of Potential GOATs", 
+       title = "Number of Potential GOATs by Year in Basketball, Football, Soccer, and Tennis",
+       caption = "Figure 4") + 
+  theme_bw() +
+  theme(text = element_text(family = "serif")) +
+  theme(plot.title=element_text(family = "serif", face = "bold", hjust = 0.5, size = 12))
+
+f4
+
+```
+
+In the aforementioned sports, there *always* seems to be a GOAT candidate playing. In fact, from 1945 onwards, there have only been **18** years without an active GOAT candidate in basketball, football, soccer, or tennis. Therefore, approximately 77% of the time there is at least one active GOAT candidate in each of those sports. 
+
+
+```{r}
+
+# data.0[data.0$Sport %in% c("Basketball", "Football", "Soccer", "Tennis"),] %>%
+#   group_by(Year) %>%
+#   count()
+
+```
+
+
+#### Intuition vs. Results
+
+Our prior intuition before undertaking this project (which is now admittedly biased since we have been so engrossed in the data) was that GOAT candidates are diamonds in the rough. This premonition holds for *some* sports, but said sports are the minority, *not* the majority. In most instances, GOATs occur at more frequent cadence than what we (the authors) previously believed.  
+
+### Main Finding 2
+
+**In general, sports with longer career lengths tend to attract less GOAT candidates because there is a higher mountain to clumb. The opposite is true for sports with shorter career lengths, which lower the barrier to entry for greatness.**
+
+
+```{r}
+
+knitr::kable(merge(x = data.4, y = data.2, by = "Sport", all.x = TRUE), 
+             col.names = c("Sport", "# GOATS", "Avg. Career Length"),
+             row.names = FALSE,
+             digits = 3,
+             caption = "# GOAT Candidates by Sport vs. Career Length (for GOATS)",
+             format = "markdown",
+             align = "cc") %>%
+              kable_styling(font_size = 8.5,
+                            latex_options = c("hold_position"),
+                            full_width = FALSE,
+                            position = "right")
+```
+
+
+
+#### Intuition vs. Results
+
+### Toy Model
+
+## Objective Sports - Are Our Findings Validated?
+
+Additionally, we decided to impute data for three "objective" sports - chess, swimmming, and running. We call these sports objective because they have very well-accepted, objective metrics that are more-than-often referred to when discussing the best player in that sport. The metrics that we used to rank players in each objective sports are as follows:
+
+* Chess - ELO Rating 
+
+* Running - 100 M Dash Time
+
+* Swimming - 100 M Freestyle Time
+
+
+## Potential Explanations that Lack Creedence
+
+# Conclusion
+
+Circling back to our original question ... **CAN you take greatness for granted in sports? Well, kind of.** It depends on the sport *and* the nature of the sport. In some sports, greatness can be taken be taken for granted. The end of one great's career often intersects with the commencement of another, while great players battle each other not only for championships and titles, but also for spots in the pantheon of greats. 
+
+In other sports, greatness definitely should be cherished more. 
+
+\newpage
+
+# References
+

@@ -853,5 +853,7 @@ write.csv(df.goats.subset.2, "Data/data.3.csv", row.names=FALSE)
 # write data for # GOATS for each sport to csv
 write.csv(data.4, "Data/data.4.csv", row.names=FALSE)
 
+write.csv(df.goats, "Data/df.goats.csv", row.names=FALSE)
+
 ```
 
