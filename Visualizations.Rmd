@@ -33,8 +33,10 @@ library(gridExtra)
 ```{r}
 
 # read-in
+setwd('C:\\Users\\murra\\Documents\\Stevens\\Sports-GOAT-Project\\Data')
 data <- read.csv("data.csv")
 data.2 <- read.csv("data.2.csv")
+data.decade <- read.csv("df.goats.decade.csv")
 
 # truncate
 data <- data[data$Year >= 1945, ]
@@ -316,6 +318,29 @@ ggplot(data = swimming.filter,
   theme_bw() +
   theme(text = element_text(family = "serif")) +
   theme(plot.title=element_text(family = "serif", face = "bold", hjust = 0.5, size = 12))
+
+```
+
+\newpage
+
+For some sports - more specifically, swimming and running, both of which we deemed to be "objective" sports - it was very difficult to define a career length, as there is **very** little data on each athlete's first and last year competing. Moreover, because we defined GOAT candidates in these sports as competitors who had held the world record in a particular race at least once, players could theoretically have a career span < 1 year. To give an extreme example ...
+
+```{r figure-12.1}
+
+
+data.decade.swimming <- data.decade %>%
+  filter(Sport=="Swimming" & Decade!="None")
+
+ggplot(data = data.decade.swimming, aes(x=Decade)) +
+geom_bar(stat="count") + 
+  labs(x = "Decade", 
+       y = "Number of Potential GOATs",
+       title = "Number of Potential Swimming GOATs by Decade",
+       caption = "Figure 12.1")  + 
+          theme_bw() +
+          theme(text = element_text(family = "serif")) +
+          theme(plot.title=element_text(family = "serif", face = "bold", hjust = 0.5, size = 12))
+
 
 ```
 
